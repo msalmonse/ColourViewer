@@ -9,13 +9,14 @@
 import Foundation
 import Combine
 
-struct SearchString {
+class SearchString: Combine.ObservableObject, Identifiable {
+    let id = UUID()
     let min = 2
     let publisher = PassthroughSubject<String, Never>()
+    let objectWillChange = ObservableObjectPublisher()
     var string = "" {
-        didSet {
-            if string.count >= min { publisher.send(string) }
-        }
+        willSet { objectWillChange.send() }
+        didSet { if string.count >= min { publisher.send(string) } }
     }
     var isEmpty: Bool { return string.isEmpty }
 }

@@ -13,7 +13,7 @@ struct ColourSearch: View {
     // @Binding var showingSearch: Bool
     @ObservedObject var showingSearch: ObservableBool
     @ObservedObject var colourItem: ObservableColourItem
-    @State var search = SearchString()
+    @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
     @State var intensitySort = false
     @ObservedObject var sortSelection = ObservableInt(0)

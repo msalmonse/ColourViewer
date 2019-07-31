@@ -20,7 +20,7 @@ class SearchStringTest: XCTestCase {
 
     func testSearchString() {
         var testRes = "Z"
-        var test = SearchString()
+        let test = SearchString()
         let testCancel = test.publisher.sink(receiveValue: { testRes = $0 })
         
         test.string = "A"
