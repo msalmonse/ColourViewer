@@ -11,6 +11,10 @@ import Combine
 import SwiftUI
 
 class ObservableBool: Combine.ObservableObject, Identifiable {
+    /// Bool class for SwiftUI
+    /// The class publishes that a change will occur to SwiftUI and
+    /// the changed value for others
+    ///
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Bool, Never>()
@@ -23,6 +27,10 @@ class ObservableBool: Combine.ObservableObject, Identifiable {
 }
 
 class ObservableInt: Combine.ObservableObject, Identifiable {
+    /// Int class for SwiftUI
+    /// The class publishes that a change will occur to SwiftUI and
+    /// the changed value for others
+    ///
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Int, Never>()
@@ -35,6 +43,10 @@ class ObservableInt: Combine.ObservableObject, Identifiable {
 }
 
 class ObservableString: Combine.ObservableObject, Identifiable {
+    /// String class for SwiftUI
+    /// The class publishes that a change will occur to SwiftUI and
+    /// the changed value for others
+    ///
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<String, Never>()

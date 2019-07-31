@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 func copyToClipboard(_ item: ColourItem) {
+    /// Copy the label an colour of a ColourItem to the pasteboard
+    ///
     UIPasteboard.general.string = item.label
     UIPasteboard.general.color = item.uiColor
 }
