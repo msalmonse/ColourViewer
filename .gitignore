@@ -1,6 +1,6 @@
 .DS_store
 
 ## User settings
-xcuserdata/
+*/xcuserdata/
 ## previews
 iconGen_ColourViewer_iOS/
