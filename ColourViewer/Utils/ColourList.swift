@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 let colourList = [
+    /// Dictionary of hex colour codes and their well known names
+    ///
     "#f0f8ff": "AliceBlue",
     "#faebd7": "AntiqueWhite",
     "#00f0ff": "Aqua",
@@ -151,6 +153,8 @@ let colourList = [
 ]
 
 fileprivate let colourSynonyms = [
+    /// Synonyms of colour names
+    ///
     "darkgray":         [ "Darkgrey" ],
     "gray":             [ "Grey" ],
     "lightgray":        [ "LightGrey" ],
@@ -159,13 +163,14 @@ fileprivate let colourSynonyms = [
     "slategray":        [ "SlateGrey" ]
 ]
 
-// hex to lower case colour names
+/// Dictionary of lower case colour names to hex value
 fileprivate var hexList: [ String: String ] = [:]
 
-// lower case to camel case translation
+/// Dictionary of lower case to camel case colours
 fileprivate var camelNames: [ String: String ] = [:]
 
 fileprivate func makeHexList() {
+    /// Build the auxilliary dictionaries from colourList
     for (hex, colour) in colourList {
         hexList[ colour.lowercased() ] = hex
         camelNames[ colour.lowercased() ] = colour
@@ -178,10 +183,11 @@ fileprivate func makeHexList() {
     }
 }
 
-//
-//  Return a list of colour names that match the name
-//
+
 func coloursMatching(_ name: String, sortByIntensity: Bool = false) -> [ String ] {
+    /// Return a list of colours containing the search string
+    /// The list is either sorted by name or colour intensity
+    ///
     var namesMatching: [String:Int] = [:]
     let lcName = name.lowercased()
     
@@ -207,22 +213,20 @@ func coloursMatching(_ name: String, sortByIntensity: Bool = false) -> [ String 
     }
 }
 
-//
-// Lookup the hex value in hexList
-//
 func hexLookup(_ name: String) -> String? {
+    /// Lookup the hex value in hexList
+    ///
     if hexList.count == 0 { makeHexList() }
     
     return hexList[ name.lowercased() ]
 }
 
-//
-// Lookup the Color associated with a name
-//
-
+/// Cache for colorLookup
 fileprivate var colorList: [ String:Color ] = [:]
 
 func colorLookup(_ name: String) -> Color? {
+    /// Lookup the Color associated with a name
+    ///
     let lcName = name.lowercased()
     
     if colorList[ lcName ] == nil {
