@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct sectionBackground: ViewModifier {
+    /// Common modifications for Sections
+    ///
     func body(content: Content) -> some View {
         content
             .padding(.all, 12)
@@ -17,6 +19,7 @@ struct sectionBackground: ViewModifier {
 }
 
 struct buttonBackground: ViewModifier {
+    /// Common modifications for Buttons
     func body(content: Content) -> some View {
         content
             .padding(12)
