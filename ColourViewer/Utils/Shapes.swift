@@ -13,6 +13,8 @@ func strokedRoundedRectangle(
         stroke w: CGFloat = 1,
         color c: Color = .primary
     ) -> some View {
+    /// Return a stroked RoundedRectangle.
+    /// Primarily for overlays
     
     return RoundedRectangle(cornerRadius: r).stroke(lineWidth: w).foregroundColor(c)
 }
@@ -21,6 +23,8 @@ func filledRoundedRectangle(
         cornerRadius r: CGFloat,
         color c: Color = .primary
     ) -> some View {
-    
+    /// Return a filled RoundedRectangle.
+    /// Primarily for backgrounds
+
     return RoundedRectangle(cornerRadius: r).foregroundColor(c)
 }
