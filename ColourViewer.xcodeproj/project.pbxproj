@@ -7,13 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40D360222EEC6C900455CCA /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360122EEC6C900455CCA /* SearchString.swift */; };
+		C40D360422EEDC3800455CCA /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360322EEDC3800455CCA /* SearchString.swift */; };
+		C40D360622EF43D100455CCA /* ColourEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360522EF43D100455CCA /* ColourEditor.swift */; };
+		C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11B22F0CC7B00895FC2 /* Observable.swift */; };
+		C42DE11F22F1711300895FC2 /* RGBelements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11E22F1711300895FC2 /* RGBelements.swift */; };
+		C42DE12122F1711D00895FC2 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
+		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
 		C45C7BE022D4BAED008D119D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BDF22D4BAED008D119D /* AppDelegate.swift */; };
 		C45C7BE222D4BAED008D119D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BE122D4BAED008D119D /* SceneDelegate.swift */; };
 		C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BE322D4BAED008D119D /* ContentView.swift */; };
 		C45C7BE622D4BAF1008D119D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45C7BE522D4BAF1008D119D /* Assets.xcassets */; };
 		C45C7BE922D4BAF1008D119D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45C7BE822D4BAF1008D119D /* Preview Assets.xcassets */; };
 		C45C7BEC22D4BAF1008D119D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45C7BEA22D4BAF1008D119D /* LaunchScreen.storyboard */; };
-		C45C7BF722D4BAF1008D119D /* ColourViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BF622D4BAF1008D119D /* ColourViewerTests.swift */; };
+		C45C7C0A22D4C010008D119D /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7C0922D4C010008D119D /* ColourItem.swift */; };
+		C45C7C1222D517F1008D119D /* ColourHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7C1122D517F0008D119D /* ColourHistory.swift */; };
+		C490553722EAC43500C86E46 /* NumberAndString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553622EAC43500C86E46 /* NumberAndString.swift */; };
+		C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553822EACC8100C86E46 /* NumberAndString.swift */; };
+		C490553B22EB08CF00C86E46 /* RGBandHSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553A22EB08CF00C86E46 /* RGBandHSB.swift */; };
+		C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */; };
+		C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5532E22F1CAC5002F6F5F /* Radix.swift */; };
+		C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */; };
+		C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItem.swift */; };
+		C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */; };
+		C4EB230C22EDB8930071099F /* IntElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB230B22EDB8930071099F /* IntElement.swift */; };
+		C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB230F22EDDAB00071099F /* DoubleElement.swift */; };
+		C4EB231222EDDB830071099F /* HSBelements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231122EDDB830071099F /* HSBelements.swift */; };
+		C4EB231422EE0B660071099F /* ColourElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231322EE0B650071099F /* ColourElements.swift */; };
+		C4EB231622EE0CCE0071099F /* ColourSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231522EE0CCE0071099F /* ColourSearch.swift */; };
+		C4EB231922EE15190071099F /* CopyToClipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231822EE14800071099F /* CopyToClipboard.swift */; };
+		C4EB231A22EE195F0071099F /* ColourList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EAD06F22DEF81900912FB8 /* ColourList.swift */; };
+		C4FECC2D22F0181100C58631 /* ColourViewer-256.png in Resources */ = {isa = PBXBuildFile; fileRef = C4FECC2C22F0181000C58631 /* ColourViewer-256.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C40D360122EEC6C900455CCA /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchString.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Utils/SearchString.swift; sourceTree = "<group>"; };
+		C40D360322EEDC3800455CCA /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchString.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/SearchString.swift; sourceTree = "<group>"; };
+		C40D360522EF43D100455CCA /* ColourEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourEditor.swift; sourceTree = "<group>"; };
+		C42DE11822F098B200895FC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C42DE11B22F0CC7B00895FC2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C42DE11E22F1711300895FC2 /* RGBelements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBelements.swift; path = ../Utils/RGBelements.swift; sourceTree = "<group>"; };
+		C42DE12022F1711D00895FC2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		C42DE12222F1718700895FC2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		C45C7BDC22D4BAED008D119D /* ColourViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45C7BDF22D4BAED008D119D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C45C7BE122D4BAED008D119D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +68,25 @@
 		C45C7BEB22D4BAF1008D119D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C45C7BED22D4BAF1008D119D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45C7BF222D4BAF1008D119D /* ColourViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColourViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C45C7BF622D4BAF1008D119D /* ColourViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourViewerTests.swift; sourceTree = "<group>"; };
 		C45C7BF822D4BAF1008D119D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C45C7C0922D4C010008D119D /* ColourItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourItem.swift; sourceTree = "<group>"; };
+		C45C7C1122D517F0008D119D /* ColourHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourHistory.swift; sourceTree = "<group>"; };
+		C490553622EAC43500C86E46 /* NumberAndString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndString.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/NumberAndString.swift; sourceTree = "<group>"; };
+		C490553822EACC8100C86E46 /* NumberAndString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndString.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/NumberAndString.swift; sourceTree = "<group>"; };
+		C490553A22EB08CF00C86E46 /* RGBandHSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSB.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/RGBandHSB.swift; sourceTree = "<group>"; };
+		C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSBtest.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/RGBandHSBtest.swift; sourceTree = "<group>"; };
+		C4D5532E22F1CAC5002F6F5F /* Radix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radix.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/Radix.swift; sourceTree = "<group>"; };
+		C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatching.swift; path = /Users/mesa/xcode/ColourViewer/../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatching.swift; sourceTree = "<absolute>"; };
+		C4E50BDF22E5BE74003E3565 /* ColourItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColourItem.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColourItem.swift; sourceTree = "<group>"; };
+		C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConvert.swift; sourceTree = "<group>"; };
+		C4EAD06F22DEF81900912FB8 /* ColourList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourList.swift; sourceTree = "<group>"; };
+		C4EB230B22EDB8930071099F /* IntElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntElement.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Views/IntElement.swift; sourceTree = "<group>"; };
+		C4EB230F22EDDAB00071099F /* DoubleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoubleElement.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Views/DoubleElement.swift; sourceTree = "<group>"; };
+		C4EB231122EDDB830071099F /* HSBelements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HSBelements.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Views/HSBelements.swift; sourceTree = "<group>"; };
+		C4EB231322EE0B650071099F /* ColourElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColourElements.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Views/ColourElements.swift; sourceTree = "<group>"; };
+		C4EB231522EE0CCE0071099F /* ColourSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourSearch.swift; sourceTree = "<group>"; };
+		C4EB231822EE14800071099F /* CopyToClipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboard.swift; sourceTree = "<group>"; };
+		C4FECC2C22F0181000C58631 /* ColourViewer-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ColourViewer-256.png"; path = "../../../../../../System/Volumes/Data/Users/mesa/Downloads/ColourViewer-256.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +129,16 @@
 			isa = PBXGroup;
 			children = (
 				C45C7BDF22D4BAED008D119D /* AppDelegate.swift */,
-				C45C7BE122D4BAED008D119D /* SceneDelegate.swift */,
-				C45C7BE322D4BAED008D119D /* ContentView.swift */,
 				C45C7BE522D4BAF1008D119D /* Assets.xcassets */,
-				C45C7BEA22D4BAF1008D119D /* LaunchScreen.storyboard */,
+				C45C7BE322D4BAED008D119D /* ContentView.swift */,
 				C45C7BED22D4BAF1008D119D /* Info.plist */,
+				C45C7BEA22D4BAF1008D119D /* LaunchScreen.storyboard */,
+				C45C7BE122D4BAED008D119D /* SceneDelegate.swift */,
+				C490553222E9FF4000C86E46 /* Models */,
 				C45C7BE722D4BAF1008D119D /* Preview Content */,
+				C4FECC2B22F017EC00C58631 /* Resources */,
+				C4EB231722EE144C0071099F /* Utils */,
+				C4EB230722EDB21B0071099F /* Views */,
 			);
 			path = ColourViewer;
 			sourceTree = "<group>";
@@ -101,10 +154,62 @@
 		C45C7BF522D4BAF1008D119D /* ColourViewerTests */ = {
 			isa = PBXGroup;
 			children = (
-				C45C7BF622D4BAF1008D119D /* ColourViewerTests.swift */,
+				C4E50BDF22E5BE74003E3565 /* ColourItem.swift */,
+				C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */,
 				C45C7BF822D4BAF1008D119D /* Info.plist */,
+				C490553822EACC8100C86E46 /* NumberAndString.swift */,
+				C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */,
+				C40D360322EEDC3800455CCA /* SearchString.swift */,
 			);
 			path = ColourViewerTests;
+			sourceTree = "<group>";
+		};
+		C490553222E9FF4000C86E46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
+				C45C7C0922D4C010008D119D /* ColourItem.swift */,
+				C490553622EAC43500C86E46 /* NumberAndString.swift */,
+				C490553A22EB08CF00C86E46 /* RGBandHSB.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C4EB230722EDB21B0071099F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C40D360522EF43D100455CCA /* ColourEditor.swift */,
+				C4EB231322EE0B650071099F /* ColourElements.swift */,
+				C45C7C1122D517F0008D119D /* ColourHistory.swift */,
+				C4EB231522EE0CCE0071099F /* ColourSearch.swift */,
+				C4EB230F22EDDAB00071099F /* DoubleElement.swift */,
+				C4EB231122EDDB830071099F /* HSBelements.swift */,
+				C4EB230B22EDB8930071099F /* IntElement.swift */,
+				C42DE11E22F1711300895FC2 /* RGBelements.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4EB231722EE144C0071099F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */,
+				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
+				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
+				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
+				C42DE12222F1718700895FC2 /* Modifiers.swift */,
+				C40D360122EEC6C900455CCA /* SearchString.swift */,
+				C42DE12022F1711D00895FC2 /* Shapes.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C4FECC2B22F017EC00C58631 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4FECC2C22F0181000C58631 /* ColourViewer-256.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +265,7 @@
 					};
 					C45C7BF122D4BAF1008D119D = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 						TestTargetID = C45C7BDB22D4BAED008D119D;
 					};
 				};
@@ -191,6 +297,7 @@
 				C45C7BEC22D4BAF1008D119D /* LaunchScreen.storyboard in Resources */,
 				C45C7BE922D4BAF1008D119D /* Preview Assets.xcassets in Resources */,
 				C45C7BE622D4BAF1008D119D /* Assets.xcassets in Resources */,
+				C4FECC2D22F0181100C58631 /* ColourViewer-256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +315,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */,
+				C490553722EAC43500C86E46 /* NumberAndString.swift in Sources */,
+				C4EB231422EE0B660071099F /* ColourElements.swift in Sources */,
+				C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */,
+				C42DE11F22F1711300895FC2 /* RGBelements.swift in Sources */,
+				C45C7C1222D517F1008D119D /* ColourHistory.swift in Sources */,
+				C4EB231922EE15190071099F /* CopyToClipboard.swift in Sources */,
 				C45C7BE022D4BAED008D119D /* AppDelegate.swift in Sources */,
+				C40D360222EEC6C900455CCA /* SearchString.swift in Sources */,
 				C45C7BE222D4BAED008D119D /* SceneDelegate.swift in Sources */,
+				C40D360622EF43D100455CCA /* ColourEditor.swift in Sources */,
+				C42DE12122F1711D00895FC2 /* Shapes.swift in Sources */,
+				C4EB230C22EDB8930071099F /* IntElement.swift in Sources */,
+				C490553B22EB08CF00C86E46 /* RGBandHSB.swift in Sources */,
+				C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */,
+				C45C7C0A22D4C010008D119D /* ColourItem.swift in Sources */,
+				C4EB231A22EE195F0071099F /* ColourList.swift in Sources */,
+				C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */,
+				C4EB231222EDDB830071099F /* HSBelements.swift in Sources */,
+				C4EB231622EE0CCE0071099F /* ColourSearch.swift in Sources */,
 				C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */,
+				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C45C7BF722D4BAF1008D119D /* ColourViewerTests.swift in Sources */,
+				C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */,
+				C40D360422EEDC3800455CCA /* SearchString.swift in Sources */,
+				C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */,
+				C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */,
+				C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +367,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C45C7BEB22D4BAF1008D119D /* Base */,
+				C42DE11822F098B200895FC2 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -401,6 +532,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ColourViewerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,6 +542,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.mesme.ColourViewerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColourViewer.app/ColourViewer";
@@ -421,6 +554,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ColourViewerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
