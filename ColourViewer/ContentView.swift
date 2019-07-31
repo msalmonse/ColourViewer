@@ -9,8 +9,26 @@
 import SwiftUI
 
 struct ContentView : View {
+    @State var history: [ColourItem] = [
+//        ColourItem(red: 255, green:   0, blue:   0, label: "Red"),
+//        ColourItem(red: 255, green: 255, blue:   0, label: "Yellow"),
+//        ColourItem(red:   0, green: 255, blue:   0, label: "Green")
+    ]
+    
     var body: some View {
-        Text("Hello World")
+        GeometryReader { geometry in
+            HStack(alignment: .top, spacing: 10) {
+                ColourEditor(
+                    history: self.$history
+                )
+                
+                Divider().frame(width: 1)
+                
+                ColourHistory(
+                    history: self.$history
+                )
+            }
+        }
     }
 }
 
