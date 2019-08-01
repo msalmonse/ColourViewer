@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+/// View to display and edit a single int element
+///
+/// Parameters:
+///     label:          label for the element to display and edit
+///     element:    Int value and associated string
+
 struct IntElement : View {
     let label: String
     @ObservedObject var element: IntAndString
@@ -16,14 +22,17 @@ struct IntElement : View {
         VStack(alignment: .leading) {
             Text(label).font(.caption)
             HStack {
+                /// Increment button
                 Button(
                     action: { self.element.number += 1 },
                     label: { Image(systemName: "plus.circle").accentColor(.secondary) }
                 )
+                /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 75)
                 .font(.system(.body, design: .monospaced))
+                /// Decrement button
                 Button(
                     action: { self.element.number -= 1 },
                     label: { Image(systemName: "minus.circle").accentColor(.secondary) }
