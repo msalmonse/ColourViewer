@@ -9,12 +9,15 @@
 import Foundation
 import SwiftUI
 
+/// Radix to use when editting Int's
+
 enum Radix: Hashable {
     case octal
     case decimal
     case hexadecimal
     case unknown
     
+    /// Label to describe radix
     var label: String {
         switch self {
         case .octal:
@@ -28,6 +31,7 @@ enum Radix: Hashable {
         }
     }
     
+    /// Base for radix
     var base:Int {
         switch self {
         case .octal:
@@ -41,6 +45,7 @@ enum Radix: Hashable {
         }
     }
     
+    /// Format string for radix
     var format: String {
         switch self {
         case .octal:
@@ -54,8 +59,10 @@ enum Radix: Hashable {
         }
     }
     
+    /// Like allCases but in defined order
     static var all: [Radix] = [ .decimal, .hexadecimal, .octal ]
     
+    /// Convert base to radix
     static func radix(for i: Int) -> Radix {
         switch i {
         case 8:
