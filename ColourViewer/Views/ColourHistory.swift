@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+/// Display a list of interesting colours
+
 struct ColourHistory : View {
     @Binding var history: [ColourItem]
     
@@ -32,12 +34,14 @@ struct ColourHistory : View {
         }
     }
     
+    /// Delete selected items from list
     private func delete(at: IndexSet) {
         for i in at.sorted().reversed() {
             history.remove(at: i)
         }
     }
     
+    /// Move selected items in list
     private func move(from: IndexSet, to: Int) {
         for i in from.sorted().reversed() {
             let j = (to > i) ? to - 1 : to
@@ -47,10 +51,13 @@ struct ColourHistory : View {
     }
 }
 
+/// Display a single item in the history list
+
 fileprivate struct HistoryRow: View {
     let item: ColourItem
     
     var body: some View {
+        /// Display the colour name or hex code surrounded by the colour
         HStack {
             Spacer()
             Text(item.label)
