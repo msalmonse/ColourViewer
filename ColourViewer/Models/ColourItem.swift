@@ -9,6 +9,8 @@
 import SwiftUI
 import Combine
 
+/// Extension to allow creating Color obects with Int RGB
+
 extension Color {
     init(red: Int, green: Int, blue: Int) {
         let newRed = Double(red)/255.0
@@ -19,8 +21,15 @@ extension Color {
     }
 }
 
-// Convert a hex substring to an Int
-// Return true on success
+/// Convert a hex substring to an Int
+/// Return true on success
+///
+/// Parameters:
+///     from:     base string
+///     first:      first character from beginning to use
+///     count:   number of characters
+///     to:         reference to result
+
 fileprivate func hexToInt(from: String, first: Int, count: Int, to: inout Int) -> Bool {
     let start = from.index(from.startIndex, offsetBy: first)
     let end = from.index(from.startIndex, offsetBy: first + count)
@@ -30,7 +39,16 @@ fileprivate func hexToInt(from: String, first: Int, count: Int, to: inout Int) -
     return true
 }
 
-// Convert a hex string to red, green & blue
+/// Convert a hex string to red, green & blue
+/// Expectd formats "#rgb" or "#rrggbb"
+/// Returns true on success
+///
+/// Parameters:
+///     hex:        hex string
+///     r:             reference to red colour
+///     g:            reference to green colour
+///     b:            reference to blue colour
+
 fileprivate func hexToRGB(hex: String?, r: inout Int, g: inout Int, b: inout Int) -> Bool {
     if hex == nil || !hex!.hasPrefix("#") { return false }
     switch hex!.count {
@@ -52,7 +70,10 @@ fileprivate func hexToRGB(hex: String?, r: inout Int, g: inout Int, b: inout Int
     return true
 }
 
+/// A struct to hold a Color, a label and the componets used to create it
+
 struct ColourItem: Identifiable, Equatable {
+    /// Format used to convert red, green and blue to a hex string
     static let format = "#%02x%02x%02x"
     
     let id = UUID()
@@ -62,6 +83,7 @@ struct ColourItem: Identifiable, Equatable {
     let green: UInt8
     let blue: UInt8
 
+    /// Create a UIColor from the components
     var uiColor: UIColor {
         UIColor(
             red: CGFloat(red)/255.0,
@@ -71,9 +93,18 @@ struct ColourItem: Identifiable, Equatable {
         )
     }
     
+    /// Calculate the intensity of a colour
     var intensity: Int {
         return Int(red) + Int(green) + Int(blue) + 2 * Int(max(red, green, blue))
     }
+    
+    /// Initialize a ColourItem
+    ///
+    /// Parameters
+    ///     red:        red component
+    ///     green:     green component
+    ///     blue:       blue component
+    ///     label:      name of the colour or hex code
     
     init(red: Int, green: Int, blue: Int, label: String) {
         self.label = label
@@ -83,13 +114,14 @@ struct ColourItem: Identifiable, Equatable {
         self.blue = UInt8(blue)
     }
     
+    /// As above but calculate the label
     init(red: Int, green: Int, blue: Int) {
         let hexStr = String(format: Self.format, red, green, blue)
         let name = colourList[hexStr]
         self.init(red: red, green: green, blue: blue, label: (name != nil) ? name! : hexStr)
     }
     
-    // Initialize using a hex colour string: "#rrggbb"
+    /// Initialize using a hex colour string: "#rrggbb"
     init?(hex: String?) {
         var r = 0
         var g = 0
@@ -100,10 +132,12 @@ struct ColourItem: Identifiable, Equatable {
         self.init(red: r, green: g, blue: b)
     }
     
+    /// Compare two ColourItem's
     static func ==(lhs: ColourItem, rhs: ColourItem) -> Bool {
         return lhs.red == rhs.red && lhs.green == rhs.green && lhs.blue == rhs.blue
     }
     
+    /// Calculate the intensity from a hex code
     static func intensity(_ hex: String?) -> Int {
         var r = 0
         var g = 0
@@ -115,8 +149,11 @@ struct ColourItem: Identifiable, Equatable {
     }
 }
 
+/// A wrapper for ColourItem that can be used with SwiftUI
+
 class ObservableColourItem: Combine.ObservableObject, Identifiable {
     var objectWillChange = ObservableObjectPublisher()
+    // Callback closure
     var hasChanged: ((ColourItem) -> ())? = nil
 
     var id = UUID()
@@ -130,10 +167,12 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
         }
     }
     
+    /// Return the internal ColourItem
     var unbind: ColourItem {
         return colourItem!
     }
 
+    /// Update the ColourItem using red, green and blue
     func setRGB(red: Int, green: Int, blue: Int) {
         if colourItem == nil ||
             red != Int(colourItem!.red) ||
@@ -152,6 +191,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
 
     var label: String {
         get { return (colourItem == nil) ? "" : colourItem!.label }
+        /// Setting the label will update the internal ColourItem
         set {
             if colourItem == nil || colourItem!.label != newValue {
                 if newValue.hasPrefix("#") {
@@ -165,6 +205,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
         }
     }
     
+    /// Create an object with a ColourItem eqal to label
     convenience init(label: String) {
         self.init()
         self.label = label
