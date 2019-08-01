@@ -205,7 +205,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
         }
     }
     
-    /// Create an object with a ColourItem eqal to label
+    /// Create an object with a ColourItem equal to label
     convenience init(label: String) {
         self.init()
         self.label = label
