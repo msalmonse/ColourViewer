@@ -9,8 +9,13 @@
 import SwiftUI
 import Combine
 
+/// Search the colour list and display matching name along with their colour
+///
+/// Parameters:
+///     showingSearch: the Bool that determines if this sheet is shown
+///     colourItem:         the recipient of the selected colour
+
 struct ColourSearch: View {
-    // @Binding var showingSearch: Bool
     @ObservedObject var showingSearch: ObservableBool
     @ObservedObject var colourItem: ObservableColourItem
     @ObservedObject var search = SearchString()
@@ -18,16 +23,19 @@ struct ColourSearch: View {
     @State var intensitySort = false
     @ObservedObject var sortSelection = ObservableInt(0)
     
+    /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
         matchList = coloursMatching(match, sortByIntensity: intensitySort)
     }
     
+    /// Update the ColourItem in the parent, clear the search data and close the sheet
     private func selectColour(_ name: String) {
         colourItem.label = name
         clearAll()
         showingSearch.bool = false
     }
     
+    /// Clear the search data
     private func clearAll() {
         search.string = ""
         matchList = []
@@ -37,7 +45,9 @@ struct ColourSearch: View {
         NavigationView {
             VStack {
                 VStack {
+                    /// Input field for the search
                     HStack {
+                        /// Force a search, only active if the search string isn't empty
                         Button(
                             action: { self.updateMatchList(self.search.string) },
                             label: {
@@ -48,10 +58,12 @@ struct ColourSearch: View {
                         )
                         .disabled(search.isEmpty)
 
+                        /// The actual search string editor, see also .onReceive() below
                         TextField("Seach", text: $search.string,
                             onCommit: { self.updateMatchList(self.search.string) }
                         )
 
+                        /// Clear the search data
                         Button(
                             action: { self.clearAll() },
                             label: {
@@ -66,6 +78,7 @@ struct ColourSearch: View {
                     .padding(3)
                     .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
+                    /// Select the sort field
                     HStack {
                         Text("Sorted by:")
                         Picker("Sorted by", selection: $sortSelection.number) {
@@ -74,6 +87,7 @@ struct ColourSearch: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 200)
+                        /// When a new sort style is selected update the match list
                         .onReceive(sortSelection.publisher) {
                             self.intensitySort = ($0 == 1)
                             self.updateMatchList(self.search.string)
@@ -85,7 +99,9 @@ struct ColourSearch: View {
                 
                 Text("Tap on colour to select").font(.caption)
 
+                /// Display the names and colours of the matching colours
                 List(matchList, id: \.self) { match in
+                    /// Each entry in the list is a button to update the colour in the parent and close the sheet
                     Button(
                         action: { self.selectColour(match) },
                         label: {
@@ -103,10 +119,12 @@ struct ColourSearch: View {
                         }
                     )
                 }
+                /// When the search string is updated the match list is recalculated
                 .onReceive(search.publisher, perform: { self.updateMatchList($0) } )
             }
             .navigationBarItems(
                 leading: Image(systemName: "magnifyingglass").font(Font.title.weight(.bold)),
+                /// Button to close the sheet
                 trailing: Button(
                     action: { self.showingSearch.bool = false },
                     label: {
