@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+/// Use UIColour to convert between red, green and blue, and hue, satuation and brightness
+/// N.B. there is no return value, inout parameters are used to return hue, satuation and brightness
+///
+/// Parameters:
+///     red:                red component
+///     green:            green component
+///     blue:              blue component
+///     hue:               hue reference
+///     saturation:     saturation reference
+///     brightness:     brightness reference
+
 func HSBfromRGB(red: Int, green: Int, blue: Int,
                 hue: inout Double, saturation: inout Double, brightness: inout Double) {
     
@@ -26,10 +37,22 @@ func HSBfromRGB(red: Int, green: Int, blue: Int,
     brightness = (Double(exactly: 10000.0 * b)!).rounded()/100.0
 }
 
+/// Convert from CGFloat to 0...255
 fileprivate func CGFloatToInt(_ value: CGFloat) -> Int {
     let returnValue = Int(trunc(value * 256.0))
     return (returnValue > 255) ? 255 : returnValue
 }
+
+/// Use UIColor to convert between hue, satuation and brightness, and red, green and blue,
+/// N.B. there is no return value, inout parameters are used to return hue, satuation and brightness
+///
+/// Parameters:
+///     hue:               hue component
+///     saturation:     saturation component
+///     brightness:     brightness component
+///     red:                red reference
+///     green:            green reference
+///     blue:              blue reference
 
 func RGBfromHSB(hue: Double, saturation: Double, brightness: Double,
                 red: inout Int, green: inout Int, blue: inout Int) {
