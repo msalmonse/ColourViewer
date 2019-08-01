@@ -27,7 +27,7 @@ struct DoubleElement : View {
                     action: { self.element.number += 0.1 },
                     label: { Image(systemName: "plus.circle").accentColor(.secondary) }
                 )
-                /// Edittor for the Sting value
+                /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 75)
