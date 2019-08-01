@@ -8,15 +8,18 @@
 
 import SwiftUI
 
+/// ColourElements displays the name or hex code of the current colour surrounded by the actual colour
+/// There are 3 buttons that change this colour in various ways
+
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @Binding var history: [ColourItem]
-    // @State var showingSearch = false
     @ObservedObject var showingSearch = ObservableBool(false)
 
     var body: some View {
         VStack {
             Section(header: Text("Colour").font(.subheadline)) {
+                /// Colour name in black on a white background surrounded by the colour itself
                 Text(colourItem.label)
                     .font(.system(.body, design: .monospaced))
                     .lineLimit(1)
@@ -29,6 +32,7 @@ struct ColourElements: View {
                         color: colourItem.color))
                     .padding(.bottom, 5)
                 HStack {
+                    /// Button to add current colour to history list
                     Button(
                         action: { self.history.insert(self.colourItem.unbind, at: 0) },
                         label: {
@@ -37,6 +41,7 @@ struct ColourElements: View {
                         }
                     )
                     .modifier(buttonBackground())
+                    /// Button to add colour and label to pasteboard
                      Button(
                         action: { copyToClipboard(self.colourItem.unbind) },
                         label: {
@@ -45,6 +50,7 @@ struct ColourElements: View {
                             }
                     )
                     .modifier(buttonBackground())
+                    /// Button to display the colour search view
                     Button(
                         action: { self.showingSearch.bool = true },
                         label: {
