@@ -14,13 +14,15 @@ fileprivate enum UpdatingSource {
     case none, rgb, hsb, color
 }
 
+/// This class combines the RGB, HSB and Colour values. Updating one updates the other two
+
 class RGBandHSB {
-    // RGB
+    // RGB values
     let red = RGBandString()
     let blue = RGBandString()
     let green = RGBandString()
     
-    // HSB
+    // HSB calues
     let hue = DegreesAndString()
     let saturation = PerCentAndString()
     let brightness = PerCentAndString()
@@ -28,10 +30,12 @@ class RGBandHSB {
     // Colour Item
     var colourItem = ObservableColourItem()
     
+    // Short cut to color
     var color: Color? {
         return colourItem.color
     }
     
+    // Updating the label updates the ColourItem
     var label: String {
         get { return colourItem.label }
         set {
@@ -42,6 +46,7 @@ class RGBandHSB {
     
     private var updatingFrom: UpdatingSource = .none    // prevent loops between RGB & HSB
     
+    // Update the HSB values
     private func updateHSB() {
         HSBfromRGB(
                     red: red.number,
@@ -53,6 +58,7 @@ class RGBandHSB {
                 )
     }
     
+    /// Called by updates in RGB elements
     private func updateFromRGB() {
         if updatingFrom != .none { return }
         updatingFrom = .rgb
@@ -62,6 +68,7 @@ class RGBandHSB {
         updatingFrom = .none
     }
     
+    // Called by updates in the HSB elements
     private func updateFromHSB() {
         if updatingFrom != .none { return }
         updatingFrom = .hsb
@@ -79,6 +86,7 @@ class RGBandHSB {
         updatingFrom = .none
     }
     
+    // Called when colourItem updates
     private func updateFromColourItem() {
         if updatingFrom != .none { return }
         updatingFrom = .color
@@ -91,11 +99,18 @@ class RGBandHSB {
         updatingFrom = .none
     }
     
+    // Update ColourItem to changes in RGB
     private func updateColourItem() {
         if updatingFrom == .color { return }
         colourItem.setRGB(red: red.number, green: green.number, blue: blue.number)
     }
     
+    /// Initializer
+    /// Parameters:
+    ///     red:        red component
+    ///     green:    green component
+    ///     blue:      blue component
+
     init(red: Int = 0, green: Int = 0, blue: Int = 0) {
         self.red.number = red
         self.green.number = green
@@ -114,6 +129,7 @@ class RGBandHSB {
         self.colourItem.hasChanged = { value in self.updateFromColourItem() }
     }
 
+    // Create an RGBandHSB with random colours
     static var random: RGBandHSB {
         return RGBandHSB(
                 red: Int.random(in: 0...255),
@@ -122,6 +138,7 @@ class RGBandHSB {
         )
     }
 
+    // Set the radix in the RGB components
     func setRadix(radix: Radix) {
         red.setRadix(radix: radix)
         green.setRadix(radix: radix)
