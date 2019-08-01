@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+/// A View to display and edit a Double value
+///
+/// Parameters:
+///     label:          label for element
+///     element:    the Double value and it's associated String
+
 struct DoubleElement : View {
     let label: String
     @ObservedObject var element: DoubleAndString
@@ -16,14 +22,17 @@ struct DoubleElement : View {
         VStack(alignment: .leading) {
             Text(label).font(.caption)
             HStack {
+                /// Increment button
                 Button(
                     action: { self.element.number += 0.1 },
                     label: { Image(systemName: "plus.circle").accentColor(.secondary) }
                 )
+                /// Edittor for the Sting value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 75)
                 .font(.system(.body, design: .monospaced))
+                
                 Button(
                     action: { self.element.number -= 0.1 },
                     label: { Image(systemName: "minus.circle").accentColor(.secondary) }
