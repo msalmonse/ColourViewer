@@ -8,7 +8,18 @@
 
 import SwiftUI
 
+/// Display and edit the RGB components
+///
+/// Parameters:
+///     redElement:       element for the red component
+///     greenElement:   element for the green component
+///     blueElement:     element for the blue component
+
 struct RGBelements: View {
+    /// Set the Radix to be used for the Int values
+    /// Parameter:
+    ///     base:   the base for the integers (8, 10 or 16)
+    
     private func setRadices(base: Int) {
         let radix = Radix.radix(for: base)
 
@@ -21,6 +32,7 @@ struct RGBelements: View {
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
     
+    /// Base for the elements
     @ObservedObject var base = ObservableInt(10)
 
     var body: some View {
@@ -30,14 +42,18 @@ struct RGBelements: View {
                     label: "Red",
                     element: redElement
                 )
+                
                 IntElement(
                     label: "Green",
                     element: greenElement
                 )
+                
                 IntElement(
                     label: "Blue",
                     element: blueElement
                 )
+                
+                /// Selector for the base and radix
                 Picker("Radix", selection: $base.number) {
                     Text("Dec").tag(10)
                     Text("Hex").tag(16)
@@ -46,6 +62,7 @@ struct RGBelements: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .font(.caption)
                 .frame(width: 30)
+                /// receiver for changes in base
                 .onReceive(base.publisher, perform: { self.setRadices(base: $0) })
             }
         }
