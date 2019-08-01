@@ -9,6 +9,9 @@
 import SwiftUI
 
 /// ColourEditor displays 3 views, the current vales for RGB, HSB and the associated Colour
+///
+/// Parameters
+///     history:    a list of interesting colours
 
 struct ColourEditor: View {
     @Binding var history: [ColourItem]
