@@ -8,6 +8,13 @@
 
 import SwiftUI
 
+/// Display and edit the hue, saturation and brightness components
+///
+/// Parameters:
+///     hueElement:             element for hue
+///     saturationElement:  element for saturation
+///     brightnessElement:  element for brightness
+
 struct HSBelements: View {
     @ObservedObject var hueElement: DoubleAndString
     @ObservedObject var saturationElement: DoubleAndString
