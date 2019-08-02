@@ -10,10 +10,16 @@ import SwiftUI
 
 /// ColourElements displays the name or hex code of the current colour surrounded by the actual colour
 /// There are 3 buttons that change this colour in various ways
+///
+/// Parameters:
+///     colourItem:     the colour to display
+///     history:            list containing interesting colours
+///     width:              derired width of view
 
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @Binding var history: [ColourItem]
+    var width: CGFloat
     @ObservedObject var showingSearch = ObservableBool(false)
 
     var body: some View {
@@ -84,7 +90,7 @@ struct ColourElements_Previews: PreviewProvider {
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ]
     static var previews: some View {
-        ColourElements(colourItem: colourItem, history: $history)
+        ColourElements(colourItem: colourItem, history: $history, width: 200)
     }
 }
 #endif

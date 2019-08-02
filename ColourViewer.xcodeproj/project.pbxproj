@@ -14,6 +14,7 @@
 		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
 		C43A888322F41321003E9D64 /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */; };
 		C43A888422F41326003E9D64 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
+		C43A888622F41438003E9D64 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A888522F41438003E9D64 /* Geometry.swift */; };
 		C45C7BE022D4BAED008D119D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BDF22D4BAED008D119D /* AppDelegate.swift */; };
 		C45C7BE222D4BAED008D119D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BE122D4BAED008D119D /* SceneDelegate.swift */; };
 		C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C7BE322D4BAED008D119D /* ContentView.swift */; };
@@ -59,6 +60,7 @@
 		C42DE11E22F1711300895FC2 /* RGBelements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBelements.swift; path = ../Utils/RGBelements.swift; sourceTree = "<group>"; };
 		C42DE12022F1711D00895FC2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		C42DE12222F1718700895FC2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		C43A888522F41438003E9D64 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		C45C7BDC22D4BAED008D119D /* ColourViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45C7BDF22D4BAED008D119D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C45C7BE122D4BAED008D119D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
 				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
 				C42DE12222F1718700895FC2 /* Modifiers.swift */,
+				C43A888522F41438003E9D64 /* Geometry.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			files = (
 				C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */,
 				C490553722EAC43500C86E46 /* NumberAndString.swift in Sources */,
+				C43A888622F41438003E9D64 /* Geometry.swift in Sources */,
 				C4EB231422EE0B660071099F /* ColourElements.swift in Sources */,
 				C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */,
 				C42DE11F22F1711300895FC2 /* RGBelements.swift in Sources */,

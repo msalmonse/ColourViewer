@@ -19,32 +19,37 @@ struct ColourEditor: View {
     var rgb = RGBandHSB.random
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
-                RGBelements(
-                    redElement: rgb.red,
-                    greenElement: rgb.green,
-                    blueElement: rgb.blue
+        GeometryReader { gp in
+            NavigationView {
+                VStack(alignment: HorizontalAlignment.center) {
+                    RGBelements(
+                        redElement: self.rgb.red,
+                        greenElement: self.rgb.green,
+                        blueElement: self.rgb.blue,
+                        width: gp.relativeWidth(0.9)
+                    )
+                    
+                    HSBelements(
+                        hueElement: self.rgb.hue,
+                        saturationElement: self.rgb.saturation,
+                        brightnessElement: self.rgb.brightness,
+                        width: gp.relativeWidth(0.9)
+                    )
+                    
+                    ColourElements(
+                        colourItem: self.rgb.colourItem,
+                        history: self.$history,
+                        width: gp.relativeWidth(0.9)
+                    )
+                    
+                    Spacer()
+                }
+                .navigationBarItems(
+                    leading: Image(systemName: "square.and.pencil")
+                        .font(Font.title.weight(.bold))
+                        .accentColor(Color.primary)
                 )
-                
-                HSBelements(
-                    hueElement: rgb.hue,
-                    saturationElement: rgb.saturation,
-                    brightnessElement: rgb.brightness
-                )
-                
-                ColourElements(
-                    colourItem: rgb.colourItem,
-                    history: $history
-                )
-                
-                Spacer()
             }
-            .navigationBarItems(
-                leading: Image(systemName: "square.and.pencil")
-                    .font(Font.title.weight(.bold))
-                    .accentColor(Color.primary)
-            )
         }
     }
 }

@@ -14,6 +14,7 @@ import SwiftUI
 ///     redElement:       element for the red component
 ///     greenElement:   element for the green component
 ///     blueElement:     element for the blue component
+///     width:                 derired width of view
 
 struct RGBelements: View {
     /// Set the Radix to be used for the Int values
@@ -31,6 +32,7 @@ struct RGBelements: View {
     @ObservedObject var redElement: IntAndString
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
+    var width: CGFloat
     
     /// Base for the elements
     @ObservedObject var base = ObservableInt(10)
@@ -40,17 +42,20 @@ struct RGBelements: View {
             Section(header: Text("RGB").font(.subheadline)) {
                 IntElement(
                     label: "Red",
-                    element: redElement
+                    element: redElement,
+                    width: width
                 )
                 
                 IntElement(
                     label: "Green",
-                    element: greenElement
+                    element: greenElement,
+                    width: width
                 )
                 
                 IntElement(
                     label: "Blue",
-                    element: blueElement
+                    element: blueElement,
+                    width: width
                 )
                 
                 /// Selector for the base and radix
@@ -78,7 +83,7 @@ struct RGBelements_Previews: PreviewProvider {
     @ObservedObject static var blue = IntAndString(number: 102)
 
     static var previews: some View {
-        RGBelements( redElement: red, greenElement: green, blueElement: blue )
+        RGBelements( redElement: red, greenElement: green, blueElement: blue, width: 100 )
     }
 }
 #endif

@@ -14,28 +14,33 @@ import SwiftUI
 ///     hueElement:             element for hue
 ///     saturationElement:  element for saturation
 ///     brightnessElement:  element for brightness
+///     width:                       derired width of view
 
 struct HSBelements: View {
     @ObservedObject var hueElement: DoubleAndString
     @ObservedObject var saturationElement: DoubleAndString
     @ObservedObject var brightnessElement: DoubleAndString
+    var width: CGFloat
 
     var body: some View {
         VStack {
             Section(header: Text("HSB").font(.subheadline)) {
                 DoubleElement(
                     label: "Hue",
-                    element: hueElement
+                    element: hueElement,
+                    width: width
                 )
                 
                 DoubleElement(
                     label: "Saturation",
-                    element: saturationElement
+                    element: saturationElement,
+                    width: width
                 )
                 
                 DoubleElement(
                     label: "Brightness",
-                    element: brightnessElement
+                    element: brightnessElement,
+                    width: width
                 )
             }
         }
@@ -53,7 +58,8 @@ struct HSBelements_Previews: PreviewProvider {
         HSBelements(
             hueElement: hue,
             saturationElement: saturation,
-            brightnessElement: brightness
+            brightnessElement: brightness,
+            width: 100
         )
     }
 }

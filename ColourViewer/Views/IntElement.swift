@@ -11,13 +11,15 @@ import SwiftUI
 /// View to display and edit a single int element
 ///
 /// Parameters:
-///     label:          label for the element to display and edit
+///     label:         label for the element to display and edit
 ///     element:    Int value and associated string
+///     width:        derired width of view
 
 struct IntElement : View {
     let label: String
     @ObservedObject var element: IntAndString
-    
+    var width: CGFloat
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(label).font(.caption)
@@ -49,7 +51,8 @@ struct IntElement_Previews : PreviewProvider {
     static var previews: some View {
         IntElement (
             label: "Test",
-            element: test
+            element: test,
+            width: 100
         )
     }
 }

@@ -16,11 +16,12 @@ struct ContentView : View {
     ]
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { gp in
             HStack(alignment: .top, spacing: 10) {
                 ColourEditor(
                     history: self.$history
                 )
+                .frame(width: gp.relativeWidth(0.55))
                 
                 Divider().frame(width: 1)
                 

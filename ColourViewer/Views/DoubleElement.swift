@@ -13,11 +13,14 @@ import SwiftUI
 /// Parameters:
 ///     label:          label for element
 ///     element:    the Double value and it's associated String
+///     width:        derired width of view
+
 
 struct DoubleElement : View {
     let label: String
     @ObservedObject var element: DoubleAndString
-    
+    var width: CGFloat
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(label).font(.caption)
@@ -50,7 +53,8 @@ struct DoubleElement_Previews : PreviewProvider {
     static var previews: some View {
         DoubleElement (
             label: "Test",
-            element: test
+            element: test,
+            width: 100
         )
     }
 }
