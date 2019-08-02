@@ -41,7 +41,7 @@ struct RGBelements: View {
 
     var body: some View {
         VStack {
-            Section(header: Text("RGB").font(.subheadline)) {
+            Section(header: Text("RGB" + ": \(height)x\(width)").font(.subheadline)) {
                 IntElement(
                     label: "Red",
                     element: redElement,
@@ -72,7 +72,7 @@ struct RGBelements: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .font(.caption)
                 .frame(width: 30)
-                /// receiver for changes in base
+                // receiver for changes in base
                 .onReceive(base.publisher, perform: { self.setRadices(base: $0) })
             }
         }

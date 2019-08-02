@@ -26,7 +26,7 @@ struct HSBelements: View {
 
     var body: some View {
         VStack {
-            Section(header: Text("HSB").font(.subheadline)) {
+            Section(header: Text("HSB" + ": \(height)x\(width)").font(.subheadline)) {
                 DoubleElement(
                     label: "Hue",
                     element: hueElement,

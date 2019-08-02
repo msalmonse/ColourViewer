@@ -25,22 +25,22 @@ struct DoubleElement : View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(label).font(.caption)
+            Text(label + ": \(height)x\(width)").font(.caption)
             HStack {
                 /// Increment button
                 Button(
                     action: { self.element.number += 0.1 },
-                    label: { Image(systemName: "plus.circle").accentColor(.secondary) }
+                    label: { Image(systemName: "plus.circle").accentColor(.primary) }
                 )
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 75)
-                .font(.system(.body, design: .monospaced))
+                .font(.system((height < 50) ? .callout : .body, design: .monospaced))
                 
                 Button(
                     action: { self.element.number -= 0.1 },
-                    label: { Image(systemName: "minus.circle").accentColor(.secondary) }
+                    label: { Image(systemName: "minus.circle").accentColor(.primary) }
                 )
             }
             .overlay(strokedRoundedRectangle(cornerRadius: 3))
