@@ -203,8 +203,8 @@
 				C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */,
 				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
 				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
-				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 				C43A888522F41438003E9D64 /* Geometry.swift */,
+				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

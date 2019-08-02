@@ -14,11 +14,13 @@ import SwiftUI
 /// Parameters:
 ///     colourItem:     the colour to display
 ///     history:            list containing interesting colours
+///     height:                desired height of view
 ///     width:              derired width of view
 
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @Binding var history: [ColourItem]
+    var height: CGFloat
     var width: CGFloat
     @ObservedObject var showingSearch = ObservableBool(false)
 
@@ -27,12 +29,12 @@ struct ColourElements: View {
             Section(header: Text("Colour").font(.subheadline)) {
                 /// Colour name in black on a white background surrounded by the colour itself
                 Text(colourItem.label)
-                    .font(.system(.body, design: .monospaced))
+                    .font(.system(.caption, design: .monospaced))
                     .lineLimit(1)
-                    .padding(5)
+                    .padding(3)
                     .foregroundColor(.black)
-                    .background(filledRoundedRectangle(cornerRadius: 5, color: .white))
-                    .frame(width: 128, height: 100, alignment: .center)
+                    .background(filledRoundedRectangle(cornerRadius: 3, color: .white))
+                    .frame(width: width * 0.5, height: height * 0.35, alignment: .center)
                     .overlay(strokedRoundedRectangle(cornerRadius: 10, stroke: 3))
                     .background(filledRoundedRectangle(cornerRadius: 10,
                         color: colourItem.color))
@@ -90,7 +92,12 @@ struct ColourElements_Previews: PreviewProvider {
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ]
     static var previews: some View {
-        ColourElements(colourItem: colourItem, history: $history, width: 200)
+        ColourElements(
+            colourItem: colourItem,
+            history: $history,
+            height: 300,
+            width: 200
+        )
     }
 }
 #endif

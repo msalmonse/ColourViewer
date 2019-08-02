@@ -14,6 +14,7 @@ import SwiftUI
 ///     redElement:       element for the red component
 ///     greenElement:   element for the green component
 ///     blueElement:     element for the blue component
+///     height:                desired height of view
 ///     width:                 derired width of view
 
 struct RGBelements: View {
@@ -32,6 +33,7 @@ struct RGBelements: View {
     @ObservedObject var redElement: IntAndString
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
+    var height: CGFloat
     var width: CGFloat
     
     /// Base for the elements
@@ -43,18 +45,21 @@ struct RGBelements: View {
                 IntElement(
                     label: "Red",
                     element: redElement,
+                    height: height/5,
                     width: width
                 )
                 
                 IntElement(
                     label: "Green",
                     element: greenElement,
+                    height: height/5,
                     width: width
                 )
                 
                 IntElement(
                     label: "Blue",
                     element: blueElement,
+                    height: height/5,
                     width: width
                 )
                 
@@ -83,7 +88,13 @@ struct RGBelements_Previews: PreviewProvider {
     @ObservedObject static var blue = IntAndString(number: 102)
 
     static var previews: some View {
-        RGBelements( redElement: red, greenElement: green, blueElement: blue, width: 100 )
+        RGBelements(
+            redElement: red,
+            greenElement: green,
+            blueElement: blue,
+            height: 300,
+            width: 100
+        )
     }
 }
 #endif

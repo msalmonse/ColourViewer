@@ -26,6 +26,7 @@ struct ColourEditor: View {
                         redElement: self.rgb.red,
                         greenElement: self.rgb.green,
                         blueElement: self.rgb.blue,
+                        height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
                     
@@ -33,12 +34,14 @@ struct ColourEditor: View {
                         hueElement: self.rgb.hue,
                         saturationElement: self.rgb.saturation,
                         brightnessElement: self.rgb.brightness,
+                        height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
                     
                     ColourElements(
                         colourItem: self.rgb.colourItem,
                         history: self.$history,
+                        height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
                     

@@ -16,19 +16,16 @@ struct ContentView : View {
     ]
     
     var body: some View {
-        GeometryReader { gp in
-            HStack(alignment: .top, spacing: 10) {
-                ColourEditor(
-                    history: self.$history
-                )
-                .frame(width: gp.relativeWidth(0.55))
-                
-                Divider().frame(width: 1)
-                
-                ColourHistory(
-                    history: self.$history
-                )
-            }
+        HStack(alignment: .top, spacing: 10) {
+            ColourEditor(
+                history: self.$history
+            )
+            
+            Divider().frame(width: 1)
+            
+            ColourHistory(
+                history: self.$history
+            )
         }
     }
 }

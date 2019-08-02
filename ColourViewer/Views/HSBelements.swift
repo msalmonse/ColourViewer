@@ -14,12 +14,14 @@ import SwiftUI
 ///     hueElement:             element for hue
 ///     saturationElement:  element for saturation
 ///     brightnessElement:  element for brightness
+///     height:                      desired height of view
 ///     width:                       derired width of view
 
 struct HSBelements: View {
     @ObservedObject var hueElement: DoubleAndString
     @ObservedObject var saturationElement: DoubleAndString
     @ObservedObject var brightnessElement: DoubleAndString
+    var height: CGFloat
     var width: CGFloat
 
     var body: some View {
@@ -28,18 +30,21 @@ struct HSBelements: View {
                 DoubleElement(
                     label: "Hue",
                     element: hueElement,
+                    height: height/4,
                     width: width
                 )
                 
                 DoubleElement(
                     label: "Saturation",
                     element: saturationElement,
+                    height: height/4,
                     width: width
                 )
                 
                 DoubleElement(
                     label: "Brightness",
                     element: brightnessElement,
+                    height: height/4,
                     width: width
                 )
             }
@@ -59,6 +64,7 @@ struct HSBelements_Previews: PreviewProvider {
             hueElement: hue,
             saturationElement: saturation,
             brightnessElement: brightness,
+            height: 300,
             width: 100
         )
     }

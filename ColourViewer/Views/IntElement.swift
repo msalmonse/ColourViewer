@@ -13,11 +13,13 @@ import SwiftUI
 /// Parameters:
 ///     label:         label for the element to display and edit
 ///     element:    Int value and associated string
+///     height:       desired height of view
 ///     width:        derired width of view
 
 struct IntElement : View {
     let label: String
     @ObservedObject var element: IntAndString
+    var height: CGFloat
     var width: CGFloat
 
     var body: some View {
@@ -52,6 +54,7 @@ struct IntElement_Previews : PreviewProvider {
         IntElement (
             label: "Test",
             element: test,
+            height: 300,
             width: 100
         )
     }

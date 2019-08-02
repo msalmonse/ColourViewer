@@ -9,6 +9,11 @@
 import SwiftUI
 import Combine
 
+fileprivate func printit(_ s: String) -> String {
+    print(s)
+    return s
+}
+
 /// Search the colour list and display matching name along with their colour
 ///
 /// Parameters:
@@ -42,99 +47,108 @@ struct ColourSearch: View {
     }
         
     var body: some View {
-        NavigationView {
-            VStack {
+        GeometryReader { gp in
+            NavigationView {
                 VStack {
-                    /// Input field for the search
-                    HStack {
-                        /// Force a search, only active if the search string isn't empty
-                        Button(
-                            action: { self.updateMatchList(self.search.string) },
-                            label: {
-                                Image(systemName: "magnifyingglass")
-                                .foregroundColor(search.isEmpty ? .secondary : .primary)
-                                .padding(.leading, 10)
+                    VStack {
+                        /// Input field for the search
+                        HStack {
+                            /// Force a search, only active if the search string isn't empty
+                            Button(
+                                action: { self.updateMatchList(self.search.string) },
+                                label: {
+                                    Image(systemName: "magnifyingglass")
+                                    .foregroundColor(self.search.isEmpty ? .secondary : .primary)
+                                    .padding(.leading, 10)
+                                }
+                            )
+                                .disabled(self.search.isEmpty)
+
+                            /// The actual search string editor, see also .onReceive() below
+                            TextField("Seach", text: self.$search.string,
+                                onCommit: { self.updateMatchList(self.search.string) }
+                            )
+
+                            /// Clear the search data
+                            Button(
+                                action: { self.clearAll() },
+                                label: {
+                                    Image(systemName: "clear")
+                                    .foregroundColor(
+                                        (self.search.isEmpty && self.matchList.isEmpty) ? .secondary : .primary
+                                    )
+                                    .padding(.trailing, 10)
+                                }
+                            )
+                        }
+                        .padding(3)
+                        .overlay(strokedRoundedRectangle(cornerRadius: 3))
+
+                        /// Select the sort field
+                        HStack {
+                            Text("Sorted by:")
+                            Picker("Sorted by", selection: self.$sortSelection.number) {
+                                Text("Name").tag(0)
+                                Text("Intensity").tag(1)
                             }
-                        )
-                        .disabled(search.isEmpty)
+                            .pickerStyle(SegmentedPickerStyle())
+                            .frame(width: 200)
+                            /// When a new sort style is selected update the match list
+                            .onReceive(self.sortSelection.publisher) {
+                                print("Selected: \($0)")
+                                self.intensitySort = ($0 == 1)
+                                self.updateMatchList(self.search.string)
+                            }
+                        }
+                        .font(.caption)
+                    }
+                    .padding(.horizontal, 5)
+                    
+                    Text("Tap on colour to select").font(.caption)
 
-                        /// The actual search string editor, see also .onReceive() below
-                        TextField("Seach", text: $search.string,
-                            onCommit: { self.updateMatchList(self.search.string) }
-                        )
-
-                        /// Clear the search data
+                    /// Display the names and colours of the matching colours
+                    List(self.matchList, id: \.self) { match in
+                        /// Each entry in the list is a button to update the colour in the parent and close the sheet
                         Button(
-                            action: { self.clearAll() },
+                            action: { self.selectColour(match) },
                             label: {
-                                Image(systemName: "clear")
-                                .foregroundColor(
-                                    (search.isEmpty && matchList.isEmpty) ? .secondary : .primary
+                                Text(printit(match))
+                                    .lineLimit(1)
+                                    .font(.subheadline)
+                                    .padding(3)
+                                    .frame(width: gp.relativeWidth(0.3), alignment: .leading)
+                                    .foregroundColor(.black)
+                                    .background(filledRoundedRectangle(cornerRadius: 2,
+                                                                color: .white))
+                                    .frame(width: gp.relativeWidth(0.95) - 10, alignment: .leading)
+                                    .overlay(strokedRoundedRectangle(cornerRadius: 3))
+                                    .background(filledRoundedRectangle(cornerRadius: 3,
+                                                                color: colorLookup(match)!)
                                 )
-                                .padding(.trailing, 10)
                             }
                         )
                     }
-                    .padding(3)
-                    .overlay(strokedRoundedRectangle(cornerRadius: 3))
-
-                    /// Select the sort field
-                    HStack {
-                        Text("Sorted by:")
-                        Picker("Sorted by", selection: $sortSelection.number) {
-                            Text("Name").tag(0)
-                            Text("Intensity").tag(1)
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 200)
-                        /// When a new sort style is selected update the match list
-                        .onReceive(sortSelection.publisher) {
-                            self.intensitySort = ($0 == 1)
-                            self.updateMatchList(self.search.string)
-                        }
-                    }
-                    .font(.caption)
-                }
-                .padding(.horizontal, 5)
-                
-                Text("Tap on colour to select").font(.caption)
-
-                /// Display the names and colours of the matching colours
-                List(matchList, id: \.self) { match in
-                    /// Each entry in the list is a button to update the colour in the parent and close the sheet
-                    Button(
-                        action: { self.selectColour(match) },
-                        label: {
-                            Text(match)
-                            .font(.subheadline)
-                            .padding(.horizontal, 2)
-                            .padding(.vertical, 8)
-                            .frame(width: 160, alignment: .leading)
-                            .foregroundColor(.black)
-                            .background(filledRoundedRectangle(cornerRadius: 2, color: .white))
-                            .frame(width: 325, alignment: .leading)
-                            .overlay(strokedRoundedRectangle(cornerRadius: 3))
-                            .background(filledRoundedRectangle(cornerRadius: 3, color: colorLookup(match)!))
-
+                    /// When the search string is updated the match list is recalculated
+                    .onReceive(self.search.publisher, perform: {
+                            self.updateMatchList($0)
+                            print($0)
                         }
                     )
                 }
-                /// When the search string is updated the match list is recalculated
-                .onReceive(search.publisher, perform: { self.updateMatchList($0) } )
-            }
-            .navigationBarItems(
-                leading: Image(systemName: "magnifyingglass").font(Font.title.weight(.bold)),
-                /// Button to close the sheet
-                trailing: Button(
-                    action: { self.showingSearch.bool = false },
-                    label: {
-                        Image(systemName: "clear")
-                        .font(Font.title.weight(.bold))
-                        .accentColor(.primary)
-                    }
+                .navigationBarItems(
+                    leading: Image(systemName: "magnifyingglass").font(Font.title.weight(.bold)),
+                    /// Button to close the sheet
+                    trailing: Button(
+                        action: { self.showingSearch.bool = false },
+                        label: {
+                            Image(systemName: "clear")
+                            .font(Font.title.weight(.bold))
+                            .accentColor(.primary)
+                        }
+                    )
+                    .accessibility(hint: Text("Cancel"))
                 )
-                .accessibility(hint: Text("Cancel"))
-            )
+            }
         }
     }
 }
@@ -146,7 +160,10 @@ struct ColourSearch_Previews: PreviewProvider {
     @ObservedObject static var colourItem = ObservableColourItem(label: "RebeccaPurple")
 
     static var previews: some View {
-        ColourSearch(showingSearch: showingSearch, colourItem: colourItem)
+        ColourSearch(
+            showingSearch: showingSearch,
+            colourItem: colourItem
+        )
     }
 }
 #endif
