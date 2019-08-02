@@ -10,7 +10,6 @@
 		C40D360422EEDC3800455CCA /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360322EEDC3800455CCA /* SearchString.swift */; };
 		C40D360622EF43D100455CCA /* ColourEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360522EF43D100455CCA /* ColourEditor.swift */; };
 		C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11B22F0CC7B00895FC2 /* Observable.swift */; };
-		C42DE11F22F1711300895FC2 /* RGBelements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11E22F1711300895FC2 /* RGBelements.swift */; };
 		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
 		C43A888322F41321003E9D64 /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */; };
 		C43A888422F41326003E9D64 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
@@ -29,6 +28,9 @@
 		C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553822EACC8100C86E46 /* NumberAndString.swift */; };
 		C490553B22EB08CF00C86E46 /* RGBandHSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553A22EB08CF00C86E46 /* RGBandHSB.swift */; };
 		C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */; };
+		C4A0646122F48578009B76EE /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646022F48578009B76EE /* FontSize.swift */; };
+		C4A0646322F48A0A009B76EE /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646222F48A0A009B76EE /* FontSize.swift */; };
+		C4A0646522F49725009B76EE /* RGBelements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646422F49724009B76EE /* RGBelements.swift */; };
 		C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5532E22F1CAC5002F6F5F /* Radix.swift */; };
 		C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */; };
 		C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItem.swift */; };
@@ -57,7 +59,6 @@
 		C40D360522EF43D100455CCA /* ColourEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourEditor.swift; sourceTree = "<group>"; };
 		C42DE11822F098B200895FC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C42DE11B22F0CC7B00895FC2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		C42DE11E22F1711300895FC2 /* RGBelements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBelements.swift; path = ../Utils/RGBelements.swift; sourceTree = "<group>"; };
 		C42DE12022F1711D00895FC2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		C42DE12222F1718700895FC2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		C43A888522F41438003E9D64 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -79,6 +80,9 @@
 		C490553822EACC8100C86E46 /* NumberAndString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndString.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/NumberAndString.swift; sourceTree = "<group>"; };
 		C490553A22EB08CF00C86E46 /* RGBandHSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSB.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/RGBandHSB.swift; sourceTree = "<group>"; };
 		C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSBtest.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/RGBandHSBtest.swift; sourceTree = "<group>"; };
+		C4A0646022F48578009B76EE /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		C4A0646222F48A0A009B76EE /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		C4A0646422F49724009B76EE /* RGBelements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBelements.swift; sourceTree = "<group>"; };
 		C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		C4D5532E22F1CAC5002F6F5F /* Radix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radix.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/Radix.swift; sourceTree = "<group>"; };
 		C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatching.swift; path = /Users/mesa/xcode/ColourViewer/../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatching.swift; sourceTree = "<absolute>"; };
@@ -160,6 +164,7 @@
 			children = (
 				C4E50BDF22E5BE74003E3565 /* ColourItem.swift */,
 				C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */,
+				C4A0646222F48A0A009B76EE /* FontSize.swift */,
 				C45C7BF822D4BAF1008D119D /* Info.plist */,
 				C490553822EACC8100C86E46 /* NumberAndString.swift */,
 				C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */,
@@ -185,6 +190,7 @@
 		C4EB230722EDB21B0071099F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4A0646422F49724009B76EE /* RGBelements.swift */,
 				C40D360522EF43D100455CCA /* ColourEditor.swift */,
 				C4EB231322EE0B650071099F /* ColourElements.swift */,
 				C45C7C1122D517F0008D119D /* ColourHistory.swift */,
@@ -192,7 +198,6 @@
 				C4EB230F22EDDAB00071099F /* DoubleElement.swift */,
 				C4EB231122EDDB830071099F /* HSBelements.swift */,
 				C4EB230B22EDB8930071099F /* IntElement.swift */,
-				C42DE11E22F1711300895FC2 /* RGBelements.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */,
 				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
 				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
+				C4A0646022F48578009B76EE /* FontSize.swift */,
 				C43A888522F41438003E9D64 /* Geometry.swift */,
 				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 			);
@@ -327,7 +333,6 @@
 				C43A888622F41438003E9D64 /* Geometry.swift in Sources */,
 				C4EB231422EE0B660071099F /* ColourElements.swift in Sources */,
 				C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */,
-				C42DE11F22F1711300895FC2 /* RGBelements.swift in Sources */,
 				C45C7C1222D517F1008D119D /* ColourHistory.swift in Sources */,
 				C4EB231922EE15190071099F /* CopyToClipboard.swift in Sources */,
 				C45C7BE022D4BAED008D119D /* AppDelegate.swift in Sources */,
@@ -341,7 +346,9 @@
 				C4EB231A22EE195F0071099F /* ColourList.swift in Sources */,
 				C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */,
 				C4EB231222EDDB830071099F /* HSBelements.swift in Sources */,
+				C4A0646122F48578009B76EE /* FontSize.swift in Sources */,
 				C4EB231622EE0CCE0071099F /* ColourSearch.swift in Sources */,
+				C4A0646522F49725009B76EE /* RGBelements.swift in Sources */,
 				C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */,
 				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
 				C43A888322F41321003E9D64 /* SearchString.swift in Sources */,
@@ -353,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */,
+				C4A0646322F48A0A009B76EE /* FontSize.swift in Sources */,
 				C40D360422EEDC3800455CCA /* SearchString.swift in Sources */,
 				C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */,
 				C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */,
