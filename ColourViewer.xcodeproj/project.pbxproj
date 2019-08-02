@@ -190,7 +190,6 @@
 		C4EB230722EDB21B0071099F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C4A0646422F49724009B76EE /* RGBelements.swift */,
 				C40D360522EF43D100455CCA /* ColourEditor.swift */,
 				C4EB231322EE0B650071099F /* ColourElements.swift */,
 				C45C7C1122D517F0008D119D /* ColourHistory.swift */,
@@ -198,6 +197,7 @@
 				C4EB230F22EDDAB00071099F /* DoubleElement.swift */,
 				C4EB231122EDDB830071099F /* HSBelements.swift */,
 				C4EB230B22EDB8930071099F /* IntElement.swift */,
+				C4A0646422F49724009B76EE /* RGBelements.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
