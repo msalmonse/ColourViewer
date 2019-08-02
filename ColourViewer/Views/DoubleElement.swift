@@ -13,6 +13,7 @@ import SwiftUI
 /// Parameters:
 ///     label:          label for element
 ///     element:    the Double value and it's associated String
+///     font:           the main font size to use
 ///     height:       desired height of view
 ///     width:        derired width of view
 
@@ -20,6 +21,7 @@ import SwiftUI
 struct DoubleElement : View {
     let label: String
     @ObservedObject var element: DoubleAndString
+    var font: Font
     var height: CGFloat
     var width: CGFloat
 
@@ -30,7 +32,11 @@ struct DoubleElement : View {
                 /// Increment button
                 Button(
                     action: { self.element.number += 0.1 },
-                    label: { Image(systemName: "plus.circle").accentColor(.primary) }
+                    label: {
+                        Image(systemName: "plus.circle")
+                        .font(smallerFont(font))
+                        .accentColor(.primary)
+                    }
                 )
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
@@ -40,7 +46,11 @@ struct DoubleElement : View {
                 
                 Button(
                     action: { self.element.number -= 0.1 },
-                    label: { Image(systemName: "minus.circle").accentColor(.primary) }
+                    label: {
+                        Image(systemName: "minus.circle")
+                        .font(smallerFont(font))
+                        .accentColor(.primary)
+                    }
                 )
             }
             .overlay(strokedRoundedRectangle(cornerRadius: 3))
@@ -56,6 +66,7 @@ struct DoubleElement_Previews : PreviewProvider {
         DoubleElement (
             label: "Test",
             element: test,
+            font: .body,
             height: 300,
             width: 100
         )

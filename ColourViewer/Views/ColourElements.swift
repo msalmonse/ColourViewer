@@ -13,15 +13,17 @@ import SwiftUI
 ///
 /// Parameters:
 ///     colourItem:     the colour to display
-///     history:            list containing interesting colours
-///     height:                desired height of view
+///     history:           list containing interesting colours
+///     font:                the main font size to use
+///     height:            desired height of view
 ///     width:              derired width of view
 
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @Binding var history: [ColourItem]
-    var height: CGFloat
-    var width: CGFloat
+    let font: Font
+    let height: CGFloat
+    let width: CGFloat
     @ObservedObject var showingSearch = ObservableBool(false)
 
     var body: some View {
@@ -95,6 +97,7 @@ struct ColourElements_Previews: PreviewProvider {
         ColourElements(
             colourItem: colourItem,
             history: $history,
+            font: .body,
             height: 300,
             width: 200
         )

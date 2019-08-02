@@ -13,33 +13,43 @@ import SwiftUI
 /// Parameters:
 ///     label:         label for the element to display and edit
 ///     element:    Int value and associated string
+///     font:           the main font size to use
 ///     height:       desired height of view
 ///     width:        derired width of view
 
 struct IntElement : View {
     let label: String
     @ObservedObject var element: IntAndString
+    var font: Font
     var height: CGFloat
     var width: CGFloat
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(label + ": \(height)x\(width)").font(.caption)
+        VStack(alignment: HorizontalAlignment.leading) {
+            Text(label + ": \(height)x\(width)").font(smallerFont(font, by: 2))
             HStack {
                 /// Increment button
                 Button(
                     action: { self.element.number += 1 },
-                    label: { Image(systemName: "plus.circle").accentColor(.primary) }
+                    label: {
+                        Image(systemName: "plus.circle")
+                        .font(smallerFont(font))
+                        .accentColor(.primary)
+                    }
                 )
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
-                .frame(width: 75)
-                    .font(.system((height < 40) ? .callout : .body, design: .monospaced))
+                .font(.system(textStyle(smallerFont(font)), design: .monospaced))
+                .frame(width: width * 0.4)
                 /// Decrement button
                 Button(
                     action: { self.element.number -= 1 },
-                    label: { Image(systemName: "minus.circle").accentColor(.primary) }
+                    label: {
+                        Image(systemName: "minus.circle")
+                        .font(smallerFont(font))
+                        .accentColor(.primary)
+                    }
                 )
             }
             .overlay(strokedRoundedRectangle(cornerRadius: 3))
@@ -54,6 +64,7 @@ struct IntElement_Previews : PreviewProvider {
         IntElement (
             label: "Test",
             element: test,
+            font: .body,
             height: 45,
             width: 100
         )

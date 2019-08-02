@@ -26,6 +26,7 @@ struct ColourEditor: View {
                         redElement: self.rgb.red,
                         greenElement: self.rgb.green,
                         blueElement: self.rgb.blue,
+                        font: .body,
                         height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
@@ -34,6 +35,7 @@ struct ColourEditor: View {
                         hueElement: self.rgb.hue,
                         saturationElement: self.rgb.saturation,
                         brightnessElement: self.rgb.brightness,
+                        font: .body,
                         height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
@@ -41,6 +43,7 @@ struct ColourEditor: View {
                     ColourElements(
                         colourItem: self.rgb.colourItem,
                         history: self.$history,
+                        font: .body,
                         height: gp.relativeHeight(0.3),
                         width: gp.relativeWidth(0.9)
                     )
@@ -65,7 +68,9 @@ struct ColourEditor_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        ColourEditor(history: $history)
+        ColourEditor(
+            history: $history
+        )
     }
 }
 #endif

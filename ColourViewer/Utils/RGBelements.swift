@@ -14,6 +14,7 @@ import SwiftUI
 ///     redElement:       element for the red component
 ///     greenElement:   element for the green component
 ///     blueElement:     element for the blue component
+///     font:           the main font size to use
 ///     height:                desired height of view
 ///     width:                 derired width of view
 
@@ -33,6 +34,7 @@ struct RGBelements: View {
     @ObservedObject var redElement: IntAndString
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
+    var font: Font
     var height: CGFloat
     var width: CGFloat
     
@@ -45,6 +47,7 @@ struct RGBelements: View {
                 IntElement(
                     label: "Red",
                     element: redElement,
+                    font: font,
                     height: height/5,
                     width: width
                 )
@@ -52,6 +55,7 @@ struct RGBelements: View {
                 IntElement(
                     label: "Green",
                     element: greenElement,
+                    font: font,
                     height: height/5,
                     width: width
                 )
@@ -59,6 +63,7 @@ struct RGBelements: View {
                 IntElement(
                     label: "Blue",
                     element: blueElement,
+                    font: font,
                     height: height/5,
                     width: width
                 )
@@ -92,6 +97,7 @@ struct RGBelements_Previews: PreviewProvider {
             redElement: red,
             greenElement: green,
             blueElement: blue,
+            font: .body,
             height: 300,
             width: 100
         )

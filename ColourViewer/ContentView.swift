@@ -16,7 +16,7 @@ struct ContentView : View {
     ]
     
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: VerticalAlignment.top, spacing: 10) {
             ColourEditor(
                 history: self.$history
             )

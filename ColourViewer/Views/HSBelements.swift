@@ -14,6 +14,7 @@ import SwiftUI
 ///     hueElement:             element for hue
 ///     saturationElement:  element for saturation
 ///     brightnessElement:  element for brightness
+///     font:           the main font size to use
 ///     height:                      desired height of view
 ///     width:                       derired width of view
 
@@ -21,6 +22,7 @@ struct HSBelements: View {
     @ObservedObject var hueElement: DoubleAndString
     @ObservedObject var saturationElement: DoubleAndString
     @ObservedObject var brightnessElement: DoubleAndString
+    var font: Font
     var height: CGFloat
     var width: CGFloat
 
@@ -30,6 +32,7 @@ struct HSBelements: View {
                 DoubleElement(
                     label: "Hue",
                     element: hueElement,
+                    font: font,
                     height: height/4,
                     width: width
                 )
@@ -37,6 +40,7 @@ struct HSBelements: View {
                 DoubleElement(
                     label: "Saturation",
                     element: saturationElement,
+                    font: font,
                     height: height/4,
                     width: width
                 )
@@ -44,6 +48,7 @@ struct HSBelements: View {
                 DoubleElement(
                     label: "Brightness",
                     element: brightnessElement,
+                    font: font,
                     height: height/4,
                     width: width
                 )
@@ -64,6 +69,7 @@ struct HSBelements_Previews: PreviewProvider {
             hueElement: hue,
             saturationElement: saturation,
             brightnessElement: brightness,
+            font: .body,
             height: 300,
             width: 100
         )
