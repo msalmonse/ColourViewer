@@ -121,6 +121,15 @@ struct ColourItem: Identifiable, Equatable {
         self.init(red: red, green: green, blue: blue, label: (name != nil) ? name! : hexStr)
     }
     
+    /// Initialize a ColourItem with no data
+    init() {
+        self.label = "clear"
+        self.color = Color.clear
+        self.red = 0
+        self.green = 0
+        self.blue = 0
+    }
+    
     /// Initialize using a hex colour string: "#rrggbb"
     init?(hex: String?) {
         var r = 0
@@ -201,6 +210,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
                     let hex = hexLookup(newValue)
                     colourItem = ColourItem(hex: hex)
                 }
+                if colourItem == nil { colourItem = ColourItem() }
             }
         }
     }
