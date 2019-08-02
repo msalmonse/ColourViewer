@@ -172,6 +172,7 @@
 				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
 				C45C7C0922D4C010008D119D /* ColourItem.swift */,
 				C490553622EAC43500C86E46 /* NumberAndString.swift */,
+				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
 				C490553A22EB08CF00C86E46 /* RGBandHSB.swift */,
 			);
 			path = Models;
@@ -198,7 +199,6 @@
 				C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */,
 				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
 				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
-				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
 				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 				C40D360122EEC6C900455CCA /* SearchString.swift */,
 				C42DE12022F1711D00895FC2 /* Shapes.swift */,
