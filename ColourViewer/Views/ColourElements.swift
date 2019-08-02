@@ -44,7 +44,7 @@ struct ColourElements: View {
                 HStack {
                     /// Button to add current colour to history list
                     Button(
-                        action: { self.history.insert(self.colourItem.unbind, at: 0) },
+                        action: { self.history.insert(self.colourItem.unwrap, at: 0) },
                         label: {
                             Image(systemName: "rectangle.stack.badge.plus")
                             .foregroundColor(.primary)
@@ -53,11 +53,11 @@ struct ColourElements: View {
                     .modifier(buttonBackground())
                     /// Button to add colour and label to pasteboard
                      Button(
-                        action: { copyToClipboard(self.colourItem.unbind) },
+                        action: { copyToClipboard(self.colourItem.unwrap) },
                         label: {
                             Image(systemName: "doc.on.clipboard")
                             .foregroundColor(.primary)
-                            }
+                        }
                     )
                     .modifier(buttonBackground())
                     /// Button to display the colour search view

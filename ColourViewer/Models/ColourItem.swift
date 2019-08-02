@@ -177,7 +177,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
     }
     
     /// Return the internal ColourItem
-    var unbind: ColourItem {
+    var unwrap: ColourItem {
         return colourItem!
     }
 
