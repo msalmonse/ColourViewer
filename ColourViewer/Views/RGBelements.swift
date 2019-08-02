@@ -42,8 +42,8 @@ struct RGBelements: View {
     @ObservedObject var base = ObservableInt(10)
 
     var body: some View {
-        VStack {
-            Section(header: Text("RGB" + ": \(height)x\(width)").font(.subheadline)) {
+        VStack(alignment: HorizontalAlignment.center) {
+            Section(header: Text("RGB").font(.subheadline)) {
                 IntElement(
                     label: "Red",
                     element: redElement,
@@ -75,8 +75,8 @@ struct RGBelements: View {
                     Text("Oct").tag(8)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .font(.caption)
-                .frame(width: 30)
+                .font(smallerFont(font, by: 2))
+                .frame(width: width * 0.6, height: height * 0.2)
                 // receiver for changes in base
                 .onReceive(base.publisher, perform: { self.setRadices(base: $0) })
             }

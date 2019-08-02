@@ -27,16 +27,16 @@ struct ColourElements: View {
     @ObservedObject var showingSearch = ObservableBool(false)
 
     var body: some View {
-        VStack {
-            Section(header: Text("Colour").font(.subheadline)) {
+        VStack(alignment: HorizontalAlignment.center) {
+            Section(header: Text("Colour").font(largerFont(font))) {
                 /// Colour name in black on a white background surrounded by the colour itself
                 Text(colourItem.label)
-                    .font(.system(.caption, design: .monospaced))
+                    .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                     .lineLimit(1)
                     .padding(3)
                     .foregroundColor(.black)
                     .background(filledRoundedRectangle(cornerRadius: 3, color: .white))
-                    .frame(width: width * 0.5, height: height * 0.35, alignment: .center)
+                    .frame(width: width * 0.8, height: height * 0.35, alignment: .center)
                     .overlay(strokedRoundedRectangle(cornerRadius: 10, stroke: 3))
                     .background(filledRoundedRectangle(cornerRadius: 10,
                         color: colourItem.color))
@@ -56,7 +56,7 @@ struct ColourElements: View {
                         action: { copyToClipboard(self.colourItem.unbind) },
                         label: {
                             Image(systemName: "doc.on.clipboard")
-                                .foregroundColor(.primary)
+                            .foregroundColor(.primary)
                             }
                     )
                     .modifier(buttonBackground())
@@ -81,7 +81,6 @@ struct ColourElements: View {
                 }
             }
         }
-        .padding(.leading, 5)
         .modifier(sectionBackground())
     }
 }

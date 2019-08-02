@@ -9,11 +9,6 @@
 import SwiftUI
 import Combine
 
-fileprivate func printit(_ s: String) -> String {
-    print(s)
-    return s
-}
-
 /// Search the colour list and display matching name along with their colour
 ///
 /// Parameters:
@@ -112,7 +107,7 @@ struct ColourSearch: View {
                         Button(
                             action: { self.selectColour(match) },
                             label: {
-                                Text(printit(match))
+                                Text(match)
                                     .lineLimit(1)
                                     .font(.subheadline)
                                     .padding(3)
@@ -131,7 +126,6 @@ struct ColourSearch: View {
                     /// When the search string is updated the match list is recalculated
                     .onReceive(self.search.publisher, perform: {
                             self.updateMatchList($0)
-                            print($0)
                         }
                     )
                 }

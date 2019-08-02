@@ -27,8 +27,8 @@ struct HSBelements: View {
     var width: CGFloat
 
     var body: some View {
-        VStack {
-            Section(header: Text("HSB" + ": \(height)x\(width)").font(.subheadline)) {
+        VStack(alignment: HorizontalAlignment.center) {
+            Section(header: Text("HSB").font(largerFont(font))) {
                 DoubleElement(
                     label: "Hue",
                     element: hueElement,

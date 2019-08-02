@@ -26,7 +26,7 @@ struct IntElement : View {
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
-            Text(label + ": \(height)x\(width)").font(smallerFont(font, by: 2))
+            Text(label).font(smallerFont(font, by: 2))
             HStack {
                 /// Increment button
                 Button(

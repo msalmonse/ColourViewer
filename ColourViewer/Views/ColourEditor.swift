@@ -21,34 +21,36 @@ struct ColourEditor: View {
     var body: some View {
         GeometryReader { gp in
             NavigationView {
-                VStack(alignment: HorizontalAlignment.center) {
-                    RGBelements(
-                        redElement: self.rgb.red,
-                        greenElement: self.rgb.green,
-                        blueElement: self.rgb.blue,
-                        font: .body,
-                        height: gp.relativeHeight(0.3),
-                        width: gp.relativeWidth(0.9)
-                    )
-                    
-                    HSBelements(
-                        hueElement: self.rgb.hue,
-                        saturationElement: self.rgb.saturation,
-                        brightnessElement: self.rgb.brightness,
-                        font: .body,
-                        height: gp.relativeHeight(0.3),
-                        width: gp.relativeWidth(0.9)
-                    )
-                    
-                    ColourElements(
-                        colourItem: self.rgb.colourItem,
-                        history: self.$history,
-                        font: .body,
-                        height: gp.relativeHeight(0.3),
-                        width: gp.relativeWidth(0.9)
-                    )
-                    
-                    Spacer()
+                ScrollView {
+                    VStack(alignment: HorizontalAlignment.center) {
+                        RGBelements(
+                            redElement: self.rgb.red,
+                            greenElement: self.rgb.green,
+                            blueElement: self.rgb.blue,
+                            font: .body,
+                            height: gp.relativeHeight(0.3),
+                            width: gp.relativeWidth(0.9)
+                        )
+                        
+                        HSBelements(
+                            hueElement: self.rgb.hue,
+                            saturationElement: self.rgb.saturation,
+                            brightnessElement: self.rgb.brightness,
+                            font: .body,
+                            height: gp.relativeHeight(0.3),
+                            width: gp.relativeWidth(0.9)
+                        )
+                        
+                        ColourElements(
+                            colourItem: self.rgb.colourItem,
+                            history: self.$history,
+                            font: .body,
+                            height: gp.relativeHeight(0.3),
+                            width: gp.relativeWidth(0.9)
+                        )
+                        
+                        Spacer()
+                    }
                 }
                 .navigationBarItems(
                     leading: Image(systemName: "square.and.pencil")

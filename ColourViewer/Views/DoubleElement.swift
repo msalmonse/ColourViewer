@@ -26,8 +26,8 @@ struct DoubleElement : View {
     var width: CGFloat
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(label + ": \(height)x\(width)").font(.caption)
+        VStack(alignment: HorizontalAlignment.leading) {
+            Text(label).font(smallerFont(font, by: 2))
             HStack {
                 /// Increment button
                 Button(
@@ -41,8 +41,8 @@ struct DoubleElement : View {
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
-                .frame(width: 75)
-                .font(.system((height < 50) ? .callout : .body, design: .monospaced))
+                .frame(width: width * 0.4)
+                .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                 
                 Button(
                     action: { self.element.number -= 0.1 },
