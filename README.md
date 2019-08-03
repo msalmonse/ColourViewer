@@ -10,12 +10,18 @@ The main screen is divided into two, the colour editor and the colour history li
 
 The left hand panel is the editor. It has an RGB section, an HSB section and a colour section. Changing a value in the RGB section changes the HSB section as well and vice versa. Changes in either section also update the colour section. It in turn can be updated by the search panel or the history panel and in that case the RGB and HSB sections are also updated.
 
+The colour section displays the colour and it's well known name if one exists. If it doesn't then the hexadecimal code is displayed
+
 The colour section has 3 buttons:
 * <img src="Images/rectangle.stack.badge.plus.png" height="18" width="20"> Add the current colour to the history list.
 * <img src="Images/doc.on.clipboard.png" height="18" width="15"> Add the current colour to the clipboard.
 * <img src="Images/magnifyingglass.png" height="18" width="20"> Open the search panel.
 
 #### <img src="Images/rectangle.stack.png" height="23" width="25"> History Panel
+
+The history panel displays colours added to it using the <img src="Images/rectangle.stack.badge.plus.png" height="18" width="20"> button. The list items can be moved or deleted if the Edit button at the top right is tapped.
+
+Each item is itself a button and tapping it will update the editor.
 
 ### <img src="Images/magnifyingglass.png" height="23" width="25"> Colour Search Screen
 
