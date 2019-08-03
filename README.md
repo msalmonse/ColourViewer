@@ -33,4 +33,4 @@ The large <img src="Images/clear.png" height="15" width="18"> button in the top 
 
 The screen starts searching as soon as two characters have been entered into the textfield but a single character may be searched for by pressing enter or the little <img src="Images/magnifyingglass.png" height="15" width="18"> button to the left of the text. The <img src="Images/clear.png" height="15" width="18"> button clears both the text field and the matched colours list.
 
-The colours whose name conains the text in the search field are displayed below the text. The list is normally sorted by name but can be sorted by luminosity (Recc. 709) which is a measure of the colours lightness. Tapping on any name closes the sheet and copies that name into the editor.
+The colours whose name conains the text in the search field are displayed below the text. The list is normally sorted by name but can be sorted by luminosity (ITU-R Rec. BT-709) which is a measure of the colours luminosity. Tapping on any name closes the sheet and copies that name into the editor.
