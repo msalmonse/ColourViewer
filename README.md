@@ -10,7 +10,7 @@ The main screen is divided into two, the colour editor and the colour history li
 
 #### <img src="Images/rectangle.stack.png" height="23" width="25"> History Panel
 
-### <img src="Images/rmagnifyingglass.png" height="23" width="25"> Colour Search Screen
+### <img src="Images/magnifyingglass.png" height="23" width="25"> Colour Search Screen
 
 ![Colour Search Screen](Images/search.png "Colour Search Screen")
 
