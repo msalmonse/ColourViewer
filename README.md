@@ -28,3 +28,9 @@ Each item is itself a button and tapping it will update the editor.
 ![Colour Search Screen](Images/search.png "Colour Search Screen")
 
 The Colour Search Screen allows searching for colours by CSS name. The list is automatically updated once two characters have been entered and tapping on the name closes the screen and copies the colour into the editor.
+
+The large <img src="Images/clear.png" height="15" width="18"> button in the top right hand corner close the screen without doing anything.
+
+The screen starts searching as soon as two characters have been entered into the textfield but a single character may be searched for by pressing enter or the little <img src="Images/magnifyingglass.png" height="15" width="18"> button to the left of the text. The <img src="Images/clear.png" height="15" width="18"> button clears both the text field and the matched colours list.
+
+The colours whose name conains the text in the search field are displayed below the text. The list is normally sorted by name but can be sorted by luminosity (Recc. 709) which is a measure of the colours lightness. Tapping on any name closes the sheet and copies that name into the editor.
