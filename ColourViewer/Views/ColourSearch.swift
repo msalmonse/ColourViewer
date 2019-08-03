@@ -20,11 +20,11 @@ struct ColourSearch: View {
     @ObservedObject var newLabel: ObservableString
     @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
-    @ObservedObject var intensitySort = ObservableBool(false)
+    @ObservedObject var lumaSort = ObservableBool(false)
     
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
-        matchList = coloursMatching(match, sortByIntensity: intensitySort.bool)
+        matchList = coloursMatching(match, sortByLuma: lumaSort.bool)
     }
     
     /// Update the ColourItem in the parent, clear the search data and close the sheet
@@ -79,11 +79,11 @@ struct ColourSearch: View {
                         .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                         // Select the sort field
-                        Toggle("Sort by intensity:", isOn: self.$intensitySort.bool)
-                        .onReceive(self.intensitySort.publisher,
+                        Toggle("Sort by luminosity:", isOn: self.$lumaSort.bool)
+                        .onReceive(self.lumaSort.publisher,
                                 perform: { _ in self.updateMatchList(self.search.string) }
                         )
-                        .frame(width: gp.relativeWidth(0.4), alignment: .center)
+                        .frame(width: gp.relativeWidth(0.5), alignment: .center)
                         .font(.callout)
                     }
                     .padding(.horizontal, 5)

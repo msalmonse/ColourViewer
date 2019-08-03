@@ -23,7 +23,7 @@ class ColoursMatchingTest: XCTestCase {
     func testColoursMatching() {
         XCTAssertEqual(coloursMatching("gre").count, 21)
         XCTAssertEqual(coloursMatching("grex").count, 0)
-        XCTAssertEqual(coloursMatching("white", sortByIntensity: true)[0], "White")
+        XCTAssertEqual(coloursMatching("white", sortByLuma: true)[0], "White")
     }
 
     func testHexLookup() {

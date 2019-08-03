@@ -184,9 +184,9 @@ fileprivate func makeHexList() {
 }
 
 
-func coloursMatching(_ name: String, sortByIntensity: Bool = false) -> [ String ] {
+func coloursMatching(_ name: String, sortByLuma: Bool = false) -> [ String ] {
     /// Return a list of colours containing the search string
-    /// The list is either sorted by name or colour intensity
+    /// The list is either sorted by name or colour luma
     ///
     var namesMatching: [String:Int] = [:]
     let lcName = name.lowercased()
@@ -196,8 +196,8 @@ func coloursMatching(_ name: String, sortByIntensity: Bool = false) -> [ String 
     for (key, hex) in hexList {
         if key.contains(lcName) {
             let newKey = (camelNames[key] != nil) ? camelNames[key]! : key
-            if sortByIntensity {
-                namesMatching[ newKey ] = ColourItem.intensity(hex)
+            if sortByLuma {
+                namesMatching[ newKey ] = ColourItem.luma(hex)
             }
             else {
                 namesMatching[ newKey ] = 0
@@ -205,7 +205,7 @@ func coloursMatching(_ name: String, sortByIntensity: Bool = false) -> [ String 
         }
     }
     
-    if sortByIntensity {
+    if sortByLuma {
         return namesMatching.keys.sorted(by: { namesMatching[$0]! > namesMatching[$1]! }).compactMap({$0})
     }
     else {

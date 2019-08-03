@@ -93,10 +93,8 @@ struct ColourItem: Identifiable, Equatable {
         )
     }
     
-    /// Calculate the intensity of a colour
-    var intensity: Int {
-        return Int(red) + Int(green) + Int(blue) + 2 * Int(max(red, green, blue))
-    }
+    // Calculate the Rec 709 luma of a colour
+    var luma: Int { return Self.RGBtoLuma(Int(red), Int(green), Int(blue)) }
     
     /// Initialize a ColourItem
     ///
@@ -146,15 +144,20 @@ struct ColourItem: Identifiable, Equatable {
         return lhs.red == rhs.red && lhs.green == rhs.green && lhs.blue == rhs.blue
     }
     
-    /// Calculate the intensity from a hex code
-    static func intensity(_ hex: String?) -> Int {
+    // Calculate the Rec 709 luma from red, green and blue
+    private static func RGBtoLuma(_ r: Int, _ g: Int, _ b: Int) -> Int {
+        return 21 * r + 72 * g + 7 * b
+    }
+
+    // Calculate the Rec 709 luma from a hex code
+    static func luma(_ hex: String?) -> Int {
         var r = 0
         var g = 0
         var b = 0
         
         if !hexToRGB(hex: hex, r: &r, g: &g, b: &b ) { return -1 }
         
-        return r + b + g + 2 * max(r, g, b)
+        return RGBtoLuma(r, g, b)
     }
 }
 
