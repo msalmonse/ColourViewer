@@ -146,7 +146,7 @@ struct ColourItem: Identifiable, Equatable {
     
     // Calculate the Rec 709 luma from red, green and blue
     private static func RGBtoLuma(_ r: Int, _ g: Int, _ b: Int) -> Int {
-        return 21 * r + 72 * g + 7 * b
+        return 2126 * r + 7152 * g + 722 * b
     }
 
     // Calculate the Rec 709 luma from a hex code
