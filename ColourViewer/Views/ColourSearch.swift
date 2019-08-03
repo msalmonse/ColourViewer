@@ -46,9 +46,9 @@ struct ColourSearch: View {
             NavigationView {
                 VStack {
                     VStack {
-                        /// Input field for the search
+                        // Input field for the search
                         HStack {
-                            /// Force a search, only active if the search string isn't empty
+                            // Force a search, only active if the search string isn't empty
                             Button(
                                 action: { self.updateMatchList(self.search.string) },
                                 label: {
@@ -57,14 +57,14 @@ struct ColourSearch: View {
                                     .padding(.leading, 10)
                                 }
                             )
-                                .disabled(self.search.isEmpty)
+                            .disabled(self.search.isEmpty)
 
-                            /// The actual search string editor, see also .onReceive() below
+                            // The actual search string editor, see also .onReceive() below
                             TextField("Seach", text: self.$search.string,
                                 onCommit: { self.updateMatchList(self.search.string) }
                             )
 
-                            /// Clear the search data
+                            // Clear the search data
                             Button(
                                 action: { self.clearAll() },
                                 label: {
@@ -88,9 +88,8 @@ struct ColourSearch: View {
                             }
                             .pickerStyle(SegmentedPickerStyle())
                             .frame(width: 200)
-                            /// When a new sort style is selected update the match list
+                            // When a new sort style is selected update the match list
                             .onReceive(self.sortSelection.publisher) {
-                                print("Selected: \($0)")
                                 self.intensitySort = ($0 == 1)
                                 self.updateMatchList(self.search.string)
                             }
@@ -101,9 +100,9 @@ struct ColourSearch: View {
                     
                     Text("Tap on colour to select").font(.caption)
 
-                    /// Display the names and colours of the matching colours
+                    // Display the names and colours of the matching colours
                     List(self.matchList, id: \.self) { match in
-                        /// Each entry in the list is a button to update the colour in the parent and close the sheet
+                        // Each entry in the list is a button that updates the colour in the parent and closes the sheet
                         Button(
                             action: { self.selectColour(match) },
                             label: {
@@ -123,7 +122,7 @@ struct ColourSearch: View {
                             }
                         )
                     }
-                    /// When the search string is updated the match list is recalculated
+                    // When the search string is updated the match list is recalculated
                     .onReceive(self.search.publisher, perform: {
                             self.updateMatchList($0)
                         }
