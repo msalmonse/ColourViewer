@@ -12,11 +12,23 @@ import SwiftUI
 extension GeometryProxy {
     /// Calculate the relative width
     func relativeWidth(_ factor: Double) -> CGFloat {
-        return self.size.width * CGFloat(factor)
+        return self.size.relativeWidth(factor)
     }
 
     /// Calculate the relative height
     func relativeHeight(_ factor: Double) -> CGFloat {
-        return self.size.height * CGFloat(factor)
+        return self.size.relativeHeight(factor)
+    }
+}
+
+extension CGSize {
+    /// Calculate the relative width
+    func relativeWidth(_ factor: Double) -> CGFloat {
+        return self.width * CGFloat(factor)
+    }
+
+    /// Calculate the relative height
+    func relativeHeight(_ factor: Double) -> CGFloat {
+        return self.height * CGFloat(factor)
     }
 }
