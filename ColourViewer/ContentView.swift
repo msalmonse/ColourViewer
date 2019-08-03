@@ -14,17 +14,22 @@ struct ContentView : View {
 //        ColourItem(red: 255, green: 255, blue:   0, label: "Yellow"),
 //        ColourItem(red:   0, green: 255, blue:   0, label: "Green")
     ]
+    @ObservedObject var newLabel = ObservableString("")
+    @State var rgb = RGBandHSB.random
     
     var body: some View {
         HStack(alignment: VerticalAlignment.top, spacing: 10) {
             ColourEditor(
-                history: self.$history
+                rgb: $rgb,
+                history: self.$history,
+                newLabel: newLabel
             )
             
             Divider().frame(width: 1)
             
             ColourHistory(
-                history: self.$history
+                history: self.$history,
+                newLabel: newLabel
             )
         }
     }

@@ -9,9 +9,14 @@
 import SwiftUI
 
 /// Display a list of interesting colours
+///
+/// Parameters:
+///     history:            a list of interesting colours
+///     newLabel:       used to update displayed colour
 
 struct ColourHistory : View {
     @Binding var history: [ColourItem]
+    @ObservedObject var newLabel: ObservableString
     
     var body: some View {
         NavigationView {
@@ -81,9 +86,12 @@ struct ColourHistory_Previews : PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "Black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "White")
     ]
+    @ObservedObject static var newLabel = ObservableString("")
+
     static var previews: some View {
         ColourHistory(
-            history: $history
+            history: $history,
+            newLabel: newLabel
         )
     }
 }

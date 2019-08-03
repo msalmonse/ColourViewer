@@ -11,12 +11,14 @@ import SwiftUI
 /// ColourEditor displays 3 views, the current vales for RGB, HSB and the associated Colour
 ///
 /// Parameters
-///     history:    a list of interesting colours
+///     rgb:            main model of colour data
+///     history:       a list of interesting colours
+///     newLabel:   used to change displayed colour
 
 struct ColourEditor: View {
+    @Binding var rgb: RGBandHSB
     @Binding var history: [ColourItem]
-    
-    var rgb = RGBandHSB.random
+    @ObservedObject var newLabel: ObservableString
     
     var body: some View {
         GeometryReader { gp in
@@ -44,9 +46,13 @@ struct ColourEditor: View {
                         ColourElements(
                             colourItem: self.rgb.colourItem,
                             history: self.$history,
+                            newLabel: self.newLabel,
                             font: .body,
                             height: gp.relativeHeight(0.3),
                             width: gp.relativeWidth(0.9)
+                        )
+                        .onReceive(self.newLabel.publisher,
+                            perform: { self.rgb.label = $0 }
                         )
                         
                         Spacer()
@@ -64,14 +70,18 @@ struct ColourEditor: View {
 
 #if DEBUG
 struct ColourEditor_Previews: PreviewProvider {
+    @State static var rgb = RGBandHSB.random
     @State static var history: [ColourItem] = [
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ]
+    @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
         ColourEditor(
-            history: $history
+            rgb: $rgb,
+            history: $history,
+            newLabel: newLabel
         )
     }
 }

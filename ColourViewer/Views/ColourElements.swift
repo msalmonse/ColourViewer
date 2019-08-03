@@ -14,6 +14,7 @@ import SwiftUI
 /// Parameters:
 ///     colourItem:     the colour to display
 ///     history:           list containing interesting colours
+///     newLabel:       used to update displayed colour
 ///     font:                the main font size to use
 ///     height:            desired height of view
 ///     width:              derired width of view
@@ -21,6 +22,7 @@ import SwiftUI
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @Binding var history: [ColourItem]
+    @ObservedObject var newLabel: ObservableString
     let font: Font
     let height: CGFloat
     let width: CGFloat
@@ -74,7 +76,7 @@ struct ColourElements: View {
                         content: {
                             ColourSearch(
                                 showingSearch: self.showingSearch,
-                                colourItem: self.colourItem
+                                newLabel: self.newLabel
                             )
                         }
                     )
@@ -92,10 +94,13 @@ struct ColourElements_Previews: PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ]
+    @ObservedObject static var newLabel = ObservableString("")
+    
     static var previews: some View {
         ColourElements(
             colourItem: colourItem,
             history: $history,
+            newLabel: newLabel,
             font: .body,
             height: 300,
             width: 200

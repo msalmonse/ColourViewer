@@ -13,11 +13,11 @@ import Combine
 ///
 /// Parameters:
 ///     showingSearch: the Bool that determines if this sheet is shown
-///     colourItem:         the recipient of the selected colour
+///     newLabel:          the recipient of the selected colour's name
 
 struct ColourSearch: View {
     @ObservedObject var showingSearch: ObservableBool
-    @ObservedObject var colourItem: ObservableColourItem
+    @ObservedObject var newLabel: ObservableString
     @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
     @ObservedObject var intensitySort = ObservableBool(false)
@@ -29,7 +29,7 @@ struct ColourSearch: View {
     
     /// Update the ColourItem in the parent, clear the search data and close the sheet
     private func selectColour(_ name: String) {
-        colourItem.label = name
+        newLabel.string = name
         clearAll()
         showingSearch.bool = false
     }
@@ -140,12 +140,12 @@ struct ColourSearch: View {
 struct ColourSearch_Previews: PreviewProvider {
     //@State static var showingSearch = true
     @ObservedObject static var showingSearch = ObservableBool(true)
-    @ObservedObject static var colourItem = ObservableColourItem(label: "RebeccaPurple")
+    @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
         ColourSearch(
             showingSearch: showingSearch,
-            colourItem: colourItem
+            newLabel: newLabel
         )
     }
 }

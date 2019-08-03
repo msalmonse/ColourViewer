@@ -168,12 +168,8 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
     var id = UUID()
     
     private(set) var colourItem = ColourItem(hex: "#000") {
-        willSet {
-            objectWillChange.send()
-        }
-        didSet {
-            if hasChanged != nil { hasChanged!(colourItem!) }
-        }
+        willSet { objectWillChange.send() }
+        didSet { if hasChanged != nil { hasChanged!(colourItem!) } }
     }
     
     /// Return the internal ColourItem
@@ -202,15 +198,17 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
         get { return (colourItem == nil) ? "" : colourItem!.label }
         /// Setting the label will update the internal ColourItem
         set {
+            var newCI: ColourItem? = nil
             if colourItem == nil || colourItem!.label != newValue {
                 if newValue.hasPrefix("#") {
-                    colourItem = ColourItem(hex: newValue)
+                    newCI = ColourItem(hex: newValue)
                 }
                 else {
                     let hex = hexLookup(newValue)
-                    colourItem = ColourItem(hex: hex)
+                    newCI = ColourItem(hex: hex)
                 }
-                if colourItem == nil { colourItem = ColourItem() }
+                if newCI == nil { newCI = ColourItem() }
+                colourItem = newCI
             }
         }
     }
