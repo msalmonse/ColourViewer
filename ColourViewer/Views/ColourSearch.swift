@@ -20,12 +20,11 @@ struct ColourSearch: View {
     @ObservedObject var colourItem: ObservableColourItem
     @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
-    @State var intensitySort = false
-    @ObservedObject var sortSelection = ObservableInt(0)
+    @ObservedObject var intensitySort = ObservableBool(false)
     
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
-        matchList = coloursMatching(match, sortByIntensity: intensitySort)
+        matchList = coloursMatching(match, sortByIntensity: intensitySort.bool)
     }
     
     /// Update the ColourItem in the parent, clear the search data and close the sheet
@@ -79,22 +78,13 @@ struct ColourSearch: View {
                         .padding(3)
                         .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
-                        /// Select the sort field
-                        HStack {
-                            Text("Sorted by:")
-                            Picker("Sorted by", selection: self.$sortSelection.number) {
-                                Text("Name").tag(0)
-                                Text("Intensity").tag(1)
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                            .frame(width: 200)
-                            // When a new sort style is selected update the match list
-                            .onReceive(self.sortSelection.publisher) {
-                                self.intensitySort = ($0 == 1)
-                                self.updateMatchList(self.search.string)
-                            }
-                        }
-                        .font(.caption)
+                        // Select the sort field
+                        Toggle("Sort by intensity:", isOn: self.$intensitySort.bool)
+                        .onReceive(self.intensitySort.publisher,
+                                perform: { _ in self.updateMatchList(self.search.string) }
+                        )
+                        .frame(width: gp.relativeWidth(0.4), alignment: .center)
+                        .font(.callout)
                     }
                     .padding(.horizontal, 5)
                     
