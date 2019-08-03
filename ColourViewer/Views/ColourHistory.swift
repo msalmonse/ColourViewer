@@ -23,7 +23,10 @@ struct ColourHistory : View {
             VStack(alignment: .center, spacing: 5) {
                 List {
                     ForEach(history) { historyItem in
-                        HistoryRow(item: historyItem)
+                        Button(
+                            action: { self.newLabel.string = historyItem.label },
+                            label: { HistoryRow(item: historyItem) }
+                        )
                     }
                     .onDelete(perform: delete)
                     .onMove(perform: move)
