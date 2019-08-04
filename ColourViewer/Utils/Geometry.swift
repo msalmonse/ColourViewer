@@ -19,6 +19,9 @@ extension GeometryProxy {
     func relativeHeight(_ factor: Double) -> CGFloat {
         return self.size.relativeHeight(factor)
     }
+    
+    /// Is the display in landscape
+    var isLandscape: Bool { return self.size.width > self.size.height }
 }
 
 extension CGSize {

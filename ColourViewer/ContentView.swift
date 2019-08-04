@@ -18,19 +18,31 @@ struct ContentView : View {
     @State var rgb = RGBandHSB.random
     
     var body: some View {
-        HStack(alignment: VerticalAlignment.top, spacing: 10) {
-            ColourEditor(
-                rgb: $rgb,
-                history: self.$history,
-                newLabel: newLabel
-            )
-            
-            Divider().frame(width: 1)
-            
-            ColourHistory(
-                history: self.$history,
-                newLabel: newLabel
-            )
+        GeometryReader() { gp in
+            HStack(alignment: VerticalAlignment.top, spacing: 5) {
+                if gp.isLandscape {
+                    LandscapeColourEditor(
+                        rgb: self.$rgb,
+                        history: self.$history,
+                        newLabel: self.newLabel
+                    )
+                    .frame(width: gp.relativeWidth(0.7))
+                }
+                else {
+                    PortraitColourEditor(
+                        rgb: self.$rgb,
+                        history: self.$history,
+                        newLabel: self.newLabel
+                    )
+                }
+                
+                Divider().frame(width: 1)
+                
+                ColourHistory(
+                    history: self.$history,
+                    newLabel: self.newLabel
+                )
+            }
         }
     }
 }

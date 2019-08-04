@@ -31,7 +31,7 @@ struct ColourElements: View {
     var body: some View {
         VStack(alignment: HorizontalAlignment.center) {
             Section(header: Text("Colour").font(largerFont(font))) {
-                /// Colour name in black on a white background surrounded by the colour itself
+                // Colour name in black on a white background surrounded by the colour itself
                 Text(colourItem.label)
                     .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                     .lineLimit(1)
@@ -44,7 +44,7 @@ struct ColourElements: View {
                         color: colourItem.color))
                     .padding(.bottom, 5)
                 HStack {
-                    /// Button to add current colour to history list
+                    // Button to add current colour to history list
                     Button(
                         action: { self.history.insert(self.colourItem.unwrap, at: 0) },
                         label: {
@@ -53,7 +53,7 @@ struct ColourElements: View {
                         }
                     )
                     .modifier(buttonBackground())
-                    /// Button to add colour and label to pasteboard
+                    // Button to add colour and label to pasteboard
                      Button(
                         action: { copyToClipboard(self.colourItem.unwrap) },
                         label: {
@@ -62,7 +62,7 @@ struct ColourElements: View {
                         }
                     )
                     .modifier(buttonBackground())
-                    /// Button to display the colour search view
+                    // Button to display the colour search view
                     Button(
                         action: { self.showingSearch.bool = true },
                         label: {

@@ -9,13 +9,14 @@
 import SwiftUI
 
 /// ColourEditor displays 3 views, the current vales for RGB, HSB and the associated Colour
+/// There are two structs with the same purpose, one for portrait and the other for landscape
 ///
 /// Parameters
 ///     rgb:            main model of colour data
 ///     history:       a list of interesting colours
 ///     newLabel:   used to change displayed colour
 
-struct ColourEditor: View {
+struct PortraitColourEditor: View {
     @Binding var rgb: RGBandHSB
     @Binding var history: [ColourItem]
     @ObservedObject var newLabel: ObservableString
@@ -25,34 +26,24 @@ struct ColourEditor: View {
             NavigationView {
                 ScrollView {
                     VStack(alignment: HorizontalAlignment.center) {
-                        RGBelements(
-                            redElement: self.rgb.red,
-                            greenElement: self.rgb.green,
-                            blueElement: self.rgb.blue,
-                            font: .body,
+                        RGBsection(
+                            rgb: self.$rgb,
                             height: gp.relativeHeight(0.3),
                             width: gp.relativeWidth(0.9)
                         )
                         
-                        HSBelements(
-                            hueElement: self.rgb.hue,
-                            saturationElement: self.rgb.saturation,
-                            brightnessElement: self.rgb.brightness,
-                            font: .body,
+                        HSBsection(
+                            rgb: self.$rgb,
                             height: gp.relativeHeight(0.3),
                             width: gp.relativeWidth(0.9)
                         )
                         
-                        ColourElements(
-                            colourItem: self.rgb.colourItem,
+                        ColourSection(
+                            rgb: self.$rgb,
                             history: self.$history,
                             newLabel: self.newLabel,
-                            font: .body,
                             height: gp.relativeHeight(0.3),
                             width: gp.relativeWidth(0.9)
-                        )
-                        .onReceive(self.newLabel.publisher,
-                            perform: { self.rgb.label = $0 }
                         )
                         
                         Spacer()
@@ -68,6 +59,106 @@ struct ColourEditor: View {
     }
 }
 
+struct LandscapeColourEditor: View {
+    @Binding var rgb: RGBandHSB
+    @Binding var history: [ColourItem]
+    @ObservedObject var newLabel: ObservableString
+    
+    var body: some View {
+        GeometryReader { gp in
+            NavigationView {
+                ScrollView([.horizontal, .vertical]) {
+                    HStack(alignment: VerticalAlignment.top) {
+                        Spacer()
+                        
+                        RGBsection(
+                            rgb: self.$rgb,
+                            height: gp.relativeHeight(0.9),
+                            width: gp.relativeWidth(0.3)
+                        )
+                        
+                        HSBsection(
+                            rgb: self.$rgb,
+                            height: gp.relativeHeight(0.9),
+                            width: gp.relativeWidth(0.3)
+                        )
+                        
+                        ColourSection(
+                            rgb: self.$rgb,
+                            history: self.$history,
+                            newLabel: self.newLabel,
+                            height: gp.relativeHeight(0.9),
+                            width: gp.relativeWidth(0.4)
+                        )
+                    }
+                }
+                .navigationBarItems(
+                    leading: Image(systemName: "square.and.pencil")
+                        .font(Font.title.weight(.bold))
+                        .accentColor(Color.primary)
+                )
+            }
+        }
+    }
+}
+
+private struct RGBsection: View {
+    @Binding var rgb: RGBandHSB
+    let height: CGFloat
+    let width: CGFloat
+    
+    var body: some View {
+        RGBelements(
+            redElement: self.rgb.red,
+            greenElement: self.rgb.green,
+            blueElement: self.rgb.blue,
+            font: .body,
+            height: height,
+            width: width
+        )
+    }
+}
+
+private struct HSBsection: View {
+    @Binding var rgb: RGBandHSB
+    let height: CGFloat
+    let width: CGFloat
+    
+    var body: some View {
+        HSBelements(
+            hueElement: self.rgb.hue,
+            saturationElement: self.rgb.saturation,
+            brightnessElement: self.rgb.brightness,
+            font: .body,
+            height: height,
+            width: width
+        )
+    }
+}
+
+private struct ColourSection: View {
+    @Binding var rgb: RGBandHSB
+    @Binding var history: [ColourItem]
+    @ObservedObject var newLabel: ObservableString
+    let height: CGFloat
+    let width: CGFloat
+    
+    var body: some View {
+        ColourElements(
+            colourItem: self.rgb.colourItem,
+            history: self.$history,
+            newLabel: self.newLabel,
+            font: .body,
+            height: height,
+            width: width
+        )
+        .onReceive(self.newLabel.publisher,
+            perform: { self.rgb.label = $0 }
+        )
+    }
+}
+
+
 #if DEBUG
 struct ColourEditor_Previews: PreviewProvider {
     @State static var rgb = RGBandHSB.random
@@ -78,7 +169,7 @@ struct ColourEditor_Previews: PreviewProvider {
     @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
-        ColourEditor(
+        PortraitColourEditor(
             rgb: $rgb,
             history: $history,
             newLabel: newLabel
