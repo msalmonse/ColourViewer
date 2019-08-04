@@ -30,7 +30,7 @@ struct HSBelements: View {
         VStack(alignment: HorizontalAlignment.center) {
             Section(header: Text("HSB").font(largerFont(font))) {
                 DoubleElement(
-                    label: "Hue",
+                    label: "Hue°",
                     element: hueElement,
                     font: font,
                     height: height/4,
@@ -38,7 +38,7 @@ struct HSBelements: View {
                 )
                 
                 DoubleElement(
-                    label: "Saturation",
+                    label: "Saturation%",
                     element: saturationElement,
                     font: font,
                     height: height/4,
@@ -46,7 +46,7 @@ struct HSBelements: View {
                 )
                 
                 DoubleElement(
-                    label: "Brightness",
+                    label: "Brightness%",
                     element: brightnessElement,
                     font: font,
                     height: height/4,

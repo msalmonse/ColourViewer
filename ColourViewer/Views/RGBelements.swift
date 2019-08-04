@@ -76,7 +76,6 @@ struct RGBelements: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .font(smallerFont(font, by: 2))
-                .frame(width: width * 0.6, height: height * 0.2)
                 // receiver for changes in base
                 .onReceive(base.publisher, perform: { self.setRadices(base: $0) })
             }
