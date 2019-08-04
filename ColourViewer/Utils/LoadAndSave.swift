@@ -14,7 +14,7 @@ import Foundation
 /// Parameters:
 ///     filename:       name of file to load
 
-func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T? {
+func load<T: Decodable>(_ filename: String) -> T? {
     let data: Data
     
     guard let file = fileURL(filename, in: .applicationSupportDirectory)
@@ -34,5 +34,25 @@ func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T? {
     } catch {
         return nil
     }
+}
+
+func save<T: Encodable>(_ obj: T, _ filename: String, as type: T.Type = T.self) -> Bool {
+    var data: Data
+
+/*    guard let file = fileURL(filename, in: .applicationSupportDirectory)
+    else {
+        return false
+    }
+*/
+    do {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        data = try encoder.encode(obj)
+    } catch {
+        return false
+    }
+    print(String(data: data, encoding: .utf8)!)
+
+    return true
 }
 
