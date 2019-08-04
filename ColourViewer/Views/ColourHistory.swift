@@ -21,6 +21,21 @@ struct ColourHistory : View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: 5) {
+                HStack {
+                    Button(
+                        action: { print("save") },
+                        label: {
+                            Text("\u{1F4BE}")
+                        }
+                    )
+                    Spacer()
+                    Button(
+                        action: { self.history = [] },
+                        label: { Image(systemName: "clear")}
+                    )
+                }
+                .padding(10)
+
                 List {
                     ForEach(history) { historyItem in
                         Button(
