@@ -133,6 +133,7 @@ struct ColourSearch: View {
                 )
             }
         }
+        .environment(\.horizontalSizeClass, .compact)
     }
 }
 

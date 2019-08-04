@@ -44,6 +44,7 @@ struct ContentView : View {
                 )
             }
         }
+        .environment(\.horizontalSizeClass, .compact)
     }
 }
 
