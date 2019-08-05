@@ -14,7 +14,7 @@ import Foundation
 /// Parameters:
 ///     filename:       name of file to load
 
-func loadFromJSON<T: Decodable>(_ obj: T, _ filename: String) -> Result<T,Error> {
+func loadFromJSON<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> Result<T,Error> {
     let data: Data
     var url: URL
    
@@ -50,7 +50,7 @@ func saveAsJSON<T: Encodable>(_ obj: T, to filename: String,
     }
 
     switch createAppDirectory(searchPath) {
-    case .success(_): let _ = 0
+    case .success(): break
     case .failure(let error): return .failure(error)
     }
 

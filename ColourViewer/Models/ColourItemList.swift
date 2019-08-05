@@ -51,8 +51,7 @@ class ColourItemList: ObservableObject, Identifiable {
     
     // Initialize from file
     static func load(_ from: String = saveFile) -> ColourItemList {
-        let list: [ColourItem] = []
-        switch loadFromJSON(list, from) {
+        switch loadFromJSON(from, as: [ColourItem].self) {
         case .success(let list): return ColourItemList(list)
         case .failure(_): return ColourItemList([])
         }

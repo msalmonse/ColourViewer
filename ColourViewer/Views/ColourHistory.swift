@@ -25,7 +25,7 @@ struct ColourHistory : View {
                     Button(
                         action: {
                             switch self.history.save() {
-                            case .success(_): print("Save OK")
+                            case .success(): break
                             case .failure(let error): print("Save failed: \(error)")
                             }
                         },
