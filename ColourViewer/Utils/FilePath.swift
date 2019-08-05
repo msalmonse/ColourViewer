@@ -47,8 +47,8 @@ func fileURL(_ name: String?,
 ///Parameters:
 ///     in:     Search path
 
-func createAppDirectory(in searchPath: FileManager.SearchPathDirectory) -> Bool {
-    guard let path = fileURL(nil, in: .applicationSupportDirectory) else {
+func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Bool {
+    guard let path = fileURL(nil, in: searchPath) else {
         return false
     }
     if FileManager.default.fileExists(atPath: path.path) {
@@ -57,7 +57,7 @@ func createAppDirectory(in searchPath: FileManager.SearchPathDirectory) -> Bool 
     
     do {
         try FileManager.default.createDirectory(at: path,
-                                        withIntermediateDirectories: false,
+                                        withIntermediateDirectories: true,
                                         attributes: nil)
     } catch {
         print("Error creating '\(path)': \(error)")
