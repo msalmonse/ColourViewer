@@ -17,7 +17,8 @@ class ColourItemList: ObservableObject, Identifiable {
 
     let id = UUID()
     var changeCount = 0
-    
+    var hasSaveFile = urlExists(fileURL(ColourItemList.saveFile, in: ColourItemList.saveDir))
+
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Void, Never>()
     
@@ -29,6 +30,8 @@ class ColourItemList: ObservableObject, Identifiable {
         }
     }
     
+    var isEmpty: Bool { list.isEmpty }
+    
     init(_ inList: [ColourItem] = []) {
         self.list = inList
     }
@@ -37,7 +40,10 @@ class ColourItemList: ObservableObject, Identifiable {
     
     // Save to file
     func save(to: String = ColourItemList.saveFile) -> Bool {
-        return saveAsJSON(list, to)
+        if !saveAsJSON(list, to) { return false }
+        hasSaveFile = true
+        changeCount = 0
+        return true
     }
     
     // Initialize from file
