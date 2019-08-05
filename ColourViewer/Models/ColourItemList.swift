@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import os.log
 
 /// Wrapper class for [ColourItem], mainly to add load() and save()
 
@@ -45,7 +46,9 @@ class ColourItemList: ObservableObject, Identifiable {
             hasSaveFile = true
             changeCount = 0
             return .success(Void())
-        case .failure(let error): return .failure(error)
+        case .failure(let error):
+            os_log("Error saving to '%s': %s", type: .info, to, "\(error)")
+            return .failure(error)
         }
     }
     
@@ -53,7 +56,9 @@ class ColourItemList: ObservableObject, Identifiable {
     static func load(_ from: String = saveFile) -> ColourItemList {
         switch loadFromJSON(from, as: [ColourItem].self) {
         case .success(let list): return ColourItemList(list)
-        case .failure(_): return ColourItemList([])
+        case .failure(let error):
+            os_log("Error loading from '%s': %s", type: .info, from, "\(error)")
+            return ColourItemList([])
         }
     }
 }
