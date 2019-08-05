@@ -34,6 +34,7 @@
 		C4A064A722F6D109009B76EE /* LoadAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064A622F6D109009B76EE /* LoadAndSave.swift */; };
 		C4A064A922F7010D009B76EE /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064A822F7010C009B76EE /* FilePath.swift */; };
 		C4A064AB22F72503009B76EE /* ColourItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AA22F72503009B76EE /* ColourItemList.swift */; };
+		C4A064AD22F7F922009B76EE /* LoadAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AC22F7F922009B76EE /* LoadAndSave.swift */; };
 		C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5532E22F1CAC5002F6F5F /* Radix.swift */; };
 		C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */; };
 		C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItem.swift */; };
@@ -89,6 +90,7 @@
 		C4A064A622F6D109009B76EE /* LoadAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSave.swift; sourceTree = "<group>"; };
 		C4A064A822F7010C009B76EE /* FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
 		C4A064AA22F72503009B76EE /* ColourItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourItemList.swift; sourceTree = "<group>"; };
+		C4A064AC22F7F922009B76EE /* LoadAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSave.swift; sourceTree = "<group>"; };
 		C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		C4D5532E22F1CAC5002F6F5F /* Radix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radix.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/Radix.swift; sourceTree = "<group>"; };
 		C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatching.swift; path = /Users/mesa/xcode/ColourViewer/../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatching.swift; sourceTree = "<absolute>"; };
@@ -172,6 +174,7 @@
 				C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */,
 				C4A0646222F48A0A009B76EE /* FontSize.swift */,
 				C45C7BF822D4BAF1008D119D /* Info.plist */,
+				C4A064AC22F7F922009B76EE /* LoadAndSave.swift */,
 				C490553822EACC8100C86E46 /* NumberAndString.swift */,
 				C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */,
 				C40D360322EEDC3800455CCA /* SearchString.swift */,
@@ -182,14 +185,14 @@
 		C490553222E9FF4000C86E46 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
 				C45C7C0922D4C010008D119D /* ColourItem.swift */,
+				C4A064AA22F72503009B76EE /* ColourItemList.swift */,
 				C490553622EAC43500C86E46 /* NumberAndString.swift */,
 				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
+				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
 				C490553A22EB08CF00C86E46 /* RGBandHSB.swift */,
 				C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */,
 				C42DE12022F1711D00895FC2 /* Shapes.swift */,
-				C4A064AA22F72503009B76EE /* ColourItemList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,11 +218,11 @@
 				C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */,
 				C4EAD06F22DEF81900912FB8 /* ColourList.swift */,
 				C4EB231822EE14800071099F /* CopyToClipboard.swift */,
+				C4A064A822F7010C009B76EE /* FilePath.swift */,
 				C4A0646022F48578009B76EE /* FontSize.swift */,
 				C43A888522F41438003E9D64 /* Geometry.swift */,
-				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 				C4A064A622F6D109009B76EE /* LoadAndSave.swift */,
-				C4A064A822F7010C009B76EE /* FilePath.swift */,
+				C42DE12222F1718700895FC2 /* Modifiers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A064AD22F7F922009B76EE /* LoadAndSave.swift in Sources */,
 				C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */,
 				C4A0646322F48A0A009B76EE /* FontSize.swift in Sources */,
 				C40D360422EEDC3800455CCA /* SearchString.swift in Sources */,
