@@ -14,54 +14,60 @@ import Foundation
 /// Parameters:
 ///     filename:       name of file to load
 
-func loadFromJSON<T: Decodable>(_ filename: String) -> T? {
+func loadFromJSON<T: Decodable>(_ obj: T, _ filename: String) -> Result<T,Error> {
     let data: Data
-    
-    guard let file = fileURL(filename, in: .applicationSupportDirectory)
-    else {
-        return nil
+    var url: URL
+   
+    switch fileURL(filename) {
+    case .success(let ret): url = ret
+    case .failure(let error): return .failure(error)
     }
     
     do {
-        data = try Data(contentsOf: file)
+        data = try Data(contentsOf: url)
     } catch {
-        return nil
+        return .failure(error)
     }
     
     do {
         let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
+        let t = try decoder.decode(T.self, from: data)
+        return .success(t)
     } catch {
-        return nil
+        return .failure(error)
     }
 }
 
-func saveAsJSON<T: Encodable>(_ obj: T, _ filename: String,
+func saveAsJSON<T: Encodable>(_ obj: T, to filename: String,
         in searchPath: FileManager.SearchPathDirectory = .applicationSupportDirectory
-) -> Bool {
+) -> Result<Void,Error> {
+    var url: URL
     var data: Data
 
-    guard let file = fileURL(filename, in: searchPath)
-    else {
-        return false
+    switch fileURL(filename, in: searchPath) {
+    case .success(let ret): url = ret
+    case .failure(let error): return .failure(error)
     }
-    
-    if !createAppDirectory(searchPath) { return false }
+
+    switch createAppDirectory(searchPath) {
+    case .success(_): let _ = 0
+    case .failure(let error): return .failure(error)
+    }
 
     do {
         let encoder = JSONEncoder()
         data = try encoder.encode(obj)
     } catch {
-        return false
+        return .failure(error)
     }
     
     do {
-        try data.write(to: file)
+        try data.write(to: url)
     } catch {
         print("Error writing to \(filename): \(error)")
-        return false
+        return .failure(error)
     }
 
-    return true
+    return .success(Void())
 }
 

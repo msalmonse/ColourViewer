@@ -28,9 +28,9 @@ fileprivate func addBundleId(_ searchPath: FileManager.SearchPathDirectory) -> B
 
 func fileURL(_ name: String?,
               in searchPath: FileManager.SearchPathDirectory = .applicationSupportDirectory
-) -> URL? {
+) -> Result<URL,Error> {
     let paths = FileManager.default.urls(for: searchPath, in: .userDomainMask)
-    if paths.isEmpty { return nil }
+    if paths.isEmpty { return .failure(LocalErrors.noSuchPath) }
     
     var base = paths[0]
     if addBundleId(searchPath) {
@@ -38,8 +38,8 @@ func fileURL(_ name: String?,
         if id == nil { id = "ColourViewer" }
         base = base.appendingPathComponent(id!)
     }
-    if name == nil { return base }
-    return base.appendingPathComponent(name!)
+    if name == nil { return .success(base) }
+    return .success(base.appendingPathComponent(name!))
 }
 
 /// Create an app directory
@@ -47,24 +47,25 @@ func fileURL(_ name: String?,
 ///Parameters:
 ///     in:     Search path
 
-func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Bool {
-    guard let path = fileURL(nil, in: searchPath) else {
-        return false
+func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Result<Void,Error> {
+    var url: URL
+
+    switch fileURL(nil, in: searchPath) {
+    case .success(let ret): url = ret
+    case .failure(let error): return .failure(error)
     }
-    if FileManager.default.fileExists(atPath: path.path) {
-        return true
-    }
+
+    if urlExists(url) { return .success(Void()) }
     
     do {
-        try FileManager.default.createDirectory(at: path,
+        try FileManager.default.createDirectory(at: url,
                                         withIntermediateDirectories: true,
                                         attributes: nil)
     } catch {
-        print("Error creating '\(path)': \(error)")
-        return false
+        return .failure(error)
     }
     
-    return true
+    return .success(Void())
 }
 
 /// Check for the existance of a local URL
@@ -75,4 +76,20 @@ func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Bool {
 func urlExists(_ url: URL?) -> Bool {
     if url == nil { return false }
     return FileManager.default.fileExists(atPath: url!.path)
+}
+
+/// Check for the existance of a local file
+///
+/// Parameters:
+///     url:    the url to check
+
+func fileExists(_ name: String, in searchPath: FileManager.SearchPathDirectory) -> Bool {
+    var url: URL
+    
+    switch fileURL(name, in: searchPath) {
+    case .success(let ret): url = ret
+    case .failure(_): return false
+    }
+    
+    return urlExists(url)
 }

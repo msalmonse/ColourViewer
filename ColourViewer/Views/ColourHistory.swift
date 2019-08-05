@@ -24,19 +24,27 @@ struct ColourHistory : View {
                 HStack {
                     Button(
                         action: {
-                            if !self.history.save() { print("Save failed") }
+                            switch self.history.save() {
+                            case .success(_): print("Save OK")
+                            case .failure(let error): print("Save failed: \(error)")
+                            }
                         },
                         label: {
                             Text("\u{1F4BE}")
+                            .foregroundColor((self.history.changeCount == 0) ? .secondary : .primary)
                         }
                     )
                     Spacer()
                     Button(
                         action: { self.history.list = [] },
-                        label: { Image(systemName: "clear")}
+                        label: {
+                            Image(systemName: "clear")
+                            .foregroundColor((self.history.isEmpty) ? .secondary : .primary)
+                        }
                     )
                 }
-                .padding(10)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
 
                 List {
                     ForEach(history.list) { historyItem in
