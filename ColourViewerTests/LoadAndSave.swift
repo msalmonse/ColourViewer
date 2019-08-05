@@ -26,16 +26,23 @@ class LoadAndSaveTest: XCTestCase {
     }
 
     func testSave() {
-        XCTAssertTrue(saveAsJSON(Self.test, Self.filename))
+        switch saveAsJSON(Self.test, to: Self.filename) {
+        case .success(): XCTAssert(true)
+        case .failure(let error): XCTAssert(false, "Error: \(error)")
+        }
     }
     
     func testLoad() {
-        let loaded: [ColourItem]? = loadFromJSON(Self.filename)
-        
-        XCTAssertNotNil(loaded)
-        XCTAssertEqual(loaded!.count, Self.test.count)
-        XCTAssertEqual(loaded![0], Self.test[0])
-        XCTAssertEqual(loaded![1], Self.test[1])
-        XCTAssertEqual(loaded![2], Self.test[2])
+        func check(_ loaded: [ColourItem]) {
+            XCTAssertEqual(loaded.count, Self.test.count)
+            XCTAssertEqual(loaded[0], Self.test[0])
+            XCTAssertEqual(loaded[1], Self.test[1])
+            XCTAssertEqual(loaded[2], Self.test[2])
+        }
+
+        switch loadFromJSON(Self.filename, as: [ColourItem].self) {
+        case .success(let list): check(list)
+        case .failure(let error): XCTAssert(false, "Error: \(error)")
+        }
     }
 }
