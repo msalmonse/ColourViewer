@@ -72,7 +72,7 @@ fileprivate func hexToRGB(hex: String?, r: inout Int, g: inout Int, b: inout Int
 
 /// A struct to hold a Color, a label and the componets used to create it
 
-struct ColourItem: Identifiable, Equatable {
+struct ColourItem: Identifiable, Equatable, Codable {
     /// Format used to convert red, green and blue to a hex string
     static let format = "#%02x%02x%02x"
     
@@ -158,6 +158,20 @@ struct ColourItem: Identifiable, Equatable {
         if !hexToRGB(hex: hex, r: &r, g: &g, b: &b ) { return -1 }
         
         return RGBtoLuma(r, g, b)
+    }
+
+    // Stuff for encoding and decoding
+    enum CodingKeys: String, CodingKey {
+        case red, green, blue
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let r = try values.decode(Int.self, forKey: .red)
+        let g = try values.decode(Int.self, forKey: .green)
+        let b = try values.decode(Int.self, forKey: .blue)
+
+        self.init(red: r, green: g, blue: b)
     }
 }
 
