@@ -66,3 +66,13 @@ func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Bool {
     
     return true
 }
+
+/// Check for the existance of a local URL
+///
+/// Parameters:
+///     url:    the url to check
+
+func urlExists(_ url: URL?) -> Bool {
+    if url == nil { return false }
+    return FileManager.default.fileExists(atPath: url!.path)
+}
