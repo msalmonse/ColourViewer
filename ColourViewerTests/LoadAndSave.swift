@@ -33,6 +33,7 @@ class LoadAndSaveTest: XCTestCase {
         let loaded: [ColourItem]? = loadFromJSON(Self.filename)
         
         XCTAssertNotNil(loaded)
+        XCTAssertEqual(loaded!.count, Self.test.count)
         XCTAssertEqual(loaded![0], Self.test[0])
         XCTAssertEqual(loaded![1], Self.test[1])
         XCTAssertEqual(loaded![2], Self.test[2])
