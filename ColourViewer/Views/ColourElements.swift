@@ -21,7 +21,7 @@ import SwiftUI
 
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
-    @Binding var history: [ColourItem]
+    @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     let font: Font
     let height: CGFloat
@@ -46,7 +46,9 @@ struct ColourElements: View {
                 HStack {
                     // Button to add current colour to history list
                     Button(
-                        action: { self.history.insert(self.colourItem.unwrap, at: 0) },
+                        action: {
+                            self.history.list.insert(self.colourItem.unwrap, at: 0)
+                        },
                         label: {
                             Image(systemName: "rectangle.stack.badge.plus")
                             .foregroundColor(.primary)
@@ -90,16 +92,16 @@ struct ColourElements: View {
 #if DEBUG
 struct ColourElements_Previews: PreviewProvider {
     @ObservedObject static var colourItem = ObservableColourItem(label: "RebeccaPurple")
-    @State static var history: [ColourItem] = [
+    @State static var history = ColourItemList([
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
-    ]
+    ])
     @ObservedObject static var newLabel = ObservableString("")
     
     static var previews: some View {
         ColourElements(
             colourItem: colourItem,
-            history: $history,
+            history: history,
             newLabel: newLabel,
             font: .body,
             height: 300,

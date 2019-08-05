@@ -18,7 +18,7 @@ import SwiftUI
 
 struct PortraitColourEditor: View {
     @Binding var rgb: RGBandHSB
-    @Binding var history: [ColourItem]
+    @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     
     var body: some View {
@@ -40,7 +40,7 @@ struct PortraitColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            history: self.$history,
+                            history: self.history,
                             newLabel: self.newLabel,
                             height: gp.relativeHeight(0.3),
                             width: gp.relativeWidth(0.9)
@@ -61,7 +61,7 @@ struct PortraitColourEditor: View {
 
 struct LandscapeColourEditor: View {
     @Binding var rgb: RGBandHSB
-    @Binding var history: [ColourItem]
+    @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     
     var body: some View {
@@ -85,7 +85,7 @@ struct LandscapeColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            history: self.$history,
+                            history: self.history,
                             newLabel: self.newLabel,
                             height: gp.relativeHeight(0.9),
                             width: gp.relativeWidth(0.4)
@@ -138,7 +138,7 @@ private struct HSBsection: View {
 
 private struct ColourSection: View {
     @Binding var rgb: RGBandHSB
-    @Binding var history: [ColourItem]
+    @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     let height: CGFloat
     let width: CGFloat
@@ -146,7 +146,7 @@ private struct ColourSection: View {
     var body: some View {
         ColourElements(
             colourItem: self.rgb.colourItem,
-            history: self.$history,
+            history: self.history,
             newLabel: self.newLabel,
             font: .body,
             height: height,
@@ -162,16 +162,16 @@ private struct ColourSection: View {
 #if DEBUG
 struct ColourEditor_Previews: PreviewProvider {
     @State static var rgb = RGBandHSB.random
-    @State static var history: [ColourItem] = [
+    @ObservedObject static var history = ColourItemList([
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
-    ]
+    ])
     @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
         PortraitColourEditor(
             rgb: $rgb,
-            history: $history,
+            history: history,
             newLabel: newLabel
         )
     }

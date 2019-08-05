@@ -9,11 +9,8 @@
 import SwiftUI
 
 struct ContentView : View {
-    @State var history: [ColourItem] = [
-//        ColourItem(red: 255, green:   0, blue:   0, label: "Red"),
-//        ColourItem(red: 255, green: 255, blue:   0, label: "Yellow"),
-//        ColourItem(red:   0, green: 255, blue:   0, label: "Green")
-    ]
+    @ObservedObject var history = ColourItemList.load()
+    
     @ObservedObject var newLabel = ObservableString("")
     @State var rgb = RGBandHSB.random
     
@@ -23,7 +20,7 @@ struct ContentView : View {
                 if gp.isLandscape {
                     LandscapeColourEditor(
                         rgb: self.$rgb,
-                        history: self.$history,
+                        history: self.history,
                         newLabel: self.newLabel
                     )
                     .frame(width: gp.relativeWidth(0.7))
@@ -31,7 +28,7 @@ struct ContentView : View {
                 else {
                     PortraitColourEditor(
                         rgb: self.$rgb,
-                        history: self.$history,
+                        history: self.history,
                         newLabel: self.newLabel
                     )
                 }
@@ -39,7 +36,7 @@ struct ContentView : View {
                 Divider().frame(width: 1)
                 
                 ColourHistory(
-                    history: self.$history,
+                    history: self.history,
                     newLabel: self.newLabel
                 )
             }

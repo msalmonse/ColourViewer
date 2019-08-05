@@ -15,7 +15,7 @@ import SwiftUI
 ///     newLabel:       used to update displayed colour
 
 struct ColourHistory : View {
-    @Binding var history: [ColourItem]
+    @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     
     var body: some View {
@@ -23,21 +23,23 @@ struct ColourHistory : View {
             VStack(alignment: .center, spacing: 5) {
                 HStack {
                     Button(
-                        action: { print("save") },
+                        action: {
+                            if !self.history.save() { print("Save failed") }
+                        },
                         label: {
                             Text("\u{1F4BE}")
                         }
                     )
                     Spacer()
                     Button(
-                        action: { self.history = [] },
+                        action: { self.history.list = [] },
                         label: { Image(systemName: "clear")}
                     )
                 }
                 .padding(10)
 
                 List {
-                    ForEach(history) { historyItem in
+                    ForEach(history.list) { historyItem in
                         Button(
                             action: { self.newLabel.string = historyItem.label },
                             label: { HistoryRow(item: historyItem) }
@@ -60,7 +62,7 @@ struct ColourHistory : View {
     /// Delete selected items from list
     private func delete(at: IndexSet) {
         for i in at.sorted().reversed() {
-            history.remove(at: i)
+            history.list.remove(at: i)
         }
     }
     
@@ -68,8 +70,8 @@ struct ColourHistory : View {
     private func move(from: IndexSet, to: Int) {
         for i in from.sorted().reversed() {
             let j = (to > i) ? to - 1 : to
-            let ci = history.remove(at: i)
-            history.insert(ci, at: j)
+            let ci = history.list.remove(at: i)
+            history.list.insert(ci, at: j)
         }
     }
 }
@@ -100,15 +102,15 @@ fileprivate struct HistoryRow: View {
 
 #if DEBUG
 struct ColourHistory_Previews : PreviewProvider {
-    @State static var history: [ColourItem] = [
+    @ObservedObject static var history = ColourItemList([
         ColourItem(red:   0, green:   0, blue:   0, label: "Black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "White")
-    ]
+    ])
     @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
         ColourHistory(
-            history: $history,
+            history: history,
             newLabel: newLabel
         )
     }
