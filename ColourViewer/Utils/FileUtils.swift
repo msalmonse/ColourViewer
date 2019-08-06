@@ -1,5 +1,5 @@
 //
-//  FilePath.swift
+//  FileUtils.swift
 //  ColourViewer
 //
 //  Created by Michael Salmon on 2019-08-04.
