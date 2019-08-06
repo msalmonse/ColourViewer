@@ -45,7 +45,7 @@ func fileURL(_ name: String?,
 /// Create an app directory
 ///
 ///Parameters:
-///     in:     Search path
+///     searchPath:     Search path
 
 func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Result<Void,Error> {
     var url: URL
@@ -66,6 +66,37 @@ func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Result
     }
     
     return .success(Void())
+}
+
+/// Create a directory containing a url
+///
+/// Parameters:
+///     url:     the full url of the file
+///     trim:   the number of components to trim
+
+func createDirectoryContaining(url urlIn: URL, trim: Int = 1) -> Result<Void, Error> {
+    var url = urlIn
+    var count = 0
+    // trim trailing path components
+    while count < trim {
+        url.deleteLastPathComponent()
+        count += 1
+    }
+
+    if url.path.isEmpty { return .failure(LocalErrors.fileNameError) }
+
+    if urlExists(url) { return .success(Void()) }
+    
+    do {
+        try FileManager.default.createDirectory(at: url,
+                                        withIntermediateDirectories: true,
+                                        attributes: nil)
+    } catch {
+        return .failure(error)
+    }
+    
+    return .success(Void())
+
 }
 
 /// Check for the existance of a local URL
