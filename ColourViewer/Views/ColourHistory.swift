@@ -17,16 +17,17 @@ import SwiftUI
 struct ColourHistory : View {
     @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
+    @State var saveErrorMessage: Message? = nil
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center, spacing: 5) {
+            VStack(alignment: HorizontalAlignment.center) {
                 HStack {
                     Button(
                         action: {
                             switch self.history.save() {
                             case .success(): break
-                            case .failure(let error): print("Save failed: \(error)")
+                            case .failure(let error): self.saveErrorMessage = errorMessage(error)
                             }
                         },
                         label: {
@@ -34,9 +35,18 @@ struct ColourHistory : View {
                             .foregroundColor((self.history.changeCount == 0) ? .secondary : .primary)
                         }
                     )
+                    .alert(item: self.$saveErrorMessage) { msg in
+                        Alert(
+                            title: Text("Save error"),
+                            message: Text("msg"),
+                            dismissButton: Alert.Button.cancel()
+                        )
+                    }
+                    Spacer()
+                    Text("\(self.history.changeCount) changes").font(.caption)
                     Spacer()
                     Button(
-                        action: { self.history.list = [] },
+                        action: { self.history.list.removeAll() },
                         label: {
                             Image(systemName: "clear")
                             .foregroundColor((self.history.isEmpty) ? .secondary : .primary)

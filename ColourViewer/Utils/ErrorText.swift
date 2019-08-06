@@ -13,3 +13,9 @@ import Foundation
 func errorText(_ err: Error) -> String {
     return err.localizedDescription
 }
+
+/// The error description in a message
+
+func errorMessage(_ err: Error) -> Message {
+    return Message(errorText(err))
+}
