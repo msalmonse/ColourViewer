@@ -49,7 +49,7 @@ func saveAsJSON<T: Encodable>(_ obj: T, to filename: String,
     case .failure(let error): return .failure(error)
     }
 
-    switch createAppDirectory(searchPath) {
+    switch createDirectoryContaining(url: url) {
     case .success(): break
     case .failure(let error): return .failure(error)
     }
