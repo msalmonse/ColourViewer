@@ -29,12 +29,11 @@ struct DoubleElement : View {
         VStack(alignment: HorizontalAlignment.leading) {
             Text(label).font(smallerFont(font, by: 2))
             HStack {
-                /// Increment button
+                // Increment button
                 Button(
                     action: { self.element.number += 0.1 },
                     label: {
-                        Image(systemName: "plus.circle")
-                        .font(smallerFont(font))
+                        Image(systemName: "plus.square.fill")
                         .accentColor(.primary)
                     }
                 )
@@ -43,17 +42,17 @@ struct DoubleElement : View {
                 .multilineTextAlignment(.trailing)
                 .frame(width: width * 0.4)
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
-                
+                .overlay(strokedRoundedRectangle(cornerRadius: 3))
+
+                // Decrement button
                 Button(
                     action: { self.element.number -= 0.1 },
                     label: {
-                        Image(systemName: "minus.circle")
-                        .font(smallerFont(font))
+                        Image(systemName: "minus.square.fill")
                         .accentColor(.primary)
                     }
                 )
             }
-            .overlay(strokedRoundedRectangle(cornerRadius: 3))
         }
     }
 }

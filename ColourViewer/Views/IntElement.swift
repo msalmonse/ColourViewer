@@ -27,32 +27,33 @@ struct IntElement : View {
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
             Text(label).font(smallerFont(font, by: 2))
+
             HStack {
                 /// Increment button
                 Button(
                     action: { self.element.number += 1 },
                     label: {
-                        Image(systemName: "plus.circle")
-                        .font(smallerFont(font))
+                        Image(systemName: "plus.square.fill")
                         .accentColor(.primary)
                     }
                 )
+
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                 .frame(width: width * 0.4)
+                .overlay(strokedRoundedRectangle(cornerRadius: 3))
+
                 /// Decrement button
                 Button(
                     action: { self.element.number -= 1 },
                     label: {
-                        Image(systemName: "minus.circle")
-                        .font(smallerFont(font))
+                        Image(systemName: "minus.square.fill")
                         .accentColor(.primary)
                     }
                 )
             }
-            .overlay(strokedRoundedRectangle(cornerRadius: 3))
         }
     }
 }
