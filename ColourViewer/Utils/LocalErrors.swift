@@ -15,4 +15,14 @@ enum LocalErrors: Error {
     case fileNotFound
     case noSuchPath
     case unknownError
+    
+    // descriptions
+    var localizedDescription: String {
+        switch self {
+        case .fileNameError:    return "File name error"
+        case .fileNotFound:     return "File not found"
+        case .noSuchPath:       return "The search path is not defined"
+        case .unknownError:     return "The exact error is not known"
+        }
+    }
 }
