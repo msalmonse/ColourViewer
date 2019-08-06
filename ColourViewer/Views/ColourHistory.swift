@@ -38,12 +38,10 @@ struct ColourHistory : View {
                     .alert(item: self.$saveErrorMessage) { msg in
                         Alert(
                             title: Text("Save error"),
-                            message: Text("msg"),
-                            dismissButton: Alert.Button.cancel()
+                            message: Text(msg.text),
+                            dismissButton: .default(Text("Dismiss"))
                         )
                     }
-                    Spacer()
-                    Text("\(self.history.changeCount) changes").font(.caption)
                     Spacer()
                     Button(
                         action: { self.history.list.removeAll() },
