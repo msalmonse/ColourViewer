@@ -25,7 +25,7 @@ struct IntElement : View {
     var width: CGFloat
 
     var body: some View {
-        VStack(alignment: HorizontalAlignment.leading) {
+        VStack(alignment: HorizontalAlignment.leading, spacing: 3) {
             Text(label).font(smallerFont(font, by: 2))
 
             HStack {

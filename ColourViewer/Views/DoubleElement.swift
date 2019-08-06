@@ -26,7 +26,7 @@ struct DoubleElement : View {
     var width: CGFloat
 
     var body: some View {
-        VStack(alignment: HorizontalAlignment.leading) {
+        VStack(alignment: HorizontalAlignment.leading, spacing: 3) {
             Text(label).font(smallerFont(font, by: 2))
             HStack {
                 // Increment button
@@ -67,7 +67,7 @@ struct DoubleElement_Previews : PreviewProvider {
             element: test,
             font: .body,
             height: 300,
-            width: 100
+            width: 200
         )
     }
 }
