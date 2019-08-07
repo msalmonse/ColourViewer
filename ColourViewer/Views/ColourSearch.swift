@@ -116,10 +116,7 @@ struct ColourSearch: View {
                         )
                     }
                     // When the search string is updated the match list is recalculated
-                    .onReceive(self.search.publisher, perform: {
-                            self.updateMatchList($0)
-                        }
-                    )
+                    .onReceive(self.search.publisher, perform: { self.updateMatchList($0) })
                 }
                 .navigationBarItems(
                     leading: Image(systemName: "magnifyingglass").font(Font.title.weight(.bold)),

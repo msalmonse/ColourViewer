@@ -152,9 +152,7 @@ private struct ColourSection: View {
             height: height,
             width: width
         )
-        .onReceive(self.newLabel.publisher,
-            perform: { self.rgb.label = $0 }
-        )
+        .onReceive(self.newLabel.publisher, perform: { self.rgb.label = $0 })
     }
 }
 
