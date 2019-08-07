@@ -14,5 +14,5 @@ struct Message: Identifiable {
     let id = UUID()
     let text: String
     
-    init(_ text: String) { self.text = text}
+    init(_ text: String) { self.text = text }
 }
