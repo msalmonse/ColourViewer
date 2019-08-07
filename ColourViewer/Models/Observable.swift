@@ -18,12 +18,12 @@ class ObservableBool: Combine.ObservableObject, Identifiable {
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Bool, Never>()
-    var bool: Bool {
+    var value: Bool {
         willSet { objectWillChange.send() }
-        didSet { publisher.send(bool) }
+        didSet { publisher.send(value) }
     }
     
-    init(_ bool: Bool = false) { self.bool = bool }
+    init(_ initValue: Bool = false) { self.value = initValue }
 }
 
 class ObservableInt: Combine.ObservableObject, Identifiable {
@@ -34,12 +34,12 @@ class ObservableInt: Combine.ObservableObject, Identifiable {
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Int, Never>()
-    var number: Int {
+    var value: Int {
         willSet { objectWillChange.send() }
-        didSet { publisher.send(number) }
+        didSet { publisher.send(value) }
     }
     
-    init(_ number: Int = 0) { self.number = number }
+    init(_ initValue: Int = 0) { self.value = initValue }
 }
 
 class ObservableString: Combine.ObservableObject, Identifiable {
@@ -50,10 +50,10 @@ class ObservableString: Combine.ObservableObject, Identifiable {
     let id = UUID()
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<String, Never>()
-    var string: String {
+    var value: String {
         willSet { objectWillChange.send() }
-        didSet { publisher.send(string) }
+        didSet { publisher.send(value) }
     }
     
-    init(_ string: String = "") { self.string = string }
+    init(_ initValue: String = "") { self.value = initValue }
 }

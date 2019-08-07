@@ -69,7 +69,7 @@ struct RGBelements: View {
                 )
                 
                 /// Selector for the base and radix
-                Picker("Radix", selection: $base.number) {
+                Picker("Radix", selection: $base.value) {
                     Text("Dec").tag(10)
                     Text("Hex").tag(16)
                     Text("Oct").tag(8)

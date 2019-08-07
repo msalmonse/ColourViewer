@@ -24,12 +24,12 @@ struct ColourSearch: View {
     
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
-        matchList = coloursMatching(match, sortByLuma: lumaSort.bool)
+        matchList = coloursMatching(match, sortByLuma: lumaSort.value)
     }
     
     /// Update the ColourItem in the parent, clear the search data and close the sheet
     private func selectColour(_ name: String) {
-        newLabel.string = name
+        newLabel.value = name
         clearAll()
         dismiss()
     }
@@ -82,7 +82,7 @@ struct ColourSearch: View {
                         .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                         // Select the sort field
-                        Toggle("Sort by luminosity:", isOn: self.$lumaSort.bool)
+                        Toggle("Sort by luminosity:", isOn: self.$lumaSort.value)
                         .onReceive(self.lumaSort.publisher,
                                 perform: { _ in self.updateMatchList(self.search.string) }
                         )

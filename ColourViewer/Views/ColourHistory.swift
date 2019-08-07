@@ -28,7 +28,7 @@ struct ColourHistory : View {
                 List {
                     ForEach(history.list) { historyItem in
                         Button(
-                            action: { self.newLabel.string = historyItem.label },
+                            action: { self.newLabel.value = historyItem.label },
                             label: { HistoryRow(item: historyItem) }
                         )
                     }
