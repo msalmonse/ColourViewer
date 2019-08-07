@@ -23,8 +23,7 @@ struct HSBelements: View {
     @ObservedObject var saturationElement: DoubleAndString
     @ObservedObject var brightnessElement: DoubleAndString
     var font: Font
-    var height: CGFloat
-    var width: CGFloat
+    var size: CGSize
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.center) {
@@ -33,24 +32,21 @@ struct HSBelements: View {
                     label: "Hue°",
                     element: hueElement,
                     font: font,
-                    height: height/4,
-                    width: width
+                    size: size.relativeSize(1.0, 0.25)
                 )
                 
                 DoubleElement(
                     label: "Saturation%",
                     element: saturationElement,
                     font: font,
-                    height: height/4,
-                    width: width
+                    size: size.relativeSize(1.0, 0.25)
                 )
                 
                 DoubleElement(
                     label: "Brightness%",
                     element: brightnessElement,
                     font: font,
-                    height: height/4,
-                    width: width
+                    size: size.relativeSize(1.0, 0.25)
                 )
             }
         }
@@ -70,8 +66,8 @@ struct HSBelements_Previews: PreviewProvider {
             saturationElement: saturation,
             brightnessElement: brightness,
             font: .body,
-            height: 300,
-            width: 100
+            size: CGSize(width: 100, height: 300)
+
         )
     }
 }

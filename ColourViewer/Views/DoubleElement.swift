@@ -22,8 +22,7 @@ struct DoubleElement : View {
     let label: String
     @ObservedObject var element: DoubleAndString
     var font: Font
-    var height: CGFloat
-    var width: CGFloat
+    var size: CGSize
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading, spacing: 3) {
@@ -40,7 +39,7 @@ struct DoubleElement : View {
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
-                .frame(width: width * 0.4)
+                .frame(width: size.relativeWidth(0.4))
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
@@ -66,8 +65,7 @@ struct DoubleElement_Previews : PreviewProvider {
             label: "Test",
             element: test,
             font: .body,
-            height: 300,
-            width: 200
+            size: CGSize(width: 45, height: 100)
         )
     }
 }

@@ -28,22 +28,19 @@ struct PortraitColourEditor: View {
                     VStack(alignment: HorizontalAlignment.center) {
                         RGBsection(
                             rgb: self.$rgb,
-                            height: gp.relativeHeight(0.3),
-                            width: gp.relativeWidth(0.9)
+                            size: gp.relativeSize(0.9, 0.3)
                         )
                         
                         HSBsection(
                             rgb: self.$rgb,
-                            height: gp.relativeHeight(0.3),
-                            width: gp.relativeWidth(0.9)
+                            size: gp.relativeSize(0.9, 0.3)
                         )
                         
                         ColourSection(
                             rgb: self.$rgb,
                             history: self.history,
                             newLabel: self.newLabel,
-                            height: gp.relativeHeight(0.3),
-                            width: gp.relativeWidth(0.9)
+                            size: gp.relativeSize(0.9, 0.3)
                         )
                         
                         Spacer()
@@ -73,22 +70,19 @@ struct LandscapeColourEditor: View {
                         
                         RGBsection(
                             rgb: self.$rgb,
-                            height: gp.relativeHeight(0.9),
-                            width: gp.relativeWidth(0.3)
+                            size: gp.relativeSize(0.3, 0.9)
                         )
                         
                         HSBsection(
                             rgb: self.$rgb,
-                            height: gp.relativeHeight(0.9),
-                            width: gp.relativeWidth(0.3)
+                            size: gp.relativeSize(0.3, 0.9)
                         )
                         
                         ColourSection(
                             rgb: self.$rgb,
                             history: self.history,
                             newLabel: self.newLabel,
-                            height: gp.relativeHeight(0.9),
-                            width: gp.relativeWidth(0.4)
+                            size: gp.relativeSize(0.4, 0.9)
                         )
                     }
                 }
@@ -104,8 +98,7 @@ struct LandscapeColourEditor: View {
 
 private struct RGBsection: View {
     @Binding var rgb: RGBandHSB
-    let height: CGFloat
-    let width: CGFloat
+    let size: CGSize
     
     var body: some View {
         RGBelements(
@@ -113,16 +106,14 @@ private struct RGBsection: View {
             greenElement: self.rgb.green,
             blueElement: self.rgb.blue,
             font: .body,
-            height: height,
-            width: width
+            size: size
         )
     }
 }
 
 private struct HSBsection: View {
     @Binding var rgb: RGBandHSB
-    let height: CGFloat
-    let width: CGFloat
+    let size: CGSize
     
     var body: some View {
         HSBelements(
@@ -130,8 +121,7 @@ private struct HSBsection: View {
             saturationElement: self.rgb.saturation,
             brightnessElement: self.rgb.brightness,
             font: .body,
-            height: height,
-            width: width
+            size: size
         )
     }
 }
@@ -140,8 +130,7 @@ private struct ColourSection: View {
     @Binding var rgb: RGBandHSB
     @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
-    let height: CGFloat
-    let width: CGFloat
+    let size: CGSize
     
     var body: some View {
         ColourElements(
@@ -149,8 +138,7 @@ private struct ColourSection: View {
             history: self.history,
             newLabel: self.newLabel,
             font: .body,
-            height: height,
-            width: width
+            size: size
         )
         .onReceive(self.newLabel.publisher, perform: { self.rgb.label = $0 })
     }

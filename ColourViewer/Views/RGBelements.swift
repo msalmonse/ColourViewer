@@ -35,8 +35,7 @@ struct RGBelements: View {
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
     var font: Font
-    var height: CGFloat
-    var width: CGFloat
+    var size: CGSize
     
     /// Base for the elements
     @ObservedObject var base = ObservableInt(10)
@@ -48,24 +47,21 @@ struct RGBelements: View {
                     label: "Red",
                     element: redElement,
                     font: font,
-                    height: height/5,
-                    width: width
+                    size: size.relativeSize(1.0, 0.2)
                 )
                 
                 IntElement(
                     label: "Green",
                     element: greenElement,
                     font: font,
-                    height: height/5,
-                    width: width
+                    size: size.relativeSize(1.0, 0.2)
                 )
                 
                 IntElement(
                     label: "Blue",
                     element: blueElement,
                     font: font,
-                    height: height/5,
-                    width: width
+                    size: size.relativeSize(1.0, 0.25)
                 )
                 
                 /// Selector for the base and radix
@@ -76,7 +72,7 @@ struct RGBelements: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .font(smallerFont(font, by: 2))
-                .frame(width: width * 0.4)
+                .frame(width: size.relativeWidth(0.4))
                 // receiver for changes in base
                 .onReceive(base.publisher, perform: { self.setRadices(base: $0) })
             }
@@ -98,8 +94,7 @@ struct RGBelements_Previews: PreviewProvider {
             greenElement: green,
             blueElement: blue,
             font: .body,
-            height: 300,
-            width: 100
+            size: CGSize(width: 100, height: 300)
         )
     }
 }

@@ -20,6 +20,11 @@ extension GeometryProxy {
         return self.size.relativeHeight(factor)
     }
     
+    // Combined relative width and height
+    func relativeSize(_ widthFactor: Double, _ heightFactor: Double) -> CGSize {
+        return self.size.relativeSize(widthFactor, heightFactor)
+    }
+    
     // Is the display in landscape
     var isLandscape: Bool { return self.size.width > self.size.height }
 }

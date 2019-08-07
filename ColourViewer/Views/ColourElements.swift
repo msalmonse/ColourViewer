@@ -24,8 +24,7 @@ struct ColourElements: View {
     @ObservedObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     let font: Font
-    let height: CGFloat
-    let width: CGFloat
+    let size: CGSize
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.center) {
@@ -37,7 +36,11 @@ struct ColourElements: View {
                     .padding(3)
                     .foregroundColor(.black)
                     .background(filledRoundedRectangle(cornerRadius: 3, color: .white))
-                    .frame(width: width * 0.8, height: height * 0.35, alignment: .center)
+                    .frame(
+                        width: size.relativeWidth(0.8),
+                        height: size.relativeHeight(0.35),
+                        alignment: .center
+                    )
                     .overlay(strokedRoundedRectangle(cornerRadius: 10, stroke: 3))
                     .background(filledRoundedRectangle(cornerRadius: 10,
                         color: colourItem.color))
@@ -87,8 +90,7 @@ struct ColourElements_Previews: PreviewProvider {
             history: history,
             newLabel: newLabel,
             font: .body,
-            height: 300,
-            width: 200
+            size: CGSize(width: 200, height: 300)
         )
     }
 }

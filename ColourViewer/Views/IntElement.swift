@@ -21,8 +21,7 @@ struct IntElement : View {
     let label: String
     @ObservedObject var element: IntAndString
     var font: Font
-    var height: CGFloat
-    var width: CGFloat
+    var size: CGSize
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading, spacing: 3) {
@@ -42,7 +41,7 @@ struct IntElement : View {
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
-                .frame(width: width * 0.4)
+                    .frame(width: size.relativeWidth(0.4))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                 /// Decrement button
@@ -66,8 +65,7 @@ struct IntElement_Previews : PreviewProvider {
             label: "Test",
             element: test,
             font: .body,
-            height: 45,
-            width: 100
+            size: CGSize(width: 45, height: 100)
         )
     }
 }
