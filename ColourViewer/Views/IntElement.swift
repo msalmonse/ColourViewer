@@ -41,7 +41,8 @@ struct IntElement : View {
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
-                    .frame(width: size.relativeWidth(0.4))
+                .padding(.horizontal, 5)
+                .frame(width: size.relativeWidth(0.4))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                 /// Decrement button
@@ -65,7 +66,7 @@ struct IntElement_Previews : PreviewProvider {
             label: "Test",
             element: test,
             font: .body,
-            size: CGSize(width: 45, height: 100)
+            size: CGSize(width: 100, height: 45)
         )
     }
 }

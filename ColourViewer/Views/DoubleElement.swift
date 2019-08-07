@@ -39,6 +39,7 @@ struct DoubleElement : View {
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
+                .padding(.horizontal, 5)
                 .frame(width: size.relativeWidth(0.4))
                 .font(.system(textStyle(smallerFont(font)), design: .monospaced))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
