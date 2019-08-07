@@ -40,7 +40,7 @@ struct ColourHistory : View {
                 leading:
                     Image(systemName: "rectangle.stack")
                     .font(Font.title.weight(.bold))
-                    .accentColor(.primary),
+                    .foregroundColor(.primary),
                 trailing: EditButton()
             )
         }

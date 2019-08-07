@@ -52,7 +52,7 @@ struct PortraitColourEditor: View {
                 .navigationBarItems(
                     leading: Image(systemName: "square.and.pencil")
                         .font(Font.title.weight(.bold))
-                        .accentColor(Color.primary)
+                        .foregroundColor(Color.primary)
                 )
             }
         }
@@ -95,7 +95,7 @@ struct LandscapeColourEditor: View {
                 .navigationBarItems(
                     leading: Image(systemName: "square.and.pencil")
                         .font(Font.title.weight(.bold))
-                        .accentColor(Color.primary)
+                        .foregroundColor(Color.primary)
                 )
             }
         }

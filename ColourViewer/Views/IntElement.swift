@@ -34,7 +34,7 @@ struct IntElement : View {
                     action: { self.element.number += 1 },
                     label: {
                         Image(systemName: "plus.square.fill")
-                        .accentColor(.primary)
+                        .foregroundColor(.primary)
                     }
                 )
 
@@ -50,7 +50,7 @@ struct IntElement : View {
                     action: { self.element.number -= 1 },
                     label: {
                         Image(systemName: "minus.square.fill")
-                        .accentColor(.primary)
+                        .foregroundColor(.primary)
                     }
                 )
             }

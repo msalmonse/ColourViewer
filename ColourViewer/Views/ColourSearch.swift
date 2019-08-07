@@ -129,7 +129,7 @@ struct ColourSearch: View {
                         label: {
                             Image(systemName: "clear")
                             .font(Font.title.weight(.bold))
-                            .accentColor(.primary)
+                            .foregroundColor(.primary)
                         }
                     )
                     .accessibility(hint: Text("Cancel"))

@@ -34,7 +34,7 @@ struct DoubleElement : View {
                     action: { self.element.number += 0.1 },
                     label: {
                         Image(systemName: "plus.square.fill")
-                        .accentColor(.primary)
+                        .foregroundColor(.primary)
                     }
                 )
                 /// Edittor for the String value
@@ -49,7 +49,7 @@ struct DoubleElement : View {
                     action: { self.element.number -= 0.1 },
                     label: {
                         Image(systemName: "minus.square.fill")
-                        .accentColor(.primary)
+                        .foregroundColor(.primary)
                     }
                 )
             }
