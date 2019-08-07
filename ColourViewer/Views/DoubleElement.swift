@@ -33,7 +33,7 @@ struct DoubleElement : View {
                 Button(
                     action: { self.element.number += 0.1 },
                     label: {
-                        Image(systemName: "plus.square.fill")
+                        Image(systemName: "plus.square")
                         .foregroundColor(.primary)
                     }
                 )
@@ -48,7 +48,7 @@ struct DoubleElement : View {
                 Button(
                     action: { self.element.number -= 0.1 },
                     label: {
-                        Image(systemName: "minus.square.fill")
+                        Image(systemName: "minus.square")
                         .foregroundColor(.primary)
                     }
                 )
