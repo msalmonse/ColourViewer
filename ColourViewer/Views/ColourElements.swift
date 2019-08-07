@@ -26,7 +26,6 @@ struct ColourElements: View {
     let font: Font
     let height: CGFloat
     let width: CGFloat
-    @ObservedObject var showingSearch = ObservableBool(false)
 
     var body: some View {
         VStack(alignment: HorizontalAlignment.center) {
@@ -65,23 +64,7 @@ struct ColourElements: View {
                     )
                     .modifier(buttonBackground())
                     // Button to display the colour search view
-                    Button(
-                        action: { self.showingSearch.bool = true },
-                        label: {
-                            Image(systemName: "magnifyingglass")
-                            .foregroundColor(.primary)
-                        }
-                    )
-                    .modifier(buttonBackground())
-                    .sheet(
-                        isPresented: $showingSearch.bool,
-                        content: {
-                            ColourSearch(
-                                showingSearch: self.showingSearch,
-                                newLabel: self.newLabel
-                            )
-                        }
-                    )
+                    ColourSearchShow(newLabel: self.newLabel)
                 }
             }
         }

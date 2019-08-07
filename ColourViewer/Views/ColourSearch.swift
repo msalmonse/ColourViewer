@@ -16,11 +16,11 @@ import Combine
 ///     newLabel:          the recipient of the selected colour's name
 
 struct ColourSearch: View {
-    @ObservedObject var showingSearch: ObservableBool
     @ObservedObject var newLabel: ObservableString
     @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
     @ObservedObject var lumaSort = ObservableBool(false)
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
@@ -31,10 +31,13 @@ struct ColourSearch: View {
     private func selectColour(_ name: String) {
         newLabel.string = name
         clearAll()
-        showingSearch.bool = false
+        dismiss()
     }
     
-    /// Clear the search data
+    // Dismiss the sheet
+    private func dismiss() { mode.value.dismiss() }
+
+    // Clear the search data
     private func clearAll() {
         search.string = ""
         matchList = []
@@ -122,7 +125,7 @@ struct ColourSearch: View {
                     leading: Image(systemName: "magnifyingglass").font(Font.title.weight(.bold)),
                     /// Button to close the sheet
                     trailing: Button(
-                        action: { self.showingSearch.bool = false },
+                        action: { self.dismiss() },
                         label: {
                             Image(systemName: "clear")
                             .font(Font.title.weight(.bold))
@@ -139,15 +142,11 @@ struct ColourSearch: View {
 
 #if DEBUG
 struct ColourSearch_Previews: PreviewProvider {
-    //@State static var showingSearch = true
     @ObservedObject static var showingSearch = ObservableBool(true)
     @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
-        ColourSearch(
-            showingSearch: showingSearch,
-            newLabel: newLabel
-        )
+        ColourSearch(newLabel: newLabel)
     }
 }
 #endif

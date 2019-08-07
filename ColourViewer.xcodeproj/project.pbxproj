@@ -39,6 +39,7 @@
 		C4A064AB22F72503009B76EE /* ColourItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AA22F72503009B76EE /* ColourItemList.swift */; };
 		C4A064AD22F7F922009B76EE /* LoadAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AC22F7F922009B76EE /* LoadAndSave.swift */; };
 		C4A064AF22F875E0009B76EE /* LocalErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AE22F875DF009B76EE /* LocalErrors.swift */; };
+		C4C8C22022FA9EEA00597717 /* ColourSearchShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C8C21F22FA9EEA00597717 /* ColourSearchShow.swift */; };
 		C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5532E22F1CAC5002F6F5F /* Radix.swift */; };
 		C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */; };
 		C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItem.swift */; };
@@ -100,6 +101,7 @@
 		C4A064AC22F7F922009B76EE /* LoadAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSave.swift; sourceTree = "<group>"; };
 		C4A064AE22F875DF009B76EE /* LocalErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalErrors.swift; sourceTree = "<group>"; };
 		C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
+		C4C8C21F22FA9EEA00597717 /* ColourSearchShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourSearchShow.swift; sourceTree = "<group>"; };
 		C4D5532E22F1CAC5002F6F5F /* Radix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radix.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/Radix.swift; sourceTree = "<group>"; };
 		C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatching.swift; path = /Users/mesa/xcode/ColourViewer/../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatching.swift; sourceTree = "<absolute>"; };
 		C4E50BDF22E5BE74003E3565 /* ColourItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColourItem.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColourItem.swift; sourceTree = "<group>"; };
@@ -195,13 +197,13 @@
 			children = (
 				C45C7C0922D4C010008D119D /* ColourItem.swift */,
 				C4A064AA22F72503009B76EE /* ColourItemList.swift */,
+				C46BF8BE22F97115009A5816 /* Message.swift */,
 				C490553622EAC43500C86E46 /* NumberAndString.swift */,
 				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
 				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
 				C490553A22EB08CF00C86E46 /* RGBandHSB.swift */,
 				C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */,
 				C42DE12022F1711D00895FC2 /* Shapes.swift */,
-				C46BF8BE22F97115009A5816 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 				C45C7C1122D517F0008D119D /* ColourHistory.swift */,
 				C46BF8C222F9E537009A5816 /* ColourHistoryAdmin.swift */,
 				C4EB231522EE0CCE0071099F /* ColourSearch.swift */,
+				C4C8C21F22FA9EEA00597717 /* ColourSearchShow.swift */,
 				C4EB230F22EDDAB00071099F /* DoubleElement.swift */,
 				C4EB231122EDDB830071099F /* HSBelements.swift */,
 				C4EB230B22EDB8930071099F /* IntElement.swift */,
@@ -380,6 +383,7 @@
 				C4A0646522F49725009B76EE /* RGBelements.swift in Sources */,
 				C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */,
 				C46BF8BF22F97115009A5816 /* Message.swift in Sources */,
+				C4C8C22022FA9EEA00597717 /* ColourSearchShow.swift in Sources */,
 				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
 				C43A888322F41321003E9D64 /* SearchString.swift in Sources */,
 				C46BF8C322F9E537009A5816 /* ColourHistoryAdmin.swift in Sources */,
