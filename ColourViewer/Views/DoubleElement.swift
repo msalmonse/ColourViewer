@@ -33,6 +33,7 @@ struct DoubleElement : View {
                     action: { self.element.number += 0.1 },
                     label: {
                         Image(systemName: "plus.square")
+                        .font(font.weight(.semibold))
                         .foregroundColor(.primary)
                     }
                 )
@@ -40,8 +41,8 @@ struct DoubleElement : View {
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
                 .padding(.horizontal, 5)
-                .frame(width: size.relativeWidth(0.4))
-                .font(.system(textStyle(smallerFont(font)), design: .monospaced))
+                .frame(width: size.relativeWidth(0.5))
+                .font(.system(textStyle(font), design: .monospaced))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                 // Decrement button
@@ -49,6 +50,7 @@ struct DoubleElement : View {
                     action: { self.element.number -= 0.1 },
                     label: {
                         Image(systemName: "minus.square")
+                        .font(font.weight(.semibold))
                         .foregroundColor(.primary)
                     }
                 )

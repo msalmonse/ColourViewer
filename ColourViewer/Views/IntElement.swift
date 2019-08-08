@@ -33,6 +33,7 @@ struct IntElement : View {
                     action: { self.element.number += 1 },
                     label: {
                         Image(systemName: "plus.square")
+                        .font(font.weight(.semibold))
                         .foregroundColor(.primary)
                     }
                 )
@@ -40,9 +41,9 @@ struct IntElement : View {
                 /// Edittor for the String value
                 TextField("value", text: $element.string)
                 .multilineTextAlignment(.trailing)
-                .font(.system(textStyle(smallerFont(font)), design: .monospaced))
+                .font(.system(textStyle(font), design: .monospaced))
                 .padding(.horizontal, 5)
-                .frame(width: size.relativeWidth(0.4))
+                .frame(width: size.relativeWidth(0.5))
                 .overlay(strokedRoundedRectangle(cornerRadius: 3))
 
                 /// Decrement button
@@ -50,6 +51,7 @@ struct IntElement : View {
                     action: { self.element.number -= 1 },
                     label: {
                         Image(systemName: "minus.square")
+                        .font(font.weight(.semibold))
                         .foregroundColor(.primary)
                     }
                 )
