@@ -90,7 +90,7 @@ class RGBandString: IntAndString {
 /// This class is a combined Double and String, updating the one updates the other provided that the values are valid
 
 class DoubleAndString: Combine.ObservableObject, Identifiable {
-    private var format: String = "%.2f"
+    private var format: String = "%.1f"
     
     let id = UUID()
     // Limits for value

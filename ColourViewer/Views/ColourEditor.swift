@@ -25,7 +25,7 @@ struct PortraitColourEditor: View {
         GeometryReader { gp in
             NavigationView {
                 ScrollView {
-                    VStack(alignment: HorizontalAlignment.center) {
+                    VStack(alignment: HorizontalAlignment.center, spacing: 2) {
                         RGBsection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
@@ -65,13 +65,12 @@ struct LandscapeColourEditor: View {
         GeometryReader { gp in
             NavigationView {
                 ScrollView([.horizontal, .vertical]) {
-                    HStack(alignment: VerticalAlignment.top) {
-                        Spacer()
-                        
+                    HStack(alignment: VerticalAlignment.top, spacing: 1) {
                         RGBsection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.3, 0.9)
                         )
+                        .padding(.leading, 2)
                         
                         HSBsection(
                             rgb: self.$rgb,

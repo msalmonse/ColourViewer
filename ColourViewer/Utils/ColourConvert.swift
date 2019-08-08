@@ -32,9 +32,10 @@ func HSBfromRGB(red: Int, green: Int, blue: Int,
     
     colour.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
     
-    hue = (h == 1.0) ? 0.0 : (Double(exactly: 36000.0 * h)!).rounded()/100.0
-    saturation = (Double(exactly: 10000.0 * s)!).rounded()/100.0
-    brightness = (Double(exactly: 10000.0 * b)!).rounded()/100.0
+    // Round results to one decimal place
+    hue = (h == 1.0) ? 0.0 : (Double(exactly: 3600.0 * h)!).rounded()/10.0
+    saturation = (Double(exactly: 1000.0 * s)!).rounded()/10.0
+    brightness = (Double(exactly: 1000.0 * b)!).rounded()/10.0
 }
 
 /// Convert from CGFloat to 0...255
