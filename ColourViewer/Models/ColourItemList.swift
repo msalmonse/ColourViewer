@@ -18,7 +18,7 @@ class ColourItemList: ObservableObject, Identifiable {
 
     let id = UUID()
     var changeCount = 0
-    var hasSaveFile = fileExists(ColourItemList.saveFile, in: ColourItemList.saveDir)
+    var saveURL: URL? = nil
 
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Void, Never>()
@@ -33,18 +33,26 @@ class ColourItemList: ObservableObject, Identifiable {
     
     var isEmpty: Bool { list.isEmpty }
     
-    init(_ inList: [ColourItem] = []) {
+    init(_ inList: [ColourItem] = [], loadedFrom: URL? = nil) {
         self.list = inList
+        self.saveURL = loadedFrom
     }
     
     convenience init() { self.init([]) }
     
     // Save to file
     func save(to: String = ColourItemList.saveFile) -> Result<Void,Error> {
-        switch saveAsJSON(list, to: to) {
+        var url: URL
+        
+        switch fileURL(to) {
+        case .success(let ret): url = ret
+        case .failure(let error): return .failure(error)
+        }
+
+        switch saveAsJSON(list, to: url) {
         case .success(_):
-            hasSaveFile = true
             changeCount = 0
+            saveURL = url
             return .success(Void())
         case .failure(let error):
             os_log("Error saving to '%s': %s", type: .info, to, "\(error)")
@@ -54,8 +62,16 @@ class ColourItemList: ObservableObject, Identifiable {
     
     // Initialize from file
     static func load(_ from: String = saveFile) -> ColourItemList {
-        switch loadFromJSON(from, as: [ColourItem].self) {
-        case .success(let list): return ColourItemList(list)
+        var url: URL
+        
+        switch fileURL(from) {
+        case .success(let ret): url = ret
+        case .failure(_): return ColourItemList([])
+        }
+
+        switch loadFromJSON(url, as: [ColourItem].self) {
+        case .success(let list):
+            return ColourItemList(list, loadedFrom: url)
         case .failure(let error):
             os_log("Error loading from '%s': %s", type: .info, from, "\(error)")
             return ColourItemList([])

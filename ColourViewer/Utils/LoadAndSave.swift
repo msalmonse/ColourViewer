@@ -14,15 +14,9 @@ import Foundation
 /// Parameters:
 ///     filename:       name of file to load
 
-func loadFromJSON<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> Result<T,Error> {
+func loadFromJSON<T: Decodable>(_ url: URL, as type: T.Type = T.self) -> Result<T,Error> {
     let data: Data
-    var url: URL
-   
-    switch fileURL(filename) {
-    case .success(let ret): url = ret
-    case .failure(let error): return .failure(error)
-    }
-    
+
     do {
         data = try Data(contentsOf: url)
     } catch {
@@ -38,16 +32,8 @@ func loadFromJSON<T: Decodable>(_ filename: String, as type: T.Type = T.self) ->
     }
 }
 
-func saveAsJSON<T: Encodable>(_ obj: T, to filename: String,
-        in searchPath: FileManager.SearchPathDirectory = .applicationSupportDirectory
-) -> Result<Void,Error> {
-    var url: URL
+func saveAsJSON<T: Encodable>(_ obj: T, to url: URL) -> Result<Void,Error> {
     var data: Data
-
-    switch fileURL(filename, in: searchPath) {
-    case .success(let ret): url = ret
-    case .failure(let error): return .failure(error)
-    }
 
     switch createDirectoryContaining(url: url) {
     case .success(): break
@@ -64,7 +50,7 @@ func saveAsJSON<T: Encodable>(_ obj: T, to filename: String,
     do {
         try data.write(to: url)
     } catch {
-        print("Error writing to \(filename): \(error)")
+        print("Error writing to \(url.path): \(error)")
         return .failure(error)
     }
 
