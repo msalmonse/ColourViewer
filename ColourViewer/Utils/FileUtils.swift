@@ -124,3 +124,22 @@ func fileExists(_ name: String, in searchPath: FileManager.SearchPathDirectory) 
     
     return urlExists(url)
 }
+
+/// Remove a file
+
+func urlRemove(_ url: URL) -> Result<Void,Error> {
+    do {
+        try FileManager.default.removeItem(at: url)
+    }
+    catch {
+        return .failure(error)
+    }
+    
+    return .success(Void())
+}
+
+/// Get the url for the temorary directory
+
+func tempDirURL() -> URL {
+    return FileManager.default.temporaryDirectory
+}

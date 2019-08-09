@@ -77,4 +77,17 @@ class ColourItemList: ObservableObject, Identifiable {
             return ColourItemList([])
         }
     }
+    
+    // Remove save file
+    func removeSaved() -> Result<Void, Error> {
+        if saveURL == nil { return .failure(LocalErrors.fileNotFound) }
+        let rmURL = saveURL!
+        saveURL = nil
+        switch urlRemove(rmURL) {
+        case .success(): return .success(Void())
+        case .failure(let error):
+            os_log("Error removing '%s': %s", type: .info, rmURL.path, "\(error)")
+            return .failure(error)
+        }
+    }
 }
