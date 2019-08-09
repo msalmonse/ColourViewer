@@ -16,6 +16,8 @@ class LoadAndSaveTest: XCTestCase {
         .init(red: 0, green: 0, blue: 255)
     ]
     static let filename = "testSave.json"
+    static let tempDir = tempDirURL()
+    static let testSaveURL = tempDir.appendingPathComponent(filename)
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,7 +28,7 @@ class LoadAndSaveTest: XCTestCase {
     }
 
     func testSave() {
-        switch saveAsJSON(Self.test, to: Self.filename) {
+        switch saveAsJSON(Self.test, to: Self.testSaveURL) {
         case .success(): XCTAssert(true)
         case .failure(let error): XCTAssert(false, "Error: \(error)")
         }
@@ -40,7 +42,7 @@ class LoadAndSaveTest: XCTestCase {
             XCTAssertEqual(loaded[2], Self.test[2])
         }
 
-        switch loadFromJSON(Self.filename, as: [ColourItem].self) {
+        switch loadFromJSON(Self.testSaveURL, as: [ColourItem].self) {
         case .success(let list): check(list)
         case .failure(let error): XCTAssert(false, "Error: \(error)")
         }
