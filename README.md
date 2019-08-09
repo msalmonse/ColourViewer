@@ -2,7 +2,8 @@
 Test of SwiftUI and Combine
 
 ### Main Screen
-![Main Screen](Images/main.png "Main Screen")
+![Main Portrait Screen](Images/portrait.png "Main Portrait Screen")
+![Main Landscape Screen](Images/landscape.png "Main Landscape Screen")
 
 The main screen is divided into two, the colour editor and the colour history list. The 3 sections of the editor are coupled together so that updating any value automatically updates the other two sections.
 
