@@ -67,7 +67,14 @@ struct ColourElements: View {
                     )
                     .modifier(buttonBackground())
                     // Button to display the colour search view
-                    ColourSearchShow(newLabel: self.newLabel)
+                    Button(
+                        action: { showSheet.value = .search },
+                        label: {
+                            Image(systemName: "magnifyingglass")
+                            .foregroundColor(.primary)
+                        }
+                    )
+                    .modifier(buttonBackground())
                 }
             }
         }

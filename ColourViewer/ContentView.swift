@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+var showSheet = PublishedShowSheet(.none)
+
 struct ContentView : View {
     @ObservedObject var history = ColourItemList.load()
     
@@ -39,6 +41,9 @@ struct ContentView : View {
                     history: self.history,
                     newLabel: self.newLabel
                 )
+                
+                // Empty view to hold displayed sheets
+                Sheets(newLabel: self.newLabel)
             }
         }
         .environment(\.horizontalSizeClass, .compact)
