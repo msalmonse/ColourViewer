@@ -13,14 +13,14 @@ import SwiftUI
 ///
 /// Parameters
 ///     rgb:            main model of colour data
-///     newLabel:   used to change displayed colour
 /// Environment
 ///     history:       a list of interesting colours
+/// Global:
+///     newLabel:   used to change colour
 
 struct PortraitColourEditor: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
-    @ObservedObject var newLabel: ObservableString
     
     var body: some View {
         GeometryReader { gp in
@@ -39,7 +39,6 @@ struct PortraitColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            newLabel: self.newLabel,
                             size: gp.relativeSize(0.9, 0.3)
                         )
                         
@@ -59,7 +58,6 @@ struct PortraitColourEditor: View {
 struct LandscapeColourEditor: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
-    @ObservedObject var newLabel: ObservableString
     
     var body: some View {
         GeometryReader { gp in
@@ -79,7 +77,6 @@ struct LandscapeColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            newLabel: self.newLabel,
                             size: gp.relativeSize(0.4, 0.9)
                         )
                     }
@@ -127,17 +124,15 @@ private struct HSBsection: View {
 private struct ColourSection: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
-    @ObservedObject var newLabel: ObservableString
     let size: CGSize
     
     var body: some View {
         ColourElements(
             colourItem: self.rgb.colourItem,
-            newLabel: self.newLabel,
             font: .body,
             size: size
         )
-        .onReceive(self.newLabel.publisher, perform: { self.rgb.label = $0 })
+        .onReceive(newLabel.publisher, perform: { self.rgb.label = $0 })
     }
 }
 
@@ -149,12 +144,10 @@ struct ColourEditor_Previews: PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ])
-    @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
         PortraitColourEditor(
-            rgb: $rgb,
-            newLabel: newLabel
+            rgb: $rgb
         )
         .environmentObject(history)
     }

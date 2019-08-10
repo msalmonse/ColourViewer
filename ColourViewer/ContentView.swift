@@ -9,11 +9,10 @@
 import SwiftUI
 
 var showSheet = PublishedShowSheet(.none)
+var newLabel = PublishedString("")
 
 struct ContentView : View {
     @ObservedObject var history = ColourItemList.load()
-    
-    @ObservedObject var newLabel = ObservableString("")
     @State var rgb = RGBandHSB.random
     
     var body: some View {
@@ -21,26 +20,22 @@ struct ContentView : View {
             HStack(alignment: VerticalAlignment.top, spacing: 5) {
                 if gp.isLandscape {
                     LandscapeColourEditor(
-                        rgb: self.$rgb,
-                        newLabel: self.newLabel
+                        rgb: self.$rgb
                     )
                     .frame(width: gp.relativeWidth(0.7))
                 }
                 else {
                     PortraitColourEditor(
-                        rgb: self.$rgb,
-                        newLabel: self.newLabel
+                        rgb: self.$rgb
                     )
                 }
                 
                 Divider().frame(width: 1)
                 
-                ColourHistory(
-                    newLabel: self.newLabel
-                )
+                ColourHistory()
                 
                 // Empty view to hold displayed sheets
-                Sheets(newLabel: self.newLabel)
+                Sheets()
             }
         }
         .environment(\.horizontalSizeClass, .compact)

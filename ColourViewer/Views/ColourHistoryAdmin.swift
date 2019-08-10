@@ -8,6 +8,11 @@
 
 import SwiftUI
 
+/// ColourHistory Buttons
+///
+/// Global
+///     showSheet:    used to open alerts et al.
+
 struct ColourHistoryAdmin: View {
     @EnvironmentObject var history: ColourItemList
 

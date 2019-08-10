@@ -10,14 +10,11 @@ import SwiftUI
 
 /// Display a list of interesting colours
 ///
-/// Parameters:
-///     newLabel:       used to update displayed colour
 /// Environment
 ///     history:       a list of interesting colours
 
 struct ColourHistory : View {
     @EnvironmentObject var history: ColourItemList
-    @ObservedObject var newLabel: ObservableString
     
     var body: some View {
         NavigationView {
@@ -27,7 +24,7 @@ struct ColourHistory : View {
                 List {
                     ForEach(history.list) { historyItem in
                         Button(
-                            action: { self.newLabel.value = historyItem.label },
+                            action: { newLabel.value = historyItem.label },
                             label: { HistoryRow(item: historyItem) }
                         )
                     }
@@ -92,12 +89,9 @@ struct ColourHistory_Previews : PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "Black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "White")
     ])
-    @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
-        ColourHistory(
-            newLabel: newLabel
-        ).environmentObject(history)
+        ColourHistory().environmentObject(history)
     }
 }
 #endif

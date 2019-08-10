@@ -8,10 +8,14 @@
 
 import SwiftUI
 
+/// Central place for displaying alerts et al.
+///
+/// Global
+///     showSheet:    used to open alerts et al.
+
 struct Sheets: View {
     @State var showRemove = false
     @State var showSearch = false
-    @ObservedObject var newLabel: ObservableString
     @State var alertMessage: Message? = nil
     @EnvironmentObject var history: ColourItemList
 
@@ -47,10 +51,10 @@ struct Sheets: View {
         // show colour search
         .sheet(
             isPresented: $showSearch,
-            content: { ColourSearch(newLabel: self.newLabel) }
+            content: { ColourSearch() }
         )
-        .onReceive(showSheet.publisher, perform: {sheet in
-                switch sheet {
+        .onReceive(showSheet.publisher, perform: {showIt in
+                switch showIt {
                 case .removeSaveFile: self.showRemove = true
                 case .search: self.showSearch = true
                 case .showAlert(let msg): self.alertMessage = msg
@@ -63,10 +67,8 @@ struct Sheets: View {
 
 #if DEBUG
 struct Sheets_Previews: PreviewProvider {
-    @ObservedObject static var newLabel = ObservableString("")
-
     static var previews: some View {
-        Sheets(newLabel: self.newLabel)
+        Sheets()
     }
 }
 #endif

@@ -19,3 +19,5 @@ class Published<T> {
     
     init(_ initialValue: T) { self.value = initialValue }
 }
+
+typealias PublishedString = Published<String>

@@ -13,17 +13,16 @@ import SwiftUI
 ///
 /// Parameters:
 ///     colourItem:     the colour to display
-///     newLabel:       used to update displayed colour
 ///     font:                the main font size to use
-///     height:            desired height of view
-///     width:              derired width of view
+///     size:                the height and width to use
 /// Environment
-///     history:       a list of interesting colours
+///     history:           a list of interesting colours
+/// Global
+///     showSheet:    used to open alerts et al.
 
 struct ColourElements: View {
     @ObservedObject var colourItem: ObservableColourItem
     @EnvironmentObject var history: ColourItemList
-    @ObservedObject var newLabel: ObservableString
     let font: Font
     let size: CGSize
 
@@ -90,12 +89,10 @@ struct ColourElements_Previews: PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ])
-    @ObservedObject static var newLabel = ObservableString("")
     
     static var previews: some View {
         ColourElements(
             colourItem: colourItem,
-            newLabel: newLabel,
             font: .body,
             size: CGSize(width: 200, height: 300)
         )

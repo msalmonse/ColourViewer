@@ -13,10 +13,10 @@ import Combine
 ///
 /// Parameters:
 ///     showingSearch: the Bool that determines if this sheet is shown
+///  Global:
 ///     newLabel:          the recipient of the selected colour's name
 
 struct ColourSearch: View {
-    @ObservedObject var newLabel: ObservableString
     @ObservedObject var search = SearchString()
     @State var matchList: [ String ] = []
     @ObservedObject var lumaSort = ObservableBool(false)
@@ -140,10 +140,9 @@ struct ColourSearch: View {
 #if DEBUG
 struct ColourSearch_Previews: PreviewProvider {
     @ObservedObject static var showingSearch = ObservableBool(true)
-    @ObservedObject static var newLabel = ObservableString("")
 
     static var previews: some View {
-        ColourSearch(newLabel: newLabel)
+        ColourSearch()
     }
 }
 #endif
