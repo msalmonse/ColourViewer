@@ -11,6 +11,7 @@ import SwiftUI
 struct Sheets: View {
     @State var showSearch = false
     @ObservedObject var newLabel: ObservableString
+    @State var saveErrorMessage: Message? = nil
 
     var body: some View {
         Text("")
@@ -19,10 +20,18 @@ struct Sheets: View {
             isPresented: $showSearch,
             content: { ColourSearch(newLabel: self.newLabel) }
         )
+        .alert(item: self.$saveErrorMessage) { msg in
+            Alert(
+                title: Text("Save error"),
+                message: Text(msg.text),
+                dismissButton: .default(Text("Dismiss"))
+            )
+        }
         .onReceive(showSheet.publisher, perform: {sheet in
                 switch sheet {
                 case .search: self.showSearch = true
-                default: break
+                case .saveFileError(let msg): self.saveErrorMessage = msg
+                case .none: break
                 }
             }
         )

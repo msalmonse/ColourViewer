@@ -22,7 +22,6 @@ struct ContentView : View {
                 if gp.isLandscape {
                     LandscapeColourEditor(
                         rgb: self.$rgb,
-                        history: self.history,
                         newLabel: self.newLabel
                     )
                     .frame(width: gp.relativeWidth(0.7))
@@ -30,7 +29,6 @@ struct ContentView : View {
                 else {
                     PortraitColourEditor(
                         rgb: self.$rgb,
-                        history: self.history,
                         newLabel: self.newLabel
                     )
                 }
@@ -38,7 +36,6 @@ struct ContentView : View {
                 Divider().frame(width: 1)
                 
                 ColourHistory(
-                    history: self.history,
                     newLabel: self.newLabel
                 )
                 
@@ -47,6 +44,7 @@ struct ContentView : View {
             }
         }
         .environment(\.horizontalSizeClass, .compact)
+        .environmentObject(history)
     }
 }
 

@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct ColourHistoryAdmin: View {
-    @ObservedObject var history: ColourItemList
-    @State var saveErrorMessage: Message? = nil
+    @EnvironmentObject var history: ColourItemList
 
     var body: some View {
         HStack {
@@ -18,7 +17,7 @@ struct ColourHistoryAdmin: View {
                 action: {
                     switch self.history.save() {
                     case .success(): break
-                    case .failure(let error): self.saveErrorMessage = errorMessage(error)
+                    case .failure(let err): showSheet.value = .saveFileError(errorMessage(err))
                     }
                 },
                 label: {
@@ -26,13 +25,6 @@ struct ColourHistoryAdmin: View {
                     .foregroundColor((self.history.changeCount == 0) ? .secondary : .primary)
                 }
             )
-            .alert(item: self.$saveErrorMessage) { msg in
-                Alert(
-                    title: Text("Save error"),
-                    message: Text(msg.text),
-                    dismissButton: .default(Text("Dismiss"))
-                )
-            }
             Spacer()
             Button(
                 action: { self.history.list.removeAll() },
@@ -55,7 +47,7 @@ struct ColourHistoryAdmin_Previews: PreviewProvider {
     ])
 
     static var previews: some View {
-        ColourHistoryAdmin(history: history)
+        ColourHistoryAdmin().environmentObject(history)
     }
 }
 #endif

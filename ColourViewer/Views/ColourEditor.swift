@@ -13,12 +13,13 @@ import SwiftUI
 ///
 /// Parameters
 ///     rgb:            main model of colour data
-///     history:       a list of interesting colours
 ///     newLabel:   used to change displayed colour
+/// Environment
+///     history:       a list of interesting colours
 
 struct PortraitColourEditor: View {
     @Binding var rgb: RGBandHSB
-    @ObservedObject var history: ColourItemList
+    @EnvironmentObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     
     var body: some View {
@@ -38,7 +39,6 @@ struct PortraitColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            history: self.history,
                             newLabel: self.newLabel,
                             size: gp.relativeSize(0.9, 0.3)
                         )
@@ -58,7 +58,7 @@ struct PortraitColourEditor: View {
 
 struct LandscapeColourEditor: View {
     @Binding var rgb: RGBandHSB
-    @ObservedObject var history: ColourItemList
+    @EnvironmentObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     
     var body: some View {
@@ -79,7 +79,6 @@ struct LandscapeColourEditor: View {
                         
                         ColourSection(
                             rgb: self.$rgb,
-                            history: self.history,
                             newLabel: self.newLabel,
                             size: gp.relativeSize(0.4, 0.9)
                         )
@@ -127,14 +126,13 @@ private struct HSBsection: View {
 
 private struct ColourSection: View {
     @Binding var rgb: RGBandHSB
-    @ObservedObject var history: ColourItemList
+    @EnvironmentObject var history: ColourItemList
     @ObservedObject var newLabel: ObservableString
     let size: CGSize
     
     var body: some View {
         ColourElements(
             colourItem: self.rgb.colourItem,
-            history: self.history,
             newLabel: self.newLabel,
             font: .body,
             size: size
@@ -156,9 +154,9 @@ struct ColourEditor_Previews: PreviewProvider {
     static var previews: some View {
         PortraitColourEditor(
             rgb: $rgb,
-            history: history,
             newLabel: newLabel
         )
+        .environmentObject(history)
     }
 }
 #endif
