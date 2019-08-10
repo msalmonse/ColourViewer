@@ -41,7 +41,7 @@ class ColourItemList: ObservableObject, Identifiable {
     convenience init() { self.init([]) }
     
     // Save to file
-    func save(to: String = ColourItemList.saveFile) -> Result<Void,Error> {
+    func save(to: String = ColourItemList.saveFile) -> Result<URL,Error> {
         var url: URL
         
         switch fileURL(to) {
@@ -53,7 +53,7 @@ class ColourItemList: ObservableObject, Identifiable {
         case .success(_):
             changeCount = 0
             saveURL = url
-            return .success(Void())
+            return .success(url)
         case .failure(let error):
             os_log("Error saving to '%s': %s", type: .info, to, "\(error)")
             return .failure(error)

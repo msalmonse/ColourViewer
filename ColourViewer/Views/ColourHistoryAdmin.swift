@@ -21,7 +21,9 @@ struct ColourHistoryAdmin: View {
             Button(
                 action: {
                     switch self.history.save() {
-                    case .success(): break
+                    case .success(let url):
+                        let text = "History saved to " + url.lastPathComponent
+                        showSheet.value = .showAlert(Message(text, subject: "Save to file"))
                     case .failure(let err):
                         showSheet.value = .showAlert(errorMessage(err, .fileSave))
                     }
