@@ -24,7 +24,10 @@ struct ColourSearch: View {
     
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
-        matchList = coloursMatching(match, sortByLuma: lumaSort.value)
+        if match.isEmpty { matchList.removeAll() }
+        else {
+            matchList = coloursMatching(match, sortByLuma: lumaSort.value)
+        }
     }
     
     /// Update the ColourItem in the parent, clear the search data and close the sheet
