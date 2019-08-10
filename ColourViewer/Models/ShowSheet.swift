@@ -12,8 +12,10 @@ import Foundation
 
 enum ShowSheet {
     case none
-    // Display Alert with error when saving file
-    case saveFileError(Message)
+    // Display Alert with file error
+    case fileError(String, Message)
+    // Display action sheet to remove savefile
+    case removeSaveFile
     // Display search sheet
     case search
 }

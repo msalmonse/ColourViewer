@@ -17,7 +17,8 @@ struct ColourHistoryAdmin: View {
                 action: {
                     switch self.history.save() {
                     case .success(): break
-                    case .failure(let err): showSheet.value = .saveFileError(errorMessage(err))
+                    case .failure(let err):
+                        showSheet.value = .fileError("File save failure", errorMessage(err))
                     }
                 },
                 label: {
@@ -25,12 +26,27 @@ struct ColourHistoryAdmin: View {
                     .foregroundColor((self.history.changeCount == 0) ? .secondary : .primary)
                 }
             )
+            .disabled(self.history.isEmpty)
+            Spacer()
+            Button(
+                action: { showSheet.value = .removeSaveFile },
+                label: {
+                    ZStack {
+                        Text("\u{1F4BE}")
+                        .foregroundColor(.primary)
+                        Image(systemName: "x.circle")
+                        .foregroundColor(.red)
+                        .font(Font.largeTitle.weight(.bold))
+                    }
+                }
+            )
             Spacer()
             Button(
                 action: { self.history.list.removeAll() },
                 label: {
                     Image(systemName: "clear")
-                    .foregroundColor((self.history.isEmpty) ? .secondary : .primary)
+                    .foregroundColor((self.history.isEmpty) ? .secondary : .red)
+                    .font(Font.title.weight(.bold))
                 }
             )
         }
