@@ -12,8 +12,7 @@ struct Sheets: View {
     @State var showRemove = false
     @State var showSearch = false
     @ObservedObject var newLabel: ObservableString
-    @State var title = ""
-    @State var fileErrorMessage: Message? = nil
+    @State var alertMessage: Message? = nil
     @EnvironmentObject var history: ColourItemList
 
     var body: some View {
@@ -22,7 +21,7 @@ struct Sheets: View {
         // Remove save file
         .actionSheet(isPresented: $showRemove) {
             ActionSheet(
-                title: Text("Remove file?").font(.title),
+                title: Text("Remove file?"),
                 buttons: [
                     .cancel(),
                     .destructive(Text("OK"),
@@ -30,17 +29,17 @@ struct Sheets: View {
                             switch self.history.removeSaved() {
                             case .success(): break
                             case .failure(let err):
-                                showSheet.value = .fileError("Remove save file", errorMessage(err))
+                                showSheet.value = .showAlert(errorMessage(err, .removeFile))
                             }
                         }
                     )
                 ]
             )
         }
-        // Error while handling file
-        .alert(item: self.$fileErrorMessage) { msg in
+        // Error display
+        .alert(item: self.$alertMessage) { msg in
             Alert(
-                title: Text(self.title),
+                title: Text(msg.subject ?? "Alert"),
                 message: Text(msg.text),
                 dismissButton: .default(Text("Dismiss"))
             )
@@ -54,9 +53,7 @@ struct Sheets: View {
                 switch sheet {
                 case .removeSaveFile: self.showRemove = true
                 case .search: self.showSearch = true
-                case .fileError(let title, let msg):
-                    self.title = title
-                    self.fileErrorMessage = msg
+                case .showAlert(let msg): self.alertMessage = msg
                 case .none: break
                 }
             }

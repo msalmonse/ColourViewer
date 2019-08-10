@@ -12,12 +12,12 @@ import Foundation
 
 enum ShowSheet {
     case none
-    // Display Alert with file error
-    case fileError(String, Message)
     // Display action sheet to remove savefile
     case removeSaveFile
     // Display search sheet
     case search
+    // Display Alert
+    case showAlert(Message)
 }
 
 typealias PublishedShowSheet = Published<ShowSheet>

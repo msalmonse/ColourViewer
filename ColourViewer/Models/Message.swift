@@ -12,7 +12,11 @@ import Foundation
 
 struct Message: Identifiable {
     let id = UUID()
+    let subject: String?
     let text: String
     
-    init(_ text: String) { self.text = text }
+    init(_ text: String, subject: String? = nil ) {
+        self.subject = subject
+        self.text = text
+    }
 }

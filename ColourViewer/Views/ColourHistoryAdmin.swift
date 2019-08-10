@@ -18,7 +18,7 @@ struct ColourHistoryAdmin: View {
                     switch self.history.save() {
                     case .success(): break
                     case .failure(let err):
-                        showSheet.value = .fileError("File save failure", errorMessage(err))
+                        showSheet.value = .showAlert(errorMessage(err, .fileSave))
                     }
                 },
                 label: {

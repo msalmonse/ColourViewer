@@ -16,6 +16,13 @@ func errorText(_ err: Error) -> String {
 
 /// The error description in a message
 
-func errorMessage(_ err: Error) -> Message {
-    return Message(errorText(err))
+func errorMessage(_ err: Error, _ location: ErrorLocation) -> Message {
+    let subject = "Error " + String(describing: location)
+    return Message(errorText(err), subject: subject)
+}
+
+/// Where did the error occur
+enum ErrorLocation: String {
+    case fileSave = "saving to file"
+    case removeFile = "removing file"
 }
