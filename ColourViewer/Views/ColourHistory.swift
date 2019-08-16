@@ -17,28 +17,34 @@ struct ColourHistory : View {
     @EnvironmentObject var history: ColourItemList
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "rectangle.stack")
-                .font(Font.title.weight(.bold))
-                .foregroundColor(.primary)
-                Spacer()
-                EditButton()
-            }
-            .padding(.vertical, 10)
+        GeometryReader { gp in
+            VStack {
+                HStack {
+                    Image(systemName: "rectangle.stack")
+                    .font(Font.title.weight(.bold))
+                    .foregroundColor(.primary)
+                    Spacer()
+                    EditButton()
+                }
+                .padding(.vertical, 10)
 
-            VStack(alignment: HorizontalAlignment.center) {
-                ColourHistoryAdmin()
+                VStack(alignment: HorizontalAlignment.center) {
+                    ColourHistoryAdmin()
 
-                List {
-                    ForEach(history.list) { historyItem in
-                        Button(
-                            action: { newLabel.value = historyItem.label },
-                            label: { HistoryRow(item: historyItem) }
-                        )
+                    List {
+                        ForEach(self.history.list) { historyItem in
+                            Button(
+                                action: { newLabel.value = historyItem.label },
+                                label: { HistoryRow(item: historyItem) }
+                            )
+                        }
+                        .onDelete(perform: self.delete)
+                        .onMove(perform: self.move)
                     }
-                    .onDelete(perform: delete)
-                    .onMove(perform: move)
+                    .frame(
+                        width: gp.relativeWidth(1.0),
+                        height: gp.relativeHeight(0.9)
+                    )
                 }
             }
         }
