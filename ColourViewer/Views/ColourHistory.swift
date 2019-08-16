@@ -17,7 +17,16 @@ struct ColourHistory : View {
     @EnvironmentObject var history: ColourItemList
     
     var body: some View {
-        NavigationView {
+        VStack {
+            HStack {
+                Image(systemName: "rectangle.stack")
+                .font(Font.title.weight(.bold))
+                .foregroundColor(.primary)
+                Spacer()
+                EditButton()
+            }
+            .padding(.vertical, 10)
+
             VStack(alignment: HorizontalAlignment.center) {
                 ColourHistoryAdmin()
 
@@ -32,13 +41,6 @@ struct ColourHistory : View {
                     .onMove(perform: move)
                 }
             }
-            .navigationBarItems(
-                leading:
-                    Image(systemName: "rectangle.stack")
-                    .font(Font.title.weight(.bold))
-                    .foregroundColor(.primary),
-                trailing: EditButton()
-            )
         }
     }
     

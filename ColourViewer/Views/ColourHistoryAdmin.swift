@@ -57,7 +57,7 @@ struct ColourHistoryAdmin: View {
                 }
             )
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 5)
         .padding(.horizontal, 20)
     }
 }

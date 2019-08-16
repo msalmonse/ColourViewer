@@ -24,9 +24,10 @@ struct PortraitColourEditor: View {
     
     var body: some View {
         GeometryReader { gp in
-            NavigationView {
+            VStack {
+                TopBar()
                 ScrollView {
-                    VStack(alignment: HorizontalAlignment.center, spacing: 2) {
+                    VStack(alignment: HorizontalAlignment.center, spacing: gp.relativeHeight(0.01)) {
                         RGBsection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
@@ -45,11 +46,6 @@ struct PortraitColourEditor: View {
                         Spacer()
                     }
                 }
-                .navigationBarItems(
-                    leading: Image(systemName: "square.and.pencil")
-                        .font(Font.title.weight(.bold))
-                        .foregroundColor(Color.primary)
-                )
             }
         }
     }
@@ -61,7 +57,8 @@ struct LandscapeColourEditor: View {
     
     var body: some View {
         GeometryReader { gp in
-            NavigationView {
+            VStack {
+                TopBar()
                 ScrollView([.horizontal, .vertical]) {
                     HStack(alignment: VerticalAlignment.top, spacing: 1) {
                         RGBsection(
@@ -81,13 +78,20 @@ struct LandscapeColourEditor: View {
                         )
                     }
                 }
-                .navigationBarItems(
-                    leading: Image(systemName: "square.and.pencil")
-                        .font(Font.title.weight(.bold))
-                        .foregroundColor(Color.primary)
-                )
             }
         }
+    }
+}
+
+private struct TopBar: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "square.and.pencil")
+            .font(Font.title.weight(.bold))
+            .foregroundColor(Color.primary)
+            Spacer()
+        }
+        .padding(.vertical, 10)
     }
 }
 
