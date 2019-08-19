@@ -23,7 +23,7 @@ class NumberAndStringTest: XCTestCase {
     func testIntAndString() {
         let test = IntAndString(number: 100, min: 1, max: 255, radix: .decimal)
         var testVal = 0
-        
+
         XCTAssertEqual(test.string, "100")
         test.number = 99
         XCTAssertEqual(test.string, "99")
@@ -42,16 +42,16 @@ class NumberAndStringTest: XCTestCase {
         XCTAssertEqual(test.number, 170, "number too big")
         test.string = "0"
         XCTAssertEqual(test.number, 170, "number too small")
-        
+
         test.hasChanged = { testVal = $0 }
         test.number = 100
         XCTAssertEqual(testVal, 100)
     }
-    
+
     func testDoubleAndString() {
         let test = DoubleAndString(number: 10.0, min: 1.0, max: 100.0)
         var testVal = 0.0
-        
+
         XCTAssertEqual(test.string, "10.00")
         test.number = 99
         XCTAssertEqual(test.string, "99.00")
@@ -63,11 +63,11 @@ class NumberAndStringTest: XCTestCase {
         XCTAssertEqual(test.number, 99.0, "number too big")
         test.string = "0"
         XCTAssertEqual(test.number, 99.0, "number too small")
-        
+
         test.hasChanged = { testVal = $0 }
         test.number = 50.0
         XCTAssertEqual(testVal, 50.0)
-        
+
         test.wrapMax = 100.0
         test.number = 1234.0
         XCTAssertEqual(test.number, 46.0, "After wrapping")

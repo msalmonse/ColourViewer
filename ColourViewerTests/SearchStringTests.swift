@@ -22,7 +22,7 @@ class SearchStringTest: XCTestCase {
         var testRes = "Z"
         let test = SearchString()
         let testCancel = test.publisher.sink(receiveValue: { testRes = $0 })
-        
+
         test.string = "A"
         XCTAssertEqual(testRes, "Z", "less than min")
         test.string = "AA"

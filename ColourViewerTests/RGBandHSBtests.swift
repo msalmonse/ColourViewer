@@ -21,13 +21,13 @@ class RGBandHSBtest: XCTestCase {
 
     func testRGB() {
         let rgb = RGBandHSB(red: 51, green: 153, blue: 255)
-        
+
         XCTAssertEqual(rgb.red.number, 51)
         rgb.red.number = 102
         XCTAssertEqual(rgb.red.number, 102)
         XCTAssertEqual(rgb.green.number, 153)
         XCTAssertEqual(rgb.blue.number, 255)
-        
+
         rgb.setRadix(radix: .hexadecimal)
         XCTAssertEqual(rgb.red.string, "66")
         XCTAssertEqual(rgb.green.string, "99")
@@ -36,7 +36,7 @@ class RGBandHSBtest: XCTestCase {
 
     func testHSB() {
         let rgb = RGBandHSB(red: 255, green: 255, blue: 255)
-        
+
         XCTAssertEqual(rgb.brightness.number, 100.0)
         rgb.red.number = 0
         XCTAssertEqual(rgb.hue.number, 180.0)

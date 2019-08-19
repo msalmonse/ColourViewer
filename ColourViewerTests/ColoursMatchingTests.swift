@@ -31,7 +31,7 @@ class ColoursMatchingTest: XCTestCase {
         XCTAssertEqual(hexLookup("BLUE"), "#0000ff")
         XCTAssertNil(hexLookup("poop"))
     }
-    
+
     func testColorLookup() {
         XCTAssertEqual(colorLookup("Blue"), Color(red: 0, green: 0, blue: 255))
         XCTAssertNil(colorLookup("Poop"), "Poop is not a colour")
