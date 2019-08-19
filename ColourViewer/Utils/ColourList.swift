@@ -183,32 +183,29 @@ fileprivate func makeHexList() {
     }
 }
 
-
 func coloursMatching(_ name: String, sortByLuma: Bool = false) -> [ String ] {
     /// Return a list of colours containing the search string
     /// The list is either sorted by name or colour luma
     ///
     var namesMatching: [String:Int] = [:]
     let lcName = name.lowercased()
-    
+
     if hexList.count == 0 { makeHexList() }
-    
+
     for (key, hex) in hexList {
         if key.contains(lcName) {
             let newKey = (camelNames[key] != nil) ? camelNames[key]! : key
             if sortByLuma {
                 namesMatching[ newKey ] = ColourItem.luma(hex)
-            }
-            else {
+            } else {
                 namesMatching[ newKey ] = 0
             }
         }
     }
-    
+
     if sortByLuma {
         return namesMatching.keys.sorted(by: { namesMatching[$0]! > namesMatching[$1]! }).compactMap({$0})
-    }
-    else {
+    } else {
         return namesMatching.keys.sorted()
     }
 }
@@ -217,7 +214,7 @@ func hexLookup(_ name: String) -> String? {
     /// Lookup the hex value in hexList
     ///
     if hexList.count == 0 { makeHexList() }
-    
+
     return hexList[ name.lowercased() ]
 }
 
@@ -228,7 +225,7 @@ func colorLookup(_ name: String) -> Color? {
     /// Lookup the Color associated with a name
     ///
     let lcName = name.lowercased()
-    
+
     if colorList[ lcName ] == nil {
         let hex = hexLookup(lcName)
         if hex == nil { return nil }

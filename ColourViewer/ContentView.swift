@@ -14,26 +14,25 @@ var newLabel = PublishedString("")
 struct ContentView : View {
     @ObservedObject var history = ColourItemList.load()
     @State var rgb = RGBandHSB.random
-    
+
     var body: some View {
-        GeometryReader() { gp in
+        GeometryReader { gp in
             HStack(alignment: VerticalAlignment.top, spacing: 5) {
                 if gp.isLandscape {
                     LandscapeColourEditor(
                         rgb: self.$rgb
                     )
                     .frame(width: gp.relativeWidth(0.7))
-                }
-                else {
+                } else {
                     PortraitColourEditor(
                         rgb: self.$rgb
                     )
                 }
-                
+
                 Divider().frame(width: 1)
-                
+
                 ColourHistory()
-                
+
                 // Empty view to hold displayed sheets
                 Sheets()
             }

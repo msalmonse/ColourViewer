@@ -15,7 +15,7 @@ import SwiftUI
 
 struct ColourHistory : View {
     @EnvironmentObject var history: ColourItemList
-    
+
     var body: some View {
         VStack(alignment: HorizontalAlignment.center) {
             HStack {
@@ -41,14 +41,14 @@ struct ColourHistory : View {
             }
         }
     }
-    
+
     /// Delete selected items from list
     private func delete(at: IndexSet) {
         for i in at.sorted().reversed() {
             history.list.remove(at: i)
         }
     }
-    
+
     /// Move selected items in list
     private func move(from: IndexSet, to: Int) {
         for i in from.sorted().reversed() {
@@ -63,7 +63,7 @@ struct ColourHistory : View {
 
 fileprivate struct HistoryRow: View {
     let item: ColourItem
-    
+
     var body: some View {
         /// Display the colour name or hex code surrounded by the colour
         HStack {

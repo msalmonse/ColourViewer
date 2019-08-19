@@ -29,11 +29,11 @@ class LoadAndSaveTest: XCTestCase {
 
     func testSave() {
         switch saveAsJSON(Self.test, to: Self.testSaveURL) {
-        case .success(): XCTAssert(true)
+        case .success: XCTAssert(true)
         case .failure(let error): XCTAssert(false, "Error: \(error)")
         }
     }
-    
+
     func testLoad() {
         func check(_ loaded: [ColourItem]) {
             XCTAssertEqual(loaded.count, Self.test.count)

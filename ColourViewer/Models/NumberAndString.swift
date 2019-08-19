@@ -16,7 +16,7 @@ class IntAndString: Combine.ObservableObject, Identifiable {
     /// format and base are used for converting between Int and String
     private var format: String = ""
     private var base = 0
-    
+
     let id = UUID()
     // Allowable range for number
     let minNumber: Int
@@ -24,37 +24,37 @@ class IntAndString: Combine.ObservableObject, Identifiable {
 
     // Notifiers, a publisher for SwiftUI and a callback
     var objectWillChange = ObservableObjectPublisher()
-    var hasChanged: ((Int) -> ())? = nil
-    
+    var hasChanged: ((Int) -> Void)? = nil
+
     // The Int part, check for validity and update string
     var number: Int {
         willSet { objectWillChange.send() }
         didSet {
-            if (!inRange(number)) { number = oldValue }
-            else if (number != oldValue) {
+            if !inRange(number) {
+                number = oldValue
+            } else if number != oldValue {
                 formatString()
                 if hasChanged != nil { hasChanged!(number) }
             }
         }
     }
-    
+
     // The string part, check for validity and update number
     var string: String = "" {
         willSet { objectWillChange.send() }
         didSet {
-            if (string != oldValue) {
+            if string != oldValue {
                 let newNumber = Int(string, radix: base)
                 if newNumber != nil && inRange(newNumber!) {
                     number = newNumber!
-                }
-                else { formatString() }
+                } else { formatString() }
             }
         }
     }
-    
+
     // Check limits
     private func inRange(_ num: Int) -> Bool { num >= minNumber && num <= maxNumber }
-    
+
     // Format string
     private func formatString() {
         string = (format == "") ? "" : String(format: format, number)
@@ -66,14 +66,14 @@ class IntAndString: Combine.ObservableObject, Identifiable {
         base = radix.base
         formatString()
     }
-    
+
     /// Initializer
     /// Parameters:
     ///     number:     Initial value for number
     ///     min:            Minimum limit
     ///     max:           Maximum limit
     ///     radix:          Initial radix for number
-    
+
     init(number: Int, min: Int = Int.min, max: Int = Int.max, radix: Radix = .decimal) {
         self.number = number
         self.minNumber = min
@@ -91,7 +91,7 @@ class RGBandString: IntAndString {
 
 class DoubleAndString: Combine.ObservableObject, Identifiable {
     private var format: String = "%.1f"
-    
+
     let id = UUID()
     // Limits for value
     let minNumber: Double
@@ -104,58 +104,58 @@ class DoubleAndString: Combine.ObservableObject, Identifiable {
 
     // Notifiers
     var objectWillChange = ObservableObjectPublisher()
-    var hasChanged: ((Double) -> ())? = nil
-    
+    var hasChanged: ((Double) -> Void)? = nil
+
     // The number part
     var number: Double {
         willSet { objectWillChange.send() }
         didSet {
             if doWrap { wrapNumber() }
-            if (!inRange(number)) { number = oldValue }
-            else if (number != oldValue) {
+            if !inRange(number) {
+                number = oldValue
+            } else if number != oldValue {
                 formatString()
                 if hasChanged != nil { hasChanged!(number) }
             }
         }
     }
-    
+
     // The string part
     var string: String = "" {
         willSet { objectWillChange.send() }
         didSet {
-            if (string != oldValue) {
+            if string != oldValue {
                 let newNumber = Double(string)
                 if newNumber != nil && (doWrap || inRange(newNumber!)) {
                     number = newNumber!
-                }
-                else { formatString() }
+                } else { formatString() }
             }
         }
     }
-    
+
     // Check limits
     private func inRange(_ num: Double) -> Bool { num >= minNumber && num <= maxNumber }
-    
+
     // Format string
     private func formatString() {
         string = (format == "") ? "" : String(format: format, number)
     }
-    
+
     // Wrap the number around so that it is between min and wrapMax
     private func wrapNumber() {
         if inRange(number) || minNumber == -Double.infinity { return }
         var val = number - minNumber
         val = val.truncatingRemainder(dividingBy: wrapMax - minNumber)
-        if val < 0 { number = val + wrapMax}
+        if val < 0 { number = val + wrapMax }
         else { number = val + minNumber }
     }
-    
+
     /// Initializer
     /// Parameters:
     ///     number:     Initial value for number
     ///     min:            Minimum limit
     ///     max:           Maximum limit
-    
+
     init(number: Double, min: Double = -Double.infinity, max: Double = Double.infinity) {
         self.number = number
         self.minNumber = min

@@ -21,20 +21,20 @@ class RGBandHSB {
     let red = RGBandString()
     let blue = RGBandString()
     let green = RGBandString()
-    
+
     // HSB calues
     let hue = DegreesAndString()
     let saturation = PerCentAndString()
     let brightness = PerCentAndString()
-    
+
     // Colour Item
     var colourItem = ObservableColourItem()
-    
+
     // Short cut to color
     var color: Color? {
         return colourItem.color
     }
-    
+
     // Updating the label updates the ColourItem
     var label: String {
         get { return colourItem.label }
@@ -43,9 +43,9 @@ class RGBandHSB {
             updateFromColourItem()
         }
     }
-    
+
     private var updatingFrom: UpdatingSource = .none    // prevent loops between RGB & HSB
-    
+
     // Update the HSB values
     private func updateHSB() {
         HSBfromRGB(
@@ -57,7 +57,7 @@ class RGBandHSB {
                     brightness: &brightness.number
                 )
     }
-    
+
     /// Called by updates in RGB elements
     private func updateFromRGB() {
         if updatingFrom != .none { return }
@@ -67,7 +67,7 @@ class RGBandHSB {
         updateColourItem()
         updatingFrom = .none
     }
-    
+
     // Called by updates in the HSB elements
     private func updateFromHSB() {
         if updatingFrom != .none { return }
@@ -81,11 +81,11 @@ class RGBandHSB {
             green: &green.number,
             blue: &blue.number
         )
-        
+
         updateColourItem()
         updatingFrom = .none
     }
-    
+
     // Called when colourItem updates
     private func updateFromColourItem() {
         if updatingFrom != .none { return }
@@ -95,16 +95,16 @@ class RGBandHSB {
         green.number = colourItem.green
         blue.number = colourItem.blue
         updateHSB()
-        
+
         updatingFrom = .none
     }
-    
+
     // Update ColourItem to changes in RGB
     private func updateColourItem() {
         if updatingFrom == .color { return }
         colourItem.setRGB(red: red.number, green: green.number, blue: blue.number)
     }
-    
+
     /// Initializer
     /// Parameters:
     ///     red:        red component
@@ -116,16 +116,16 @@ class RGBandHSB {
         self.green.number = green
         self.blue.number = blue
         updateFromRGB()
-        
+
         // Set call backs
         self.red.hasChanged = { value in self.updateFromRGB() }
         self.green.hasChanged = { value in self.updateFromRGB() }
         self.blue.hasChanged = { value in self.updateFromRGB() }
-        
+
         self.hue.hasChanged = { value in self.updateFromHSB() }
         self.saturation.hasChanged = { value in self.updateFromHSB() }
         self.brightness.hasChanged = { value in self.updateFromHSB() }
-        
+
         self.colourItem.hasChanged = { value in self.updateFromColourItem() }
     }
 

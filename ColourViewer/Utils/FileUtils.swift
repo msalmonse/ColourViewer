@@ -27,11 +27,11 @@ fileprivate func addBundleId(_ searchPath: FileManager.SearchPathDirectory) -> B
 ///     in:             directory code
 
 func fileURL(_ name: String?,
-              in searchPath: FileManager.SearchPathDirectory = .applicationSupportDirectory
+             in searchPath: FileManager.SearchPathDirectory = .applicationSupportDirectory
 ) -> Result<URL,Error> {
     let paths = FileManager.default.urls(for: searchPath, in: .userDomainMask)
     if paths.isEmpty { return .failure(LocalErrors.noSuchPath) }
-    
+
     var base = paths[0]
     if addBundleId(searchPath) {
         var id = Bundle.main.bundleIdentifier
@@ -56,7 +56,7 @@ func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Result
     }
 
     if urlExists(url) { return .success(Void()) }
-    
+
     do {
         try FileManager.default.createDirectory(at: url,
                                         withIntermediateDirectories: true,
@@ -64,7 +64,7 @@ func createAppDirectory(_ searchPath: FileManager.SearchPathDirectory) -> Result
     } catch {
         return .failure(error)
     }
-    
+
     return .success(Void())
 }
 
@@ -86,7 +86,7 @@ func createDirectoryContaining(url urlIn: URL, trim: Int = 1) -> Result<Void, Er
     if url.path.isEmpty { return .failure(LocalErrors.fileNameError) }
 
     if urlExists(url) { return .success(Void()) }
-    
+
     do {
         try FileManager.default.createDirectory(at: url,
                                         withIntermediateDirectories: true,
@@ -94,7 +94,7 @@ func createDirectoryContaining(url urlIn: URL, trim: Int = 1) -> Result<Void, Er
     } catch {
         return .failure(error)
     }
-    
+
     return .success(Void())
 
 }
@@ -116,12 +116,12 @@ func urlExists(_ url: URL?) -> Bool {
 
 func fileExists(_ name: String, in searchPath: FileManager.SearchPathDirectory) -> Bool {
     var url: URL
-    
+
     switch fileURL(name, in: searchPath) {
     case .success(let ret): url = ret
-    case .failure(_): return false
+    case .failure: return false
     }
-    
+
     return urlExists(url)
 }
 
@@ -130,11 +130,10 @@ func fileExists(_ name: String, in searchPath: FileManager.SearchPathDirectory) 
 func urlRemove(_ url: URL) -> Result<Void,Error> {
     do {
         try FileManager.default.removeItem(at: url)
-    }
-    catch {
+    } catch {
         return .failure(error)
     }
-    
+
     return .success(Void())
 }
 

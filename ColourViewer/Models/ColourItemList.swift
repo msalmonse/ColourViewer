@@ -22,7 +22,7 @@ class ColourItemList: ObservableObject, Identifiable {
 
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Void, Never>()
-    
+
     var list: [ColourItem] {
         willSet { objectWillChange.send() }
         didSet {
@@ -30,27 +30,27 @@ class ColourItemList: ObservableObject, Identifiable {
             publisher.send()
         }
     }
-    
+
     var isEmpty: Bool { list.isEmpty }
-    
+
     init(_ inList: [ColourItem] = [], loadedFrom: URL? = nil) {
         self.list = inList
         self.saveURL = loadedFrom
     }
-    
+
     convenience init() { self.init([]) }
-    
+
     // Save to file
     func save(to: String = ColourItemList.saveFile) -> Result<URL,Error> {
         var url: URL
-        
+
         switch fileURL(to) {
         case .success(let ret): url = ret
         case .failure(let error): return .failure(error)
         }
 
         switch saveAsJSON(list, to: url) {
-        case .success(_):
+        case .success:
             changeCount = 0
             saveURL = url
             return .success(url)
@@ -59,14 +59,14 @@ class ColourItemList: ObservableObject, Identifiable {
             return .failure(error)
         }
     }
-    
+
     // Initialize from file
     static func load(_ from: String = saveFile) -> ColourItemList {
         var url: URL
-        
+
         switch fileURL(from) {
         case .success(let ret): url = ret
-        case .failure(_): return ColourItemList([])
+        case .failure: return ColourItemList([])
         }
 
         switch loadFromJSON(url, as: [ColourItem].self) {
@@ -77,14 +77,14 @@ class ColourItemList: ObservableObject, Identifiable {
             return ColourItemList([])
         }
     }
-    
+
     // Remove save file
     func removeSaved() -> Result<Void, Error> {
         if saveURL == nil { return .failure(LocalErrors.fileNotFound) }
         let rmURL = saveURL!
         saveURL = nil
         switch urlRemove(rmURL) {
-        case .success(): return .success(Void())
+        case .success: return .success(Void())
         case .failure(let error):
             os_log("Error removing '%s': %s", type: .info, rmURL.path, "\(error)")
             return .failure(error)

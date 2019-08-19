@@ -21,7 +21,7 @@ import SwiftUI
 struct PortraitColourEditor: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
-    
+
     var body: some View {
         GeometryReader { gp in
             VStack {
@@ -32,17 +32,17 @@ struct PortraitColourEditor: View {
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
                         )
-                        
+
                         HSBsection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
                         )
-                        
+
                         ColourSection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
                         )
-                        
+
                         Spacer()
                     }
                 }
@@ -54,7 +54,7 @@ struct PortraitColourEditor: View {
 struct LandscapeColourEditor: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
-    
+
     var body: some View {
         GeometryReader { gp in
             VStack {
@@ -66,12 +66,12 @@ struct LandscapeColourEditor: View {
                             size: gp.relativeSize(0.3, 0.9)
                         )
                         .padding(.leading, 2)
-                        
+
                         HSBsection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.3, 0.9)
                         )
-                        
+
                         ColourSection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.4, 0.9)
@@ -98,7 +98,7 @@ private struct TopBar: View {
 private struct RGBsection: View {
     @Binding var rgb: RGBandHSB
     let size: CGSize
-    
+
     var body: some View {
         RGBelements(
             redElement: self.rgb.red,
@@ -113,7 +113,7 @@ private struct RGBsection: View {
 private struct HSBsection: View {
     @Binding var rgb: RGBandHSB
     let size: CGSize
-    
+
     var body: some View {
         HSBelements(
             hueElement: self.rgb.hue,
@@ -129,7 +129,7 @@ private struct ColourSection: View {
     @Binding var rgb: RGBandHSB
     @EnvironmentObject var history: ColourItemList
     let size: CGSize
-    
+
     var body: some View {
         ColourElements(
             colourItem: self.rgb.colourItem,
@@ -139,7 +139,6 @@ private struct ColourSection: View {
         .onReceive(newLabel.publisher, perform: { self.rgb.label = $0 })
     }
 }
-
 
 #if DEBUG
 struct ColourEditor_Previews: PreviewProvider {

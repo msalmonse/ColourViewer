@@ -31,7 +31,7 @@ struct Sheets: View {
                     .destructive(Text("OK"),
                         action: {
                             switch self.history.removeSaved() {
-                            case .success():
+                            case .success:
                                 showSheet.value = .showAlert(
                                     Message("History file removed", subject: "Remove history")
                                 )

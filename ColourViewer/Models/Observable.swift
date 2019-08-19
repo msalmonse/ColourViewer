@@ -20,7 +20,7 @@ class Observable<T>: Combine.ObservableObject, Identifiable {
         willSet { objectWillChange.send() }
         didSet { publisher.send(value) }
     }
-    
+
     init(_ initValue: T) { self.value = initValue }
 }
 

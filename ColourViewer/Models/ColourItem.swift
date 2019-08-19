@@ -16,7 +16,7 @@ extension Color {
         let newRed = Double(red)/255.0
         let newGreen = Double(green)/255.0
         let newBlue = Double(blue)/255.0
-        
+
         self.init(red: newRed, green: newGreen, blue: newBlue, opacity: 1.0)
     }
 }
@@ -75,7 +75,7 @@ fileprivate func hexToRGB(hex: String?, r: inout Int, g: inout Int, b: inout Int
 struct ColourItem: Identifiable, Equatable, Codable {
     /// Format used to convert red, green and blue to a hex string
     static let format = "#%02x%02x%02x"
-    
+
     let id = UUID()
     let label: String
     let color: Color
@@ -92,10 +92,10 @@ struct ColourItem: Identifiable, Equatable, Codable {
             alpha: 1.0
         )
     }
-    
+
     // Calculate the Rec 709 luma of a colour
     var luma: Int { return Self.RGBtoLuma(Int(red), Int(green), Int(blue)) }
-    
+
     /// Initialize a ColourItem
     ///
     /// Parameters
@@ -103,7 +103,7 @@ struct ColourItem: Identifiable, Equatable, Codable {
     ///     green:     green component
     ///     blue:       blue component
     ///     label:      name of the colour or hex code
-    
+
     init(red: Int, green: Int, blue: Int, label: String) {
         self.label = label
         self.color = Color(red: red, green: green, blue: blue)
@@ -111,14 +111,14 @@ struct ColourItem: Identifiable, Equatable, Codable {
         self.green = UInt8(green)
         self.blue = UInt8(blue)
     }
-    
+
     /// As above but calculate the label
     init(red: Int, green: Int, blue: Int) {
         let hexStr = String(format: Self.format, red, green, blue)
         let name = colourList[hexStr]
         self.init(red: red, green: green, blue: blue, label: (name != nil) ? name! : hexStr)
     }
-    
+
     /// Initialize a ColourItem with no data
     init() {
         self.label = "clear"
@@ -127,23 +127,23 @@ struct ColourItem: Identifiable, Equatable, Codable {
         self.green = 0
         self.blue = 0
     }
-    
+
     /// Initialize using a hex colour string: "#rrggbb"
     init?(hex: String?) {
         var r = 0
         var g = 0
         var b = 0
-        
+
         if !hexToRGB(hex: hex, r: &r, g: &g, b: &b ) { return nil }
-        
+
         self.init(red: r, green: g, blue: b)
     }
-    
+
     /// Compare two ColourItem's
-    static func ==(lhs: ColourItem, rhs: ColourItem) -> Bool {
+    static func == (lhs: ColourItem, rhs: ColourItem) -> Bool {
         return lhs.red == rhs.red && lhs.green == rhs.green && lhs.blue == rhs.blue
     }
-    
+
     // Calculate the Rec 709 luma from red, green and blue
     private static func RGBtoLuma(_ r: Int, _ g: Int, _ b: Int) -> Int {
         return 2126 * r + 7152 * g + 722 * b
@@ -154,9 +154,9 @@ struct ColourItem: Identifiable, Equatable, Codable {
         var r = 0
         var g = 0
         var b = 0
-        
+
         if !hexToRGB(hex: hex, r: &r, g: &g, b: &b ) { return -1 }
-        
+
         return RGBtoLuma(r, g, b)
     }
 
@@ -164,7 +164,7 @@ struct ColourItem: Identifiable, Equatable, Codable {
     enum CodingKeys: String, CodingKey {
         case red, green, blue
     }
-    
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let r = try values.decode(Int.self, forKey: .red)
@@ -180,15 +180,15 @@ struct ColourItem: Identifiable, Equatable, Codable {
 class ObservableColourItem: Combine.ObservableObject, Identifiable {
     var objectWillChange = ObservableObjectPublisher()
     // Callback closure
-    var hasChanged: ((ColourItem) -> ())? = nil
+    var hasChanged: ((ColourItem) -> Void)? = nil
 
     var id = UUID()
-    
+
     private(set) var colourItem = ColourItem(hex: "#000") {
         willSet { objectWillChange.send() }
         didSet { if hasChanged != nil { hasChanged!(colourItem!) } }
     }
-    
+
     /// Return the internal ColourItem
     var unwrap: ColourItem {
         return colourItem!
@@ -199,14 +199,13 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
         if colourItem == nil ||
             red != Int(colourItem!.red) ||
             green != Int(colourItem!.green) ||
-            blue != colourItem!.blue
-        {
+            blue != colourItem!.blue {
             colourItem = ColourItem(red: red, green: green, blue: blue)
         }
     }
-    
+
     var color: Color { return colourItem!.color }
-    
+
     var red: Int { return Int(colourItem!.red) }
     var green: Int { return Int(colourItem!.green) }
     var blue: Int { return Int(colourItem!.blue) }
@@ -219,8 +218,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
             if colourItem == nil || colourItem!.label != newValue {
                 if newValue.hasPrefix("#") {
                     newCI = ColourItem(hex: newValue)
-                }
-                else {
+                } else {
                     let hex = hexLookup(newValue)
                     newCI = ColourItem(hex: hex)
                 }
@@ -229,7 +227,7 @@ class ObservableColourItem: Combine.ObservableObject, Identifiable {
             }
         }
     }
-    
+
     /// Create an object with a ColourItem equal to label
     convenience init(label: String) {
         self.init()

@@ -17,7 +17,6 @@ import SwiftUI
 ///     height:       desired height of view
 ///     width:        derired width of view
 
-
 struct DoubleElement : View {
     let label: String
     @ObservedObject var element: DoubleAndString

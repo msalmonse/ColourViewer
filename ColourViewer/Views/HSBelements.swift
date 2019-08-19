@@ -34,14 +34,14 @@ struct HSBelements: View {
                     font: font,
                     size: size.relativeSize(1.0, 0.25)
                 )
-                
+
                 DoubleElement(
                     label: "Saturation%",
                     element: saturationElement,
                     font: font,
                     size: size.relativeSize(1.0, 0.25)
                 )
-                
+
                 DoubleElement(
                     label: "Brightness%",
                     element: brightnessElement,

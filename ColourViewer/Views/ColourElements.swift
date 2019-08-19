@@ -89,7 +89,7 @@ struct ColourElements_Previews: PreviewProvider {
         ColourItem(red:   0, green:   0, blue:   0, label: "black"),
         ColourItem(red: 255, green: 255, blue: 255, label: "white")
     ])
-    
+
     static var previews: some View {
         ColourElements(
             colourItem: colourItem,

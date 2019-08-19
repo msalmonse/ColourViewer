@@ -22,7 +22,7 @@ struct RGBelements: View {
     /// Set the Radix to be used for the Int values
     /// Parameter:
     ///     base:   the base for the integers (8, 10 or 16)
-    
+
     private func setRadices(base: Int) {
         let radix = Radix.radix(for: base)
 
@@ -30,13 +30,13 @@ struct RGBelements: View {
         greenElement.setRadix(radix: radix)
         blueElement.setRadix(radix: radix)
     }
-    
+
     @ObservedObject var redElement: IntAndString
     @ObservedObject var greenElement: IntAndString
     @ObservedObject var blueElement: IntAndString
     var font: Font
     var size: CGSize
-    
+
     /// Base for the elements
     @ObservedObject var base = ObservableInt(10)
 
@@ -49,21 +49,21 @@ struct RGBelements: View {
                     font: font,
                     size: size.relativeSize(1.0, 0.2)
                 )
-                
+
                 IntElement(
                     label: "Green",
                     element: greenElement,
                     font: font,
                     size: size.relativeSize(1.0, 0.2)
                 )
-                
+
                 IntElement(
                     label: "Blue",
                     element: blueElement,
                     font: font,
                     size: size.relativeSize(1.0, 0.25)
                 )
-                
+
                 /// Selector for the base and radix
                 Picker("Radix", selection: $base.value) {
                     Text("Dec").tag(10)
@@ -78,7 +78,7 @@ struct RGBelements: View {
             }
         }
         .modifier(sectionBackground())
-        
+
     }
 }
 

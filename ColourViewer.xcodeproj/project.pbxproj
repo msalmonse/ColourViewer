@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C40D360422EEDC3800455CCA /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360322EEDC3800455CCA /* SearchString.swift */; };
+		C40D360422EEDC3800455CCA /* SearchStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360322EEDC3800455CCA /* SearchStringTests.swift */; };
 		C40D360622EF43D100455CCA /* ColourEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360522EF43D100455CCA /* ColourEditor.swift */; };
 		C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11B22F0CC7B00895FC2 /* Observable.swift */; };
 		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
@@ -29,19 +29,19 @@
 		C46BF8BF22F97115009A5816 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF8BE22F97115009A5816 /* Message.swift */; };
 		C46BF8C322F9E537009A5816 /* ColourHistoryAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF8C222F9E537009A5816 /* ColourHistoryAdmin.swift */; };
 		C490553722EAC43500C86E46 /* NumberAndString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553622EAC43500C86E46 /* NumberAndString.swift */; };
-		C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553822EACC8100C86E46 /* NumberAndString.swift */; };
+		C490553922EACC8100C86E46 /* NumberAndStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553822EACC8100C86E46 /* NumberAndStringTests.swift */; };
 		C490553B22EB08CF00C86E46 /* RGBandHSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553A22EB08CF00C86E46 /* RGBandHSB.swift */; };
-		C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */; };
+		C490553D22EB4E0300C86E46 /* RGBandHSBtests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C490553C22EB4E0300C86E46 /* RGBandHSBtests.swift */; };
 		C4A0646122F48578009B76EE /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646022F48578009B76EE /* FontSize.swift */; };
-		C4A0646322F48A0A009B76EE /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646222F48A0A009B76EE /* FontSize.swift */; };
+		C4A0646322F48A0A009B76EE /* FontSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646222F48A0A009B76EE /* FontSizeTests.swift */; };
 		C4A0646522F49725009B76EE /* RGBelements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0646422F49724009B76EE /* RGBelements.swift */; };
 		C4A064A722F6D109009B76EE /* LoadAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064A622F6D109009B76EE /* LoadAndSave.swift */; };
 		C4A064AB22F72503009B76EE /* ColourItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AA22F72503009B76EE /* ColourItemList.swift */; };
-		C4A064AD22F7F922009B76EE /* LoadAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AC22F7F922009B76EE /* LoadAndSave.swift */; };
+		C4A064AD22F7F922009B76EE /* LoadAndSaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AC22F7F922009B76EE /* LoadAndSaveTests.swift */; };
 		C4A064AF22F875E0009B76EE /* LocalErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A064AE22F875DF009B76EE /* LocalErrors.swift */; };
 		C4D5532F22F1CAC5002F6F5F /* Radix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5532E22F1CAC5002F6F5F /* Radix.swift */; };
-		C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */; };
-		C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItem.swift */; };
+		C4E50BDE22E4A6A0003E3565 /* ColoursMatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDD22E4A6A0003E3565 /* ColoursMatchingTests.swift */; };
+		C4E50BE022E5BE75003E3565 /* ColourItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E50BDF22E5BE74003E3565 /* ColourItemTests.swift */; };
 		C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */; };
 		C4EB230C22EDB8930071099F /* IntElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB230B22EDB8930071099F /* IntElement.swift */; };
 		C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB230F22EDDAB00071099F /* DoubleElement.swift */; };
@@ -66,7 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C40D360322EEDC3800455CCA /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchString.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/SearchString.swift; sourceTree = "<group>"; };
+		C40D360322EEDC3800455CCA /* SearchStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchStringTests.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/SearchStringTests.swift; sourceTree = "<group>"; };
 		C40D360522EF43D100455CCA /* ColourEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourEditor.swift; sourceTree = "<group>"; };
 		C42DE11822F098B200895FC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C42DE11B22F0CC7B00895FC2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -91,21 +91,21 @@
 		C46BF8BE22F97115009A5816 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C46BF8C222F9E537009A5816 /* ColourHistoryAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourHistoryAdmin.swift; sourceTree = "<group>"; };
 		C490553622EAC43500C86E46 /* NumberAndString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndString.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/NumberAndString.swift; sourceTree = "<group>"; };
-		C490553822EACC8100C86E46 /* NumberAndString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndString.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/NumberAndString.swift; sourceTree = "<group>"; };
+		C490553822EACC8100C86E46 /* NumberAndStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberAndStringTests.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/NumberAndStringTests.swift; sourceTree = "<group>"; };
 		C490553A22EB08CF00C86E46 /* RGBandHSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSB.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/RGBandHSB.swift; sourceTree = "<group>"; };
-		C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSBtest.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/RGBandHSBtest.swift; sourceTree = "<group>"; };
+		C490553C22EB4E0300C86E46 /* RGBandHSBtests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RGBandHSBtests.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/RGBandHSBtests.swift; sourceTree = "<group>"; };
 		C4A0646022F48578009B76EE /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
-		C4A0646222F48A0A009B76EE /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		C4A0646222F48A0A009B76EE /* FontSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeTests.swift; sourceTree = "<group>"; };
 		C4A0646422F49724009B76EE /* RGBelements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBelements.swift; sourceTree = "<group>"; };
 		C4A064A622F6D109009B76EE /* LoadAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSave.swift; sourceTree = "<group>"; };
 		C4A064A822F7010C009B76EE /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		C4A064AA22F72503009B76EE /* ColourItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourItemList.swift; sourceTree = "<group>"; };
-		C4A064AC22F7F922009B76EE /* LoadAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSave.swift; sourceTree = "<group>"; };
+		C4A064AC22F7F922009B76EE /* LoadAndSaveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndSaveTests.swift; sourceTree = "<group>"; };
 		C4A064AE22F875DF009B76EE /* LocalErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalErrors.swift; sourceTree = "<group>"; };
 		C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		C4D5532E22F1CAC5002F6F5F /* Radix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radix.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Models/Radix.swift; sourceTree = "<group>"; };
-		C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatching.swift; path = /Users/mesa/xcode/ColourViewer/../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatching.swift; sourceTree = "<absolute>"; };
-		C4E50BDF22E5BE74003E3565 /* ColourItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColourItem.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColourItem.swift; sourceTree = "<group>"; };
+		C4E50BDD22E4A6A0003E3565 /* ColoursMatchingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColoursMatchingTests.swift; path = /System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColoursMatchingTests.swift; sourceTree = "<absolute>"; };
+		C4E50BDF22E5BE74003E3565 /* ColourItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColourItemTests.swift; path = ../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewerTests/ColourItemTests.swift; sourceTree = "<group>"; };
 		C4EAD06D22DE01F000912FB8 /* ColourConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConvert.swift; sourceTree = "<group>"; };
 		C4EAD06F22DEF81900912FB8 /* ColourList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourList.swift; sourceTree = "<group>"; };
 		C4EB230B22EDB8930071099F /* IntElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntElement.swift; path = ../../../../../../System/Volumes/Data/Users/mesa/xcode/ColourViewer/ColourViewer/Views/IntElement.swift; sourceTree = "<group>"; };
@@ -184,14 +184,14 @@
 		C45C7BF522D4BAF1008D119D /* ColourViewerTests */ = {
 			isa = PBXGroup;
 			children = (
-				C4E50BDF22E5BE74003E3565 /* ColourItem.swift */,
-				C4E50BDD22E4A6A0003E3565 /* ColoursMatching.swift */,
-				C4A0646222F48A0A009B76EE /* FontSize.swift */,
+				C4E50BDF22E5BE74003E3565 /* ColourItemTests.swift */,
+				C4E50BDD22E4A6A0003E3565 /* ColoursMatchingTests.swift */,
+				C4A0646222F48A0A009B76EE /* FontSizeTests.swift */,
 				C45C7BF822D4BAF1008D119D /* Info.plist */,
-				C4A064AC22F7F922009B76EE /* LoadAndSave.swift */,
-				C490553822EACC8100C86E46 /* NumberAndString.swift */,
-				C490553C22EB4E0300C86E46 /* RGBandHSBtest.swift */,
-				C40D360322EEDC3800455CCA /* SearchString.swift */,
+				C4A064AC22F7F922009B76EE /* LoadAndSaveTests.swift */,
+				C490553822EACC8100C86E46 /* NumberAndStringTests.swift */,
+				C490553C22EB4E0300C86E46 /* RGBandHSBtests.swift */,
+				C40D360322EEDC3800455CCA /* SearchStringTests.swift */,
 			);
 			path = ColourViewerTests;
 			sourceTree = "<group>";
@@ -267,6 +267,7 @@
 				C45C7BD822D4BAED008D119D /* Sources */,
 				C45C7BD922D4BAED008D119D /* Frameworks */,
 				C45C7BDA22D4BAED008D119D /* Resources */,
+				C451FDB6230AC0F600CBFD39 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -356,6 +357,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C451FDB6230AC0F600CBFD39 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C45C7BD822D4BAED008D119D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -402,13 +423,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4A064AD22F7F922009B76EE /* LoadAndSave.swift in Sources */,
-				C4E50BE022E5BE75003E3565 /* ColourItem.swift in Sources */,
-				C4A0646322F48A0A009B76EE /* FontSize.swift in Sources */,
-				C40D360422EEDC3800455CCA /* SearchString.swift in Sources */,
-				C490553D22EB4E0300C86E46 /* RGBandHSBtest.swift in Sources */,
-				C490553922EACC8100C86E46 /* NumberAndString.swift in Sources */,
-				C4E50BDE22E4A6A0003E3565 /* ColoursMatching.swift in Sources */,
+				C4A064AD22F7F922009B76EE /* LoadAndSaveTests.swift in Sources */,
+				C4E50BE022E5BE75003E3565 /* ColourItemTests.swift in Sources */,
+				C4A0646322F48A0A009B76EE /* FontSizeTests.swift in Sources */,
+				C40D360422EEDC3800455CCA /* SearchStringTests.swift in Sources */,
+				C490553D22EB4E0300C86E46 /* RGBandHSBtests.swift in Sources */,
+				C490553922EACC8100C86E46 /* NumberAndStringTests.swift in Sources */,
+				C4E50BDE22E4A6A0003E3565 /* ColoursMatchingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

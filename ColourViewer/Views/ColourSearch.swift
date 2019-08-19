@@ -21,22 +21,23 @@ struct ColourSearch: View {
     @State var matchList: [ String ] = []
     @ObservedObject var lumaSort = ObservableBool(false)
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+
     /// Update the matching list of colour names
     private func updateMatchList(_ match: String) {
-        if match.isEmpty { matchList.removeAll() }
-        else {
+        if match.isEmpty {
+            matchList.removeAll()
+        } else {
             matchList = coloursMatching(match, sortByLuma: lumaSort.value)
         }
     }
-    
+
     /// Update the ColourItem in the parent, clear the search data and close the sheet
     private func selectColour(_ name: String) {
         newLabel.value = name
         clearAll()
         dismiss()
     }
-    
+
     // Dismiss the sheet
     private func dismiss() { mode.value.dismiss() }
 
@@ -45,7 +46,7 @@ struct ColourSearch: View {
         search.string = ""
         matchList = []
     }
-        
+
     var body: some View {
         GeometryReader { gp in
             VStack {
@@ -66,7 +67,7 @@ struct ColourSearch: View {
                     )
                 }
                 .padding(.vertical, 10)
-                
+
                 VStack {
                     // Input field for the search
                     HStack {
@@ -110,7 +111,7 @@ struct ColourSearch: View {
                     .font(.callout)
                 }
                 .padding(.horizontal, 5)
-                
+
                 Text("Tap on colour to select").font(.caption)
 
                 // Display the names and colours of the matching colours

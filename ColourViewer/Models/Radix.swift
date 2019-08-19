@@ -16,7 +16,7 @@ enum Radix: Hashable {
     case decimal
     case hexadecimal
     case unknown
-    
+
     /// Label to describe radix
     var label: String {
         switch self {
@@ -30,7 +30,7 @@ enum Radix: Hashable {
             return ""
         }
     }
-    
+
     /// Base for radix
     var base:Int {
         switch self {
@@ -44,7 +44,7 @@ enum Radix: Hashable {
             return 0
         }
     }
-    
+
     /// Format string for radix
     var format: String {
         switch self {
@@ -58,10 +58,10 @@ enum Radix: Hashable {
             return ""
         }
     }
-    
+
     /// Like allCases but in defined order
     static var all: [Radix] = [ .decimal, .hexadecimal, .octal ]
-    
+
     /// Convert base to radix
     static func radix(for i: Int) -> Radix {
         switch i {

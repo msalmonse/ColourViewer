@@ -16,7 +16,7 @@ class Published<T> {
     var value: T {
         didSet { publisher.send(value) }
     }
-    
+
     init(_ initialValue: T) { self.value = initialValue }
 }
 

@@ -22,7 +22,7 @@ func loadFromJSON<T: Decodable>(_ url: URL, as type: T.Type = T.self) -> Result<
     } catch {
         return .failure(error)
     }
-    
+
     do {
         let decoder = JSONDecoder()
         let t = try decoder.decode(T.self, from: data)
@@ -36,7 +36,7 @@ func saveAsJSON<T: Encodable>(_ obj: T, to url: URL) -> Result<Void,Error> {
     var data: Data
 
     switch createDirectoryContaining(url: url) {
-    case .success(): break
+    case .success: break
     case .failure(let error): return .failure(error)
     }
 
@@ -46,7 +46,7 @@ func saveAsJSON<T: Encodable>(_ obj: T, to url: URL) -> Result<Void,Error> {
     } catch {
         return .failure(error)
     }
-    
+
     do {
         try data.write(to: url)
     } catch {
@@ -56,4 +56,3 @@ func saveAsJSON<T: Encodable>(_ obj: T, to url: URL) -> Result<Void,Error> {
 
     return .success(Void())
 }
-

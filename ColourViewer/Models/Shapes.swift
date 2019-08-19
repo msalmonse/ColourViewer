@@ -15,7 +15,7 @@ func strokedRoundedRectangle(
     ) -> some View {
     /// Return a stroked RoundedRectangle.
     /// Primarily for overlays
-    
+
     return RoundedRectangle(cornerRadius: r).stroke(lineWidth: w).foregroundColor(c)
 }
 
