@@ -91,7 +91,7 @@ private struct TopBar: View {
             .foregroundColor(Color.primary)
             Spacer()
         }
-        .padding(.vertical, 10)
+        .padding(10)
     }
 }
 

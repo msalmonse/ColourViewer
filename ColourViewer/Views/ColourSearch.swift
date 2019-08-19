@@ -66,7 +66,7 @@ struct ColourSearch: View {
                         }
                     )
                 }
-                .padding(.vertical, 10)
+                .padding(10)
 
                 VStack {
                     // Input field for the search

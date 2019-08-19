@@ -25,7 +25,7 @@ struct ColourHistory : View {
                 Spacer()
                 EditButton()
             }
-            .padding(.vertical, 10)
+            .padding(10)
 
             ColourHistoryAdmin()
 
