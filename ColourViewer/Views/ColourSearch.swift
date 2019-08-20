@@ -39,7 +39,7 @@ struct ColourSearch: View {
     }
 
     // Dismiss the sheet
-    private func dismiss() { mode.value.dismiss() }
+    private func dismiss() { mode.wrappedValue.dismiss() }
 
     // Clear the search data
     private func clearAll() {
