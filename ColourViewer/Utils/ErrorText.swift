@@ -23,6 +23,7 @@ func errorMessage(_ err: Error, _ location: ErrorLocation) -> Message {
 
 /// Where did the error occur
 enum ErrorLocation: String {
+    case fileReload = "reloading from file"
     case fileSave = "saving to file"
     case removeFile = "removing file"
 }

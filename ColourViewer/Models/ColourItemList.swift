@@ -17,8 +17,12 @@ class ColourItemList: ObservableObject, Identifiable {
     static let saveDir = FileManager.SearchPathDirectory.applicationSupportDirectory
 
     let id = UUID()
+
     var changeCount = 0
+    var noChanges: Bool { return list.isEmpty || changeCount == 0}
+
     var saveURL: URL? = nil
+    var noSaveURL: Bool { return saveURL == nil }
 
     let objectWillChange = ObservableObjectPublisher()
     let publisher = PassthroughSubject<Void, Never>()
@@ -75,6 +79,22 @@ class ColourItemList: ObservableObject, Identifiable {
         case .failure(let error):
             os_log("Error loading from '%s': %s", type: .info, from, "\(error)")
             return ColourItemList([])
+        }
+    }
+
+    // Reload form file
+    func reload() -> Result<URL, Error> {
+        guard let url = saveURL else {
+            return .failure(LocalErrors.unknownError)
+        }
+
+        switch loadFromJSON(url, as: [ColourItem].self) {
+        case .success(let list):
+            self.list = list
+            return .success(url)
+        case .failure(let error):
+            os_log("Error reloading from '%s': %s", type: .info, url.lastPathComponent, "\(error)")
+            return .failure(error)
         }
     }
 
