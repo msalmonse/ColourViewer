@@ -90,6 +90,14 @@ private struct TopBar: View {
             .font(Font.title.weight(.bold))
             .foregroundColor(Color.primary)
             Spacer()
+            Button(
+                action: { showSheet.value = .settings },
+                label: {
+                    Image(systemName: "gear")
+                    .font(Font.title.weight(.bold))
+                    .foregroundColor(Color.primary)
+                }
+            )
         }
         .padding(10)
     }

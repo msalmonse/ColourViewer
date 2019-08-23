@@ -12,7 +12,7 @@ var showSheet = PublishedShowSheet(.none)
 var newLabel = PublishedString("")
 
 struct ContentView : View {
-    @ObservedObject var history = ColourItemList.load()
+    @ObservedObject var history = UserSettings.autoload ? ColourItemList.load() : ColourItemList()
     @State var rgb = RGBandHSB.random
 
     var body: some View {

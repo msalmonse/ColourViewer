@@ -11,6 +11,10 @@
 		C40D360622EF43D100455CCA /* ColourEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D360522EF43D100455CCA /* ColourEditor.swift */; };
 		C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11B22F0CC7B00895FC2 /* Observable.swift */; };
 		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
+		C4333C12230FCBBF00E3A504 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C11230FCBBF00E3A504 /* Settings.swift */; };
+		C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C13230FCC1800E3A504 /* UserDefaults.swift */; };
+		C4333C16230FCC6900E3A504 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C15230FCC6900E3A504 /* UserSettings.swift */; };
+		C4333C18230FCDBC00E3A504 /* BundledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C17230FCDBC00E3A504 /* BundledData.swift */; };
 		C43A888322F41321003E9D64 /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */; };
 		C43A888422F41326003E9D64 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
 		C43A888622F41438003E9D64 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A888522F41438003E9D64 /* Geometry.swift */; };
@@ -72,6 +76,10 @@
 		C42DE11B22F0CC7B00895FC2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C42DE12022F1711D00895FC2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		C42DE12222F1718700895FC2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		C4333C11230FCBBF00E3A504 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C4333C13230FCC1800E3A504 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		C4333C15230FCC6900E3A504 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		C4333C17230FCDBC00E3A504 /* BundledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledData.swift; sourceTree = "<group>"; };
 		C43A888522F41438003E9D64 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		C45C7BDC22D4BAED008D119D /* ColourViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45C7BDF22D4BAED008D119D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,17 +207,20 @@
 		C490553222E9FF4000C86E46 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4333C17230FCDBC00E3A504 /* BundledData.swift */,
 				C45C7C0922D4C010008D119D /* ColourItem.swift */,
 				C4A064AA22F72503009B76EE /* ColourItemList.swift */,
 				C46BF8BE22F97115009A5816 /* Message.swift */,
 				C490553622EAC43500C86E46 /* NumberAndString.swift */,
 				C42DE11B22F0CC7B00895FC2 /* Observable.swift */,
+				C4F4AE6722FD3B3900EA6C27 /* Published.swift */,
 				C4D5532E22F1CAC5002F6F5F /* Radix.swift */,
 				C490553A22EB08CF00C86E46 /* RGBandHSB.swift */,
 				C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */,
 				C42DE12022F1711D00895FC2 /* Shapes.swift */,
-				C4F4AE6722FD3B3900EA6C27 /* Published.swift */,
 				C4F4AE6922FD3C9700EA6C27 /* ShowSheet.swift */,
+				C4333C13230FCC1800E3A504 /* UserDefaults.swift */,
+				C4333C15230FCC6900E3A504 /* UserSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 				C4EB231122EDDB830071099F /* HSBelements.swift */,
 				C4EB230B22EDB8930071099F /* IntElement.swift */,
 				C4A0646422F49724009B76EE /* RGBelements.swift */,
+				C4333C11230FCBBF00E3A504 /* Settings.swift */,
 				C4F4AE6B22FD3D7C00EA6C27 /* Sheets.swift */,
 			);
 			path = Views;
@@ -268,6 +280,7 @@
 				C45C7BD922D4BAED008D119D /* Frameworks */,
 				C45C7BDA22D4BAED008D119D /* Resources */,
 				C451FDB6230AC0F600CBFD39 /* ShellScript */,
+				C4333C10230FC4DA00E3A504 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -358,6 +371,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C4333C10230FC4DA00E3A504 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Credits : Jared Sinclair, https://www.jaredsinclair.com\n#            Aashish Tamsya, aashish.tamsya@gmail.com\n#\n# Set the build number to the current git commit count.\n# If we're using the Dev scheme, then we'll suffix the build\n# number with the current branch name, to make collisions\n# far less likely across feature branches.\n# Based on: http://w3facility.info/question/how-do-i-force-xcode-to-rebuild-the-info-plist-file-in-my-project-every-time-i-build-the-project/\n#\n# Updated with dSYM handling from http://yellowfeather.co.uk/blog/auto-incrementing-build-number-in-xcode-revisited/\n#\n\ngit=`sh /etc/profile; which git`\nappBuild=`\"$git\" rev-list HEAD --count`\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\n\necho \"Incremented the build number ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+		};
 		C451FDB6230AC0F600CBFD39 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,6 +416,8 @@
 				C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */,
 				C4A064AB22F72503009B76EE /* ColourItemList.swift in Sources */,
 				C490553722EAC43500C86E46 /* NumberAndString.swift in Sources */,
+				C4333C12230FCBBF00E3A504 /* Settings.swift in Sources */,
+				C4333C16230FCC6900E3A504 /* UserSettings.swift in Sources */,
 				C43A888622F41438003E9D64 /* Geometry.swift in Sources */,
 				C4EB231422EE0B660071099F /* ColourElements.swift in Sources */,
 				C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */,
@@ -404,6 +436,7 @@
 				C4F4AE6C22FD3D7C00EA6C27 /* Sheets.swift in Sources */,
 				C45C7C0A22D4C010008D119D /* ColourItem.swift in Sources */,
 				C4EB231A22EE195F0071099F /* ColourList.swift in Sources */,
+				C4333C18230FCDBC00E3A504 /* BundledData.swift in Sources */,
 				C46BF8BB22F94D9C009A5816 /* FileUtils.swift in Sources */,
 				C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */,
 				C4F4AE6822FD3B3900EA6C27 /* Published.swift in Sources */,
@@ -413,6 +446,7 @@
 				C4A0646522F49725009B76EE /* RGBelements.swift in Sources */,
 				C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */,
 				C46BF8BF22F97115009A5816 /* Message.swift in Sources */,
+				C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */,
 				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
 				C43A888322F41321003E9D64 /* SearchString.swift in Sources */,
 				C46BF8C322F9E537009A5816 /* ColourHistoryAdmin.swift in Sources */,

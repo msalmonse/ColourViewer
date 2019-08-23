@@ -16,6 +16,8 @@ enum ShowSheet {
     case removeSaveFile
     // Display search sheet
     case search
+    // Show settings
+    case settings
     // Display Alert
     case showAlert(Message)
 }
