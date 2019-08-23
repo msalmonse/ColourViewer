@@ -51,28 +51,19 @@ struct ColourElements: View {
                         action: {
                             self.history.list.insert(self.colourItem.unwrap, at: 0)
                         },
-                        label: {
-                            Image(systemName: "rectangle.stack.badge.plus")
-                            .foregroundColor(.primary)
-                        }
+                        label: { Image(systemName: "rectangle.stack.badge.plus") }
                     )
                     .modifier(buttonBackground())
                     // Button to add colour and label to pasteboard
                      Button(
                         action: { copyToClipboard(self.colourItem.unwrap) },
-                        label: {
-                            Image(systemName: "doc.on.clipboard")
-                            .foregroundColor(.primary)
-                        }
+                        label: { Image(systemName: "doc.on.clipboard") }
                     )
                     .modifier(buttonBackground())
                     // Button to display the colour search view
                     Button(
                         action: { showSheet.value = .search },
-                        label: {
-                            Image(systemName: "magnifyingglass")
-                            .foregroundColor(.primary)
-                        }
+                        label: { Image(systemName: "magnifyingglass") }
                     )
                     .modifier(buttonBackground())
                 }

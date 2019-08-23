@@ -15,6 +15,7 @@
 		C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C13230FCC1800E3A504 /* UserDefaults.swift */; };
 		C4333C16230FCC6900E3A504 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C15230FCC6900E3A504 /* UserSettings.swift */; };
 		C4333C18230FCDBC00E3A504 /* BundledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C17230FCDBC00E3A504 /* BundledData.swift */; };
+		C4333C1A23105DD500E3A504 /* UndoRedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C1923105DD500E3A504 /* UndoRedo.swift */; };
 		C43A888322F41321003E9D64 /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */; };
 		C43A888422F41326003E9D64 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
 		C43A888622F41438003E9D64 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A888522F41438003E9D64 /* Geometry.swift */; };
@@ -80,6 +81,7 @@
 		C4333C13230FCC1800E3A504 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C4333C15230FCC6900E3A504 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		C4333C17230FCDBC00E3A504 /* BundledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledData.swift; sourceTree = "<group>"; };
+		C4333C1923105DD500E3A504 /* UndoRedo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedo.swift; sourceTree = "<group>"; };
 		C43A888522F41438003E9D64 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		C45C7BDC22D4BAED008D119D /* ColourViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45C7BDF22D4BAED008D119D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				C4A0646422F49724009B76EE /* RGBelements.swift */,
 				C4333C11230FCBBF00E3A504 /* Settings.swift */,
 				C4F4AE6B22FD3D7C00EA6C27 /* Sheets.swift */,
+				C4333C1923105DD500E3A504 /* UndoRedo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,7 +389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Credits : Jared Sinclair, https://www.jaredsinclair.com\n#            Aashish Tamsya, aashish.tamsya@gmail.com\n#\n# Set the build number to the current git commit count.\n# If we're using the Dev scheme, then we'll suffix the build\n# number with the current branch name, to make collisions\n# far less likely across feature branches.\n# Based on: http://w3facility.info/question/how-do-i-force-xcode-to-rebuild-the-info-plist-file-in-my-project-every-time-i-build-the-project/\n#\n# Updated with dSYM handling from http://yellowfeather.co.uk/blog/auto-incrementing-build-number-in-xcode-revisited/\n#\n\ngit=`sh /etc/profile; which git`\nappBuild=`\"$git\" rev-list HEAD --count`\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\n\necho \"Incremented the build number ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "# Credits : Jared Sinclair, https://www.jaredsinclair.com\n#            Aashish Tamsya, aashish.tamsya@gmail.com\n#\n# Set the build number to the current git commit count.\n# If we're using the Dev scheme, then we'll suffix the build\n# number with the current branch name, to make collisions\n# far less likely across feature branches.\n# Based on: http://w3facility.info/question/how-do-i-force-xcode-to-rebuild-the-info-plist-file-in-my-project-every-time-i-build-the-project/\n#\n# Updated with dSYM handling from http://yellowfeather.co.uk/blog/auto-incrementing-build-number-in-xcode-revisited/\n#\n\ngit=`sh /etc/profile; which git`\nappBuild=`\"$git\" rev-list HEAD --count`\nif [ $CONFIGURATION = \"DebugX\" ]; then\nbranchName=`\"$git\" rev-parse --abbrev-ref HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\nelse\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\nfi\necho \"Incremented the build number ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
 		};
 		C451FDB6230AC0F600CBFD39 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -448,6 +451,7 @@
 				C46BF8BF22F97115009A5816 /* Message.swift in Sources */,
 				C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */,
 				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
+				C4333C1A23105DD500E3A504 /* UndoRedo.swift in Sources */,
 				C43A888322F41321003E9D64 /* SearchString.swift in Sources */,
 				C46BF8C322F9E537009A5816 /* ColourHistoryAdmin.swift in Sources */,
 			);

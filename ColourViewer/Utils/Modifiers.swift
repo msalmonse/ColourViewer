@@ -20,8 +20,10 @@ struct sectionBackground: ViewModifier {
 
 struct buttonBackground: ViewModifier {
     /// Common modifications for Buttons
+    let color: Color = .primary
     func body(content: Content) -> some View {
         content
+            .foregroundColor(color)
             .padding(12)
             .overlay(strokedRoundedRectangle(cornerRadius: 5, stroke: 2))
     }

@@ -38,6 +38,11 @@ struct PortraitColourEditor: View {
                             size: gp.relativeSize(0.9, 0.3)
                         )
 
+                        UndoRedo(
+                            font: .body,
+                            size: gp.relativeSize(0.9, 0.1)
+                        )
+
                         ColourSection(
                             rgb: self.$rgb,
                             size: gp.relativeSize(0.9, 0.3)
@@ -67,10 +72,17 @@ struct LandscapeColourEditor: View {
                         )
                         .padding(.leading, 2)
 
-                        HSBsection(
-                            rgb: self.$rgb,
-                            size: gp.relativeSize(0.3, 0.9)
-                        )
+                        VStack {
+                            HSBsection(
+                                rgb: self.$rgb,
+                                size: gp.relativeSize(0.3, 0.9)
+                            )
+
+                            UndoRedo(
+                                font: .body,
+                                size: gp.relativeSize(0.1, 0.9)
+                            )
+                        }
 
                         ColourSection(
                             rgb: self.$rgb,

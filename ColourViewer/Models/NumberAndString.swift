@@ -34,10 +34,13 @@ class IntAndString: Combine.ObservableObject, Identifiable {
                 number = oldValue
             } else if number != oldValue {
                 formatString()
+                previous = oldValue
                 if hasChanged != nil { hasChanged!(number) }
             }
         }
     }
+    // Previous number used for undo
+    private(set) var previous = 0
 
     // The string part, check for validity and update number
     var string: String = "" {
@@ -115,10 +118,12 @@ class DoubleAndString: Combine.ObservableObject, Identifiable {
                 number = oldValue
             } else if number != oldValue {
                 formatString()
+                previous = oldValue
                 if hasChanged != nil { hasChanged!(number) }
             }
         }
     }
+    private(set) var previous = 0.0
 
     // The string part
     var string: String = "" {

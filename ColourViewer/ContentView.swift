@@ -11,6 +11,8 @@ import SwiftUI
 var showSheet = PublishedShowSheet(.none)
 var newLabel = PublishedString("")
 
+var unMan = UndoManager()
+
 struct ContentView : View {
     @ObservedObject var history = UserSettings.autoload ? ColourItemList.load() : ColourItemList()
     @State var rgb = RGBandHSB.random

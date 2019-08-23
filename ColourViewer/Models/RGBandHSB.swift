@@ -10,8 +10,18 @@ import Foundation
 import SwiftUI
 import Combine
 
+// struct to hold all numbers
+struct previousRGBandHSB {
+    let red: Int
+    let green: Int
+    let blue: Int
+    let hue: Double
+    let saturation: Double
+    let brightness: Double
+}
+
 fileprivate enum UpdatingSource {
-    case none, rgb, hsb, color
+    case none, rgb, hsb, color, restore
 }
 
 /// This class combines the RGB, HSB and Colour values. Updating one updates the other two
@@ -22,7 +32,7 @@ class RGBandHSB {
     let blue = RGBandString()
     let green = RGBandString()
 
-    // HSB calues
+    // HSB values
     let hue = DegreesAndString()
     let saturation = PerCentAndString()
     let brightness = PerCentAndString()
@@ -65,6 +75,8 @@ class RGBandHSB {
 
         updateHSB()
         updateColourItem()
+        registerUndo()
+
         updatingFrom = .none
     }
 
@@ -83,6 +95,8 @@ class RGBandHSB {
         )
 
         updateColourItem()
+        registerUndo()
+
         updatingFrom = .none
     }
 
@@ -94,7 +108,9 @@ class RGBandHSB {
         red.number = colourItem.red
         green.number = colourItem.green
         blue.number = colourItem.blue
+
         updateHSB()
+        registerUndo()
 
         updatingFrom = .none
     }
@@ -103,6 +119,39 @@ class RGBandHSB {
     private func updateColourItem() {
         if updatingFrom == .color { return }
         colourItem.setRGB(red: red.number, green: green.number, blue: blue.number)
+    }
+
+    // Restore to previous state: Undo or Redo
+    func restore(_ previous: previousRGBandHSB) {
+        if updatingFrom != .none { return }
+        updatingFrom = .restore
+
+        red.number = previous.red
+        green.number = previous.green
+        blue.number = previous.blue
+        hue.number = previous.hue
+        saturation.number = previous.saturation
+        brightness.number = previous.brightness
+
+        // Undo registered now is a redo
+        registerUndo()
+
+        updateColourItem()
+
+        updatingFrom = .none
+    }
+
+    // Register an undo event
+    private func registerUndo() {
+        let previous = previousRGBandHSB(
+            red: red.previous,
+            green: green.previous,
+            blue: blue.previous,
+            hue: hue.previous,
+            saturation: saturation.previous,
+            brightness: brightness.previous
+        )
+        unMan.registerUndo(withTarget: self, handler: { $0.restore(previous) })
     }
 
     /// Initializer
