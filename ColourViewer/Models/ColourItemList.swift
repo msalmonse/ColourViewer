@@ -39,7 +39,16 @@ class ColourItemList: ObservableObject, Identifiable {
 
     init(_ inList: [ColourItem] = [], loadedFrom: URL? = nil) {
         self.list = inList
-        self.saveURL = loadedFrom
+        if loadedFrom != nil {
+            self.saveURL = loadedFrom
+        } else {
+            // List not loaded from saveFile, check to see if it exists
+            switch fileURL(Self.saveFile) {
+            case .success(let ret):
+                self.saveURL = urlExists(ret) ? ret : nil
+            case .failure: self.saveURL = nil
+            }
+        }
     }
 
     convenience init() { self.init([]) }
