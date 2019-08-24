@@ -18,13 +18,13 @@ struct UndoRedo: View {
                 HStack {
                     Spacer()
                     Button(
-                        action: { unMan.undo() },
+                        action: { RGBandHSB.unMan.undo() },
                         label: { Image(systemName: "gobackward")}
                     )
                     .modifier(buttonBackground())
                     Spacer()
                     Button(
-                        action: { unMan.redo() },
+                        action: { RGBandHSB.unMan.redo() },
                         label: { Image(systemName: "goforward")}
                     )
                     .modifier(buttonBackground())

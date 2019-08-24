@@ -54,6 +54,9 @@ class RGBandHSB {
         }
     }
 
+    // Undo Manager for RGBandHSB
+    static let unMan = UndoManager()
+
     private var updatingFrom: UpdatingSource = .none    // prevent loops between RGB & HSB
 
     // Update the HSB values
@@ -151,7 +154,7 @@ class RGBandHSB {
             saturation: saturation.previous,
             brightness: brightness.previous
         )
-        unMan.registerUndo(withTarget: self, handler: { $0.restore(previous) })
+        Self.unMan.registerUndo(withTarget: self, handler: { $0.restore(previous) })
     }
 
     /// Initializer
