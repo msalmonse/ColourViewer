@@ -86,6 +86,8 @@ struct ColourSearch: View {
                         TextField("Seach", text: self.$search.string,
                             onCommit: { self.updateMatchList(self.search.string) }
                         )
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
 
                         // Clear the search data
                         Button(
