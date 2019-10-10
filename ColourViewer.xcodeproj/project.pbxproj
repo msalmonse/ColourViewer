@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,9 +12,7 @@
 		C42DE11D22F0CC9200895FC2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE11B22F0CC7B00895FC2 /* Observable.swift */; };
 		C42DE12322F1718700895FC2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12222F1718700895FC2 /* Modifiers.swift */; };
 		C4333C12230FCBBF00E3A504 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C11230FCBBF00E3A504 /* Settings.swift */; };
-		C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C13230FCC1800E3A504 /* UserDefaults.swift */; };
 		C4333C16230FCC6900E3A504 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C15230FCC6900E3A504 /* UserSettings.swift */; };
-		C4333C18230FCDBC00E3A504 /* BundledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C17230FCDBC00E3A504 /* BundledData.swift */; };
 		C4333C1A23105DD500E3A504 /* UndoRedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4333C1923105DD500E3A504 /* UndoRedo.swift */; };
 		C43A888322F41321003E9D64 /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */; };
 		C43A888422F41326003E9D64 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42DE12022F1711D00895FC2 /* Shapes.swift */; };
@@ -55,6 +53,7 @@
 		C4EB231622EE0CCE0071099F /* ColourSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231522EE0CCE0071099F /* ColourSearch.swift */; };
 		C4EB231922EE15190071099F /* CopyToClipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB231822EE14800071099F /* CopyToClipboard.swift */; };
 		C4EB231A22EE195F0071099F /* ColourList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EAD06F22DEF81900912FB8 /* ColourList.swift */; };
+		C4F04211234FB3F900652E8D /* UserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = C4F04210234FB3F900652E8D /* UserDefaults */; };
 		C4F4AE6822FD3B3900EA6C27 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4AE6722FD3B3900EA6C27 /* Published.swift */; };
 		C4F4AE6A22FD3C9700EA6C27 /* ShowSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4AE6922FD3C9700EA6C27 /* ShowSheet.swift */; };
 		C4F4AE6C22FD3D7C00EA6C27 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4AE6B22FD3D7C00EA6C27 /* Sheets.swift */; };
@@ -78,9 +77,7 @@
 		C42DE12022F1711D00895FC2 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		C42DE12222F1718700895FC2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		C4333C11230FCBBF00E3A504 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		C4333C13230FCC1800E3A504 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C4333C15230FCC6900E3A504 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		C4333C17230FCDBC00E3A504 /* BundledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledData.swift; sourceTree = "<group>"; };
 		C4333C1923105DD500E3A504 /* UndoRedo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedo.swift; sourceTree = "<group>"; };
 		C43A888522F41438003E9D64 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		C45C7BDC22D4BAED008D119D /* ColourViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4F04211234FB3F900652E8D /* UserDefaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +207,6 @@
 		C490553222E9FF4000C86E46 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4333C17230FCDBC00E3A504 /* BundledData.swift */,
 				C45C7C0922D4C010008D119D /* ColourItem.swift */,
 				C4A064AA22F72503009B76EE /* ColourItemList.swift */,
 				C46BF8BE22F97115009A5816 /* Message.swift */,
@@ -221,7 +218,6 @@
 				C4C6F06E22F3FFAF00D3D543 /* SearchString.swift */,
 				C42DE12022F1711D00895FC2 /* Shapes.swift */,
 				C4F4AE6922FD3C9700EA6C27 /* ShowSheet.swift */,
-				C4333C13230FCC1800E3A504 /* UserDefaults.swift */,
 				C4333C15230FCC6900E3A504 /* UserSettings.swift */,
 			);
 			path = Models;
@@ -290,6 +286,9 @@
 			dependencies = (
 			);
 			name = ColourViewer;
+			packageProductDependencies = (
+				C4F04210234FB3F900652E8D /* UserDefaults */,
+			);
 			productName = ColourViewer;
 			productReference = C45C7BDC22D4BAED008D119D /* ColourViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -341,6 +340,9 @@
 				Base,
 			);
 			mainGroup = C45C7BD322D4BAED008D119D;
+			packageReferences = (
+				C4F0420F234FB3F900652E8D /* XCRemoteSwiftPackageReference "UserDefaults" */,
+			);
 			productRefGroup = C45C7BDD22D4BAED008D119D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,7 +441,6 @@
 				C4F4AE6C22FD3D7C00EA6C27 /* Sheets.swift in Sources */,
 				C45C7C0A22D4C010008D119D /* ColourItem.swift in Sources */,
 				C4EB231A22EE195F0071099F /* ColourList.swift in Sources */,
-				C4333C18230FCDBC00E3A504 /* BundledData.swift in Sources */,
 				C46BF8BB22F94D9C009A5816 /* FileUtils.swift in Sources */,
 				C4EB231022EDDAB00071099F /* DoubleElement.swift in Sources */,
 				C4F4AE6822FD3B3900EA6C27 /* Published.swift in Sources */,
@@ -449,7 +450,6 @@
 				C4A0646522F49725009B76EE /* RGBelements.swift in Sources */,
 				C45C7BE422D4BAED008D119D /* ContentView.swift in Sources */,
 				C46BF8BF22F97115009A5816 /* Message.swift in Sources */,
-				C4333C14230FCC1800E3A504 /* UserDefaults.swift in Sources */,
 				C4EAD06E22DE01F100912FB8 /* ColourConvert.swift in Sources */,
 				C4333C1A23105DD500E3A504 /* UndoRedo.swift in Sources */,
 				C43A888322F41321003E9D64 /* SearchString.swift in Sources */,
@@ -728,6 +728,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C4F0420F234FB3F900652E8D /* XCRemoteSwiftPackageReference "UserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/msalmonse/UserDefaults.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C4F04210234FB3F900652E8D /* UserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4F0420F234FB3F900652E8D /* XCRemoteSwiftPackageReference "UserDefaults" */;
+			productName = UserDefaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C45C7BD422D4BAED008D119D /* Project object */;
 }

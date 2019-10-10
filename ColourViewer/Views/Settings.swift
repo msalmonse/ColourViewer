@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UserDefaults
 
 struct Settings: View {
     @ObservedObject var settings = UserSettings()
